@@ -3,35 +3,18 @@ package it.unipa.iss.rpg.screen.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class WorldPanel extends Panel {
-    private JPanel panel;
-    private Graphics graphics;
-    private int screenHeight, screenWidth;
-    private int maxRow, maxCol;
-    private int scale, tileSize;
-    //WorldHandler handler = new WorldHandler();
+public class WorldPanel extends GamePanel {
 
-    public WorldPanel() {
-        scale = 3;
-        maxRow = 6;
-        maxCol = 8;
-        tileSize = 32;
-        screenHeight = scaleTile() * maxRow;
-        screenWidth = scaleTile() * maxCol;
-        panel = new JPanel();
-        this.setPanel();
-    }
-
-    public JPanel getPanel() {
-        return panel;
+    public WorldPanel(){
+        super();
     }
 
     public void setPanel() {
-        panel.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        panel.setBackground(Color.darkGray);
-        panel.setDoubleBuffered(true);
+        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        this.setBackground(Color.darkGray);
+        this.setDoubleBuffered(true);
         //panel.addKeyListener(handler);
-        panel.setFocusable(true);
+        this.setFocusable(true);
     }
 
     public int scaleTile() {

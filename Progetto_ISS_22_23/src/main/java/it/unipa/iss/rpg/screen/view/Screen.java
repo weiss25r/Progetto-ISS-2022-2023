@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Screen {
     private static Screen instance = null;
     private JFrame window;
-    private Panel gamePanel;
+    private GamePanel gamePanel;
 
     public Screen() {
         gamePanel = new WorldPanel();
@@ -22,7 +22,7 @@ public class Screen {
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setTitle("RPG Game");
-        window.add(gamePanel.getPanel());
+        window.add(gamePanel);
         window.pack();
 
         window.setLocationRelativeTo(null);
