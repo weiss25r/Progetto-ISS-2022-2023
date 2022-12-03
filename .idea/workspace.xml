@@ -10,6 +10,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -32,9 +39,108 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_opened_file_path": "C:/Users/andre/OneDrive/Documenti/GitHub/Progetto-ISS-2022-2023"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="it.unipa.iss.rpg.screen.view" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ScreenTest.testSetWindow">
+    <configuration name="ScreenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Progetto_ISS_22_23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.ScreenTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScreenTest.testSetWindow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Progetto_ISS_22_23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.ScreenTest" />
+      <option name="METHOD_NAME" value="testSetWindow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorldPanelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Progetto_ISS_22_23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.WorldPanelTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorldPanelTest.testPanel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Progetto_ISS_22_23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.WorldPanelTest" />
+      <option name="METHOD_NAME" value="testPanel" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorldPanelTest.testScaleTile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Progetto_ISS_22_23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.WorldPanelTest" />
+      <option name="METHOD_NAME" value="testScaleTile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ScreenTest.testSetWindow" />
+        <item itemvalue="JUnit.ScreenTest" />
+        <item itemvalue="JUnit.WorldPanelTest.testScaleTile" />
+        <item itemvalue="JUnit.WorldPanelTest.testPanel" />
+        <item itemvalue="JUnit.WorldPanelTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

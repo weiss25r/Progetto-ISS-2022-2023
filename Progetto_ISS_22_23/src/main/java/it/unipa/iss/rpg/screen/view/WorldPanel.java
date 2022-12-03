@@ -17,6 +17,10 @@ public class WorldPanel extends GamePanel {
         this.setFocusable(true);
     }
 
+    public JPanel getPanel(){
+        return this;
+    }
+
     public int scaleTile() {
         return tileSize * scale;
     }
