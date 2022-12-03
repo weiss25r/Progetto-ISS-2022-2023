@@ -1,5 +1,6 @@
 package it.unipa.iss.rpg;
 
+import it.unipa.iss.rpg.screen.model.Player;
 import it.unipa.iss.rpg.screen.view.Screen;
 
 public class Main {

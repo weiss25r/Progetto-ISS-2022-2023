@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64e0a14c-689c-4ac3-8ef8-2804d6dfe117" name="Changes" comment="" />
+    <list default="true" id="64e0a14c-689c-4ac3-8ef8-2804d6dfe117" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/main/java/it/unipa/iss/rpg/combact/IAttack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/main/java/it/unipa/iss/rpg/combact/Statistics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/test/java/it/unipa/iss/rpg/combact/StatisticsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/screen/view/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/screen/view/Screen.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +20,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="JUnit5 Test Class" />
       </list>
     </option>
@@ -49,83 +57,21 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="it.unipa.iss.rpg.screen.view" />
+      <recent name="it.unipa.iss.rpg.combact" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ScreenTest.testSetWindow">
-    <configuration name="ScreenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="StatisticsTest.shouldICreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Progetto_ISS_22_23" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
+          <option name="PATTERN" value="it.unipa.iss.rpg.combact.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
-      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.ScreenTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ScreenTest.testSetWindow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Progetto_ISS_22_23" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
-      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.ScreenTest" />
-      <option name="METHOD_NAME" value="testSetWindow" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorldPanelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Progetto_ISS_22_23" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
-      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.WorldPanelTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorldPanelTest.testPanel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Progetto_ISS_22_23" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
-      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.WorldPanelTest" />
-      <option name="METHOD_NAME" value="testPanel" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorldPanelTest.testScaleTile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Progetto_ISS_22_23" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.unipa.iss.rpg.screen.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.screen.view" />
-      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.screen.view.WorldPanelTest" />
-      <option name="METHOD_NAME" value="testScaleTile" />
+      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.combact" />
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.combact.StatisticsTest" />
+      <option name="METHOD_NAME" value="shouldICreate" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -133,11 +79,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ScreenTest.testSetWindow" />
-        <item itemvalue="JUnit.ScreenTest" />
-        <item itemvalue="JUnit.WorldPanelTest.testScaleTile" />
-        <item itemvalue="JUnit.WorldPanelTest.testPanel" />
-        <item itemvalue="JUnit.WorldPanelTest" />
+        <item itemvalue="JUnit.StatisticsTest.shouldICreate" />
       </list>
     </recent_temporary>
   </component>
@@ -151,5 +93,27 @@
       <updated>1669981448314</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Progetto_ISS_22_23/src/test/java/it/unipa/iss/rpg/combact/StatisticsTest.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
