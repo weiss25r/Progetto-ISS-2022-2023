@@ -19,7 +19,7 @@ public class Player {
         this.worldY = 0;
         this.movementSpeed = 4;
         this.direction = Direction.DOWN;
-        playerSprites = new ArrayList<>();
+        this.playerSprites = new ArrayList<>();
 
         loadSprites();
     }
