@@ -29,4 +29,8 @@ public class Screen {
         window.setResizable(false);
         window.setVisible(true);
     }
+
+    public JFrame getWindow() {
+        return window;
+    }
 }
