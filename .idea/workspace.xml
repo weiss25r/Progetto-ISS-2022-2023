@@ -36,15 +36,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/giova/OneDrive/Documenti/GitHub/iss/Progetto-ISS-2022-2023"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giova/OneDrive/Documenti/GitHub/iss/Progetto-ISS-2022-2023&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -57,10 +57,24 @@
       <recent name="it.unipa.iss.rpg.combat.model" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="it.unipa.iss.rpg.combat.model" />
       <recent name="it.unipa.iss.rpg.combact" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FightTest">
+  <component name="RunManager" selected="Application.Fight">
+    <configuration name="Fight" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.combat.model.Fight" />
+      <module name="Progetto_ISS_22_23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipa.iss.rpg.combat.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.Main" />
       <module name="Progetto_ISS_22_23" />
@@ -121,6 +135,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Fight" />
         <item itemvalue="JUnit.FightTest" />
         <item itemvalue="JUnit.FightTest (1)" />
         <item itemvalue="Application.Main" />
