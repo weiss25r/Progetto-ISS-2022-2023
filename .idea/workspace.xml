@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64e0a14c-689c-4ac3-8ef8-2804d6dfe117" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/main/java/it/unipa/iss/rpg/combact/IAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/main/java/it/unipa/iss/rpg/combact/Statistics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/test/java/it/unipa/iss/rpg/combact/StatisticsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/screen/view/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/screen/view/Screen.class" afterDir="false" />
-    </list>
+    <list default="true" id="64e0a14c-689c-4ac3-8ef8-2804d6dfe117" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,24 +36,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/andre/OneDrive/Documenti/GitHub/Progetto-ISS-2022-2023&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/giova/OneDrive/Documenti/GitHub/iss/Progetto-ISS-2022-2023"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\giova\OneDrive\Documenti\GitHub\iss\Progetto-ISS-2022-2023\Progetto_ISS_22_23\src\test\java\it\unipa\iss\rpg\combat\model" />
+      <recent name="C:\Users\giova\OneDrive\Documenti\GitHub\iss\Progetto-ISS-2022-2023\Progetto_ISS_22_23\src\main\java\it\unipa\iss\rpg\combat\model" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="it.unipa.iss.rpg.combat.model" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="it.unipa.iss.rpg.combact" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.FightTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.Main" />
       <module name="Progetto_ISS_22_23" />
@@ -74,16 +74,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FightTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.FightTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Progetto_ISS_22_23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.unipa.iss.rpg.combat.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.combat.model" />
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.combat.model.FightTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StatisticsTest.shouldICreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Progetto_ISS_22_23" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.unipa.iss.rpg.combact.*" />
+          <option name="PATTERN" value="it.unipa.iss.rpg.combat.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.combact" />
-      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.combact.StatisticsTest" />
+      <option name="PACKAGE_NAME" value="it.unipa.iss.rpg.combat.model" />
+      <option name="MAIN_CLASS_NAME" value="it.unipa.iss.rpg.combat.model.StatisticsTest" />
       <option name="METHOD_NAME" value="shouldICreate" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -92,6 +121,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FightTest" />
+        <item itemvalue="JUnit.FightTest (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.StatisticsTest.shouldICreate" />
       </list>
@@ -123,7 +154,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Progetto_ISS_22_23/src/test/java/it/unipa/iss/rpg/combact/StatisticsTest.java</url>
+          <url>file://$PROJECT_DIR$/Progetto_ISS_22_23/src/test/java/it/unipa/iss/rpg/combat/model/StatisticsTest.java</url>
           <line>17</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

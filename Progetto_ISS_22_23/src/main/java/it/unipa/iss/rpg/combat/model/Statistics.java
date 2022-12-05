@@ -1,4 +1,4 @@
-package it.unipa.iss.rpg.combact;
+package it.unipa.iss.rpg.combat.model;
 
 public  class Statistics implements IAttack,Cloneable{
     private int maxHp;
