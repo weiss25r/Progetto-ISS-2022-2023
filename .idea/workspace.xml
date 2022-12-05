@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64e0a14c-689c-4ac3-8ef8-2804d6dfe117" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/main/java/it/unipa/iss/rpg/combact/IAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/main/java/it/unipa/iss/rpg/combact/Statistics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/test/java/it/unipa/iss/rpg/combact/StatisticsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="64e0a14c-689c-4ac3-8ef8-2804d6dfe117" name="Changes" comment="Test che dovro lavorare più tardi">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/screen/view/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/screen/view/Screen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progetto_ISS_22_23/Progetto_ISS_22_23.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/Progetto_ISS_22_23.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progetto_ISS_22_23/src/main/java/it/unipa/iss/rpg/combact/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/src/main/java/it/unipa/iss/rpg/combact/Statistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/combact/Statistics.class" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto_ISS_22_23/target/classes/it/unipa/iss/rpg/combact/Statistics.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,9 +48,11 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/andre/OneDrive/Documenti/GitHub/Progetto-ISS-2022-2023"
+    "last_opened_file_path": "C:/Users/harub/Desktop/menchise/mvcjaa/src",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -92,6 +95,14 @@
       <option name="presentableId" value="Default" />
       <updated>1669981448314</updated>
     </task>
+    <task id="LOCAL-00001" summary="Test che dovro lavorare più tardi">
+      <created>1670067013704</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670067013704</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,6 +116,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test che dovro lavorare più tardi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test che dovro lavorare più tardi" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -115,5 +130,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

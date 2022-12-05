@@ -12,21 +12,28 @@ public  class Statistics implements IAttack,Cloneable{
         this.stamina = 0;
         this.atk = 0;
     }
+    public void Statistics(int hp,int def,int stamina , int atk){
+        this.atk = atk;
+        this.def = def;
+        this.stamina = stamina;
+        this.maxHp = hp;
 
+    }
     public  int getMaxHp(){
-        return 0;
+        return this.maxHp;
     }
     public int getDef(){
-        return 0;
+        return this.def;
     }
     public int getStamina(){
-        return 0;
+        return this.stamina;
     }
     public int getAtk(){
-        return 0;
+        return this.atk;
     }
+    @Override
     public Statistics clone(){
-        return this; //non deve essere vuoto
+        return null;
     }
     public void attack(){
         //change
