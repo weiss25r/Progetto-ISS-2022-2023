@@ -1,9 +1,6 @@
 package it.unipa.iss.rpg.combat.model;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,25 +19,14 @@ class FightTest {
         assertNull(fight);
     }
 
-    @Disabled
+    @Test
     void cmdAttack() {
         assertEquals(91, fight.c1.getHp() - fight.cmdAttack(),
                 "Considering boolean default value of myTurn variable");
     }
 
-    @Disabled
-    void gameOver() {
-    }
-
-    @Disabled
-    void getNextPlayer() {
-    }
-
-    @Disabled
-    void checkHp() {
-    }
-
-    @Disabled
+    @Test
     void inputAction() {
+
     }
 }
