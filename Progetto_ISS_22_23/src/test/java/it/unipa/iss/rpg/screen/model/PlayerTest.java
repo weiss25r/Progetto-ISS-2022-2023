@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.Assert.*;
 
 class PlayerTest {
-    Player p;
+    private Player p;
 
     @BeforeEach
     void setUp() {
