@@ -1,17 +1,19 @@
 package it.unipa.iss.rpg.screen.model;
 
+import it.unipa.iss.rpg.screen.view.GamePanel;
+import it.unipa.iss.rpg.screen.view.Screen;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 import org.junit.jupiter.api.*;
 import it.unipa.iss.rpg.screen.controller.*;
 
-class MovementHandlerTest {
-    WorldMapController controller;
-    boolean attached = false;
+import java.awt.event.KeyEvent;
+import java.security.Key;
 
+class MovementHandlerTest {
+    MovementHandler movementHandler;
     @BeforeEach
     void setUp() {
-        controller = new WorldMapController(Player.getInstance(), new WorldPanel());
-        testAttach();
+        this.movementHandler = new MovementHandler();
     }
 
     @AfterEach
@@ -21,17 +23,16 @@ class MovementHandlerTest {
 
     @Test
     void testAttach() {
-        attached = true;
+
     }
 
     @Test
     void testDetach() {
-        attached = false;
+
     }
 
     @Test
     void testKeyTyped() {
-
     }
 
     @Test
