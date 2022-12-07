@@ -18,7 +18,7 @@ public class MovementHandler implements KeyListener {
     }
 
     public void detach(WorldMapController controller) {
-
+        this.worldMapController = null;
     }
 
     private void notifyController(EventType e){
@@ -32,6 +32,7 @@ public class MovementHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        //TODO: mettere check null
         int code = e.getKeyCode();
 
         switch (code) {
@@ -48,7 +49,6 @@ public class MovementHandler implements KeyListener {
                 this.notifyController(EventType.MOVED_RIGHT);
             }
         }
-
     }
 
     @Override
