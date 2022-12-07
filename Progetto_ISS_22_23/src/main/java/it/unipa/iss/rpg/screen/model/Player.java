@@ -26,8 +26,8 @@ public class Player {
 
     public static Player getInstance() {
        if(player == null)
-           return new Player();
-       else return player;
+           player = new Player();
+       return player;
     }
 
     private void loadSprites() {

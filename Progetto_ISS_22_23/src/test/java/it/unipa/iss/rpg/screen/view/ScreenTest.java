@@ -12,7 +12,7 @@ class ScreenTest {
 
     @BeforeEach
     public void setUp(){
-        screen = new Screen();
+        screen = Screen.getIstance();
         assertNotNull(screen);
     }
 

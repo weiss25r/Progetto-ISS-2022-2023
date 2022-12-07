@@ -6,7 +6,7 @@ import java.awt.*;
 public class WorldPanel extends GamePanel {
 
     public WorldPanel(){
-        super();
+        setPanel();
     }
 
     public void setPanel() {
