@@ -15,7 +15,7 @@ public class WorldMapController implements IPlayerListener {
         w.addKeyListener(movementHandler);
     }
 
-    public void drawPlayer() {
+    public void draw() {
 
     }
 

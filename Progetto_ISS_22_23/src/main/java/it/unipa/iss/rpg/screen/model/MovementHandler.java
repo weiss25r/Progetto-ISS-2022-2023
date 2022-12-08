@@ -33,6 +33,8 @@ public class MovementHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         //TODO: mettere check null
+        if(this.worldMapController == null) return;
+
         int code = e.getKeyCode();
 
         switch (code) {
