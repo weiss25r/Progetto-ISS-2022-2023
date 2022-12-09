@@ -7,7 +7,7 @@ import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 public class Main {
     public static void main(String[] args) {
-        Screen screen = Screen.getIstance();
-        WorldMapController controller = new WorldMapController(Player.getInstance(), (WorldPanel) screen.getGamePanel());
+        Game game = new Game();
+        game.startGame();
     }
 }

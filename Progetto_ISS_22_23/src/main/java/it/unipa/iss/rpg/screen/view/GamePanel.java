@@ -22,4 +22,5 @@ public abstract class GamePanel extends JPanel {
 
     public abstract void setPanel();
     public abstract int scaleTile();
+
 }

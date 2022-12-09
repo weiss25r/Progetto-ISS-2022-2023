@@ -1,26 +1,36 @@
 package it.unipa.iss.rpg.screen.controller;
 
+import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.screen.model.*;
+import it.unipa.iss.rpg.screen.view.GamePanel;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
-public class WorldMapController implements IPlayerListener {
-    private Player player;
-    private WorldPanel worldPanel;
+import java.awt.*;
 
-    public WorldMapController(Player p, WorldPanel w) {
-        this.player = p;
-        this.worldPanel = w;
+public class WorldMapController extends GameController implements IPlayerListener {
+    public WorldMapController(Player player, GamePanel gamePanel) {
+        super(player, gamePanel);
         MovementHandler movementHandler = new MovementHandler();
         movementHandler.attach(this);
-        w.addKeyListener(movementHandler);
+        this.getGamePanel().addKeyListener(movementHandler);
+
+        //TODO: REFACTOR
+        ((WorldPanel)gamePanel).addController(this);
     }
 
-    public void draw() {
-
+    public void drawPlayer(Graphics2D g) {
+        g.drawImage(getPlayer().getDirectionImage(),
+                    getPlayer().getWorldX(),
+                    getPlayer().getWorldY(),
+                    getGamePanel().scaleTile(),
+                    getGamePanel().scaleTile(),
+                    null
+                );
     }
 
     @Override
     public void update(EventType e) {
+        Player player = this.getPlayer();
         switch (e) {
             case MOVED_UP -> {
                 player.move(Direction.UP);
@@ -28,9 +38,43 @@ public class WorldMapController implements IPlayerListener {
             case MOVED_DOWN -> player.move(Direction.DOWN);
             case MOVED_LEFT -> player.move(Direction.LEFT);
             case MOVED_RIGHT -> player.move(Direction.RIGHT);
+
         }
 
         System.out.printf("New Coordinates: %d %d\n", player.getWorldX(), player.getWorldY());
 
+    }
+
+    @Override
+    public void runController() {
+        int fps = 60;
+        double drawInterval = (double)1000000000/fps;
+        double delta = 0;
+
+        long lastTime = System.nanoTime();
+        long currentTime;
+        long timer = 0;
+        int drawCount = 0;
+
+        while(true) {
+
+            currentTime = System.nanoTime();
+
+            delta += (currentTime - lastTime) / drawInterval;
+            timer += (currentTime - lastTime);
+            lastTime = currentTime;
+
+            if(delta >= 1) {
+                this.getGamePanel().repaint();
+                delta--;
+                drawCount++;
+            }
+
+            if(timer >= 1000000000) {
+                System.out.println("FPS: " + drawCount);
+                drawCount = 0;
+                timer = 0;
+            }
+        }
     }
 }

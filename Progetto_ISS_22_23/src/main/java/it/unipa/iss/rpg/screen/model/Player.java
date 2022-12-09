@@ -2,8 +2,10 @@ package it.unipa.iss.rpg.screen.model;
 
 import javax.imageio.ImageIO;
 import javax.xml.transform.dom.DOMResult;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
 import java.util.*;
 
 public class Player {
@@ -12,13 +14,13 @@ public class Player {
     private int worldY;
     private List<Tile> playerSprites;
     private int movementSpeed;
-    private Direction direction;
+
+    private BufferedImage directionImage;
 
     private Player() {
         this.worldX = 0;
         this.worldY = 0;
-        this.movementSpeed = 4;
-        this.direction = Direction.DOWN;
+        this.movementSpeed = 10;
         this.playerSprites = new ArrayList<>();
 
         loadSprites();
@@ -39,14 +41,28 @@ public class Player {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        this.directionImage = playerSprites.get(0).getTileImage();
     }
 
     public void move(Direction direction) {
         switch (direction) {
-            case DOWN -> this.worldY += movementSpeed;
-            case UP -> this.worldY -= movementSpeed;
-            case LEFT -> this.worldX -= movementSpeed;
-            case RIGHT -> this.worldX += movementSpeed;
+            case DOWN -> {
+                this.worldY += movementSpeed;
+                this.directionImage = playerSprites.get(0).getTileImage();
+            }
+            case UP -> {
+                this.worldY -= movementSpeed;
+                this.directionImage = playerSprites.get(1).getTileImage();
+            }
+            case LEFT -> {
+                this.worldX -= movementSpeed;
+                this.directionImage = playerSprites.get(2).getTileImage();
+            }
+            case RIGHT -> {
+                this.worldX += movementSpeed;
+                this.directionImage = playerSprites.get(3).getTileImage();
+            }
         }
     }
 
@@ -56,5 +72,9 @@ public class Player {
 
     public int getWorldY() {
         return worldY;
+    }
+
+    public BufferedImage getDirectionImage() {
+        return this.directionImage;
     }
 }
