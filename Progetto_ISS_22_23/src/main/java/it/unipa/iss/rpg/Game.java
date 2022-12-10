@@ -20,6 +20,10 @@ public class Game implements Runnable {
         this.gameThread.start();
     }
 
+    public void startAlternative() {
+        gameController.runController();
+    }
+
     @Override
     public void run() {
         gameController.runController();

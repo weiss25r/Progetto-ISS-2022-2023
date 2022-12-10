@@ -25,24 +25,16 @@ public class WorldMapController extends GameController implements IPlayerListene
                     getGamePanel().scaleTile(),
                     getGamePanel().scaleTile(),
                     null
-                );
+        );
     }
 
     @Override
     public void update(EventType e) {
         Player player = this.getPlayer();
-        switch (e) {
-            case MOVED_UP -> {
-                player.move(Direction.UP);
-            }
-            case MOVED_DOWN -> player.move(Direction.DOWN);
-            case MOVED_LEFT -> player.move(Direction.LEFT);
-            case MOVED_RIGHT -> player.move(Direction.RIGHT);
+        player.move(e);
 
-        }
-
-        System.out.printf("New Coordinates: %d %d\n", player.getWorldX(), player.getWorldY());
-
+        //System.out.printf("New Coordinates: %d %d\n", player.getWorldX(), player.getWorldY());
+        this.getGamePanel().repaint();
     }
 
     @Override
@@ -57,7 +49,6 @@ public class WorldMapController extends GameController implements IPlayerListene
         int drawCount = 0;
 
         while(true) {
-
             currentTime = System.nanoTime();
 
             delta += (currentTime - lastTime) / drawInterval;

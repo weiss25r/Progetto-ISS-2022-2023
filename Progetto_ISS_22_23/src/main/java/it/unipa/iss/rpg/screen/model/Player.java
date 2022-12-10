@@ -1,5 +1,7 @@
 package it.unipa.iss.rpg.screen.model;
 
+import jdk.jfr.Event;
+
 import javax.imageio.ImageIO;
 import javax.xml.transform.dom.DOMResult;
 import java.awt.image.BufferedImage;
@@ -20,7 +22,7 @@ public class Player {
     private Player() {
         this.worldX = 0;
         this.worldY = 0;
-        this.movementSpeed = 10;
+        this.movementSpeed = 50;
         this.playerSprites = new ArrayList<>();
 
         loadSprites();
@@ -45,21 +47,21 @@ public class Player {
         this.directionImage = playerSprites.get(0).getTileImage();
     }
 
-    public void move(Direction direction) {
-        switch (direction) {
-            case DOWN -> {
+    public void move(EventType e) {
+        switch (e) {
+            case MOVED_DOWN -> {
                 this.worldY += movementSpeed;
                 this.directionImage = playerSprites.get(0).getTileImage();
             }
-            case UP -> {
+            case MOVED_UP -> {
                 this.worldY -= movementSpeed;
                 this.directionImage = playerSprites.get(1).getTileImage();
             }
-            case LEFT -> {
+            case MOVED_LEFT -> {
                 this.worldX -= movementSpeed;
                 this.directionImage = playerSprites.get(2).getTileImage();
             }
-            case RIGHT -> {
+            case MOVED_RIGHT -> {
                 this.worldX += movementSpeed;
                 this.directionImage = playerSprites.get(3).getTileImage();
             }
