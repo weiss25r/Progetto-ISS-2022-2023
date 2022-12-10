@@ -7,10 +7,13 @@ import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 import java.awt.*;
 
-public class WorldMapController extends GameController implements IPlayerListener {
-    public WorldMapController(Player player, GamePanel gamePanel) {
+public class WorldController extends GameController implements IPlayerListener {
+
+    private MovementHandler movementHandler;
+
+    public WorldController(Player player, GamePanel gamePanel) {
         super(player, gamePanel);
-        MovementHandler movementHandler = new MovementHandler();
+        movementHandler = new MovementHandler();
         movementHandler.attach(this);
         this.getGamePanel().addKeyListener(movementHandler);
 
@@ -39,6 +42,7 @@ public class WorldMapController extends GameController implements IPlayerListene
 
     @Override
     public void runController() {
+        //TODO: ATTACH/DETACH QUA
         int fps = 60;
         double drawInterval = (double)1000000000/fps;
         double delta = 0;
@@ -48,7 +52,7 @@ public class WorldMapController extends GameController implements IPlayerListene
         long timer = 0;
         int drawCount = 0;
 
-        while(true) {
+        while(isActive()) {
             currentTime = System.nanoTime();
 
             delta += (currentTime - lastTime) / drawInterval;

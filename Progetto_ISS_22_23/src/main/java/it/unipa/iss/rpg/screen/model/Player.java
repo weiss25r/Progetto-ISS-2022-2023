@@ -11,7 +11,6 @@ import java.nio.Buffer;
 import java.util.*;
 
 public class Player {
-    private static Player player = null;
     private int worldX;
     private int worldY;
     private List<Tile> playerSprites;
@@ -19,27 +18,21 @@ public class Player {
 
     private BufferedImage directionImage;
 
-    private Player() {
+    public Player() {
         this.worldX = 0;
         this.worldY = 0;
-        this.movementSpeed = 50;
+        this.movementSpeed = 10;
         this.playerSprites = new ArrayList<>();
 
         loadSprites();
     }
 
-    public static Player getInstance() {
-       if(player == null)
-           player = new Player();
-       return player;
-    }
-
     private void loadSprites() {
         try {
-            this.playerSprites.add(new Tile(ImageIO.read(new File("src/res/player/player_down_1.png"))));
-            this.playerSprites.add(new Tile(ImageIO.read(new File("src/res/player/player_up_1.png"))));
-            this.playerSprites.add(new Tile(ImageIO.read(new File("src/res/player/player_left_1.png"))));
-            this.playerSprites.add(new Tile(ImageIO.read(new File("src/res/player/player_right_1.png"))));
+            this.playerSprites.add(new Tile(ImageIO.read(new File("src/res/character/move/down/char_down_00.png"))));
+            this.playerSprites.add(new Tile(ImageIO.read(new File("src/res/character/move/up/char_up_00.png"))));
+            this.playerSprites.add(new Tile(ImageIO.read(new File("src/res/character/move/left/char_left_00.png"))));
+            this.playerSprites.add(new Tile(ImageIO.read(new File("src/res/character/move/right/char_right_00.png"))));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

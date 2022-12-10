@@ -1,12 +1,12 @@
 package it.unipa.iss.rpg.screen.view;
 
-import it.unipa.iss.rpg.screen.controller.WorldMapController;
+import it.unipa.iss.rpg.screen.controller.WorldController;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class WorldPanel extends GamePanel {
-    private WorldMapController controller;
+    private WorldController controller;
 
     public WorldPanel(){
         setPanel();
@@ -32,12 +32,14 @@ public class WorldPanel extends GamePanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        Graphics2D g2 = (Graphics2D)g;
-        controller.drawPlayer(g2);
-        g2.dispose();
+        if(controller != null) {
+            Graphics2D g2 = (Graphics2D) g;
+            controller.drawPlayer(g2);
+            g2.dispose();
+        }
     }
 
-    public void addController(WorldMapController controller) {
+    public void addController(WorldController controller) {
         this.controller = controller;
     }
 }

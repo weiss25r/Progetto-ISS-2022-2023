@@ -1,35 +1,25 @@
 package it.unipa.iss.rpg;
 
-import it.unipa.iss.rpg.screen.controller.WorldMapController;
+import it.unipa.iss.rpg.combat.controller.CombatController;
+import it.unipa.iss.rpg.screen.controller.WorldController;
 import it.unipa.iss.rpg.screen.model.Player;
 import it.unipa.iss.rpg.screen.view.Screen;
 
-public class Game implements Runnable {
-    private GameController gameController;
-
-    private Thread gameThread;
+public class Game{
+    private WorldController worldController;
+    private CombatController combatController;
 
     public Game() {
-        Player p = Player.getInstance();
-        this.gameController = new WorldMapController(p, Screen.getIstance().getGamePanel());
-        this.gameThread = new Thread(this);
+        Player p = new Player();
+        this.worldController = new WorldController(p, Screen.getIstance().getGamePanel());
+        this.combatController = new CombatController(p, Screen.getIstance().getGamePanel());
     }
 
     public void startGame() {
-        this.gameThread.setName("Game thread");
-        this.gameThread.start();
-    }
-
-    public void startAlternative() {
-        gameController.runController();
-    }
-
-    @Override
-    public void run() {
-        gameController.runController();
-    }
-
-    public Thread getGameThread() {
-        return gameThread;
+        //game loop
+        while(true) {
+            worldController.runController();
+            combatController.runController();
+        }
     }
 }

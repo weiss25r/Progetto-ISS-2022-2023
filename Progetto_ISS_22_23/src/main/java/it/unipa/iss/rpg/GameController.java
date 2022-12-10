@@ -6,6 +6,7 @@ import it.unipa.iss.rpg.screen.view.GamePanel;
 public abstract class GameController {
     private Player player;
     private GamePanel gamePanel;
+    protected boolean active;
 
     public abstract void update(EventType e);
     public abstract void runController();
@@ -13,6 +14,7 @@ public abstract class GameController {
     public GameController(Player player, GamePanel gamePanel) {
         this.player = player;
         this.gamePanel = gamePanel;
+        this.active = true;
     }
 
     public GamePanel getGamePanel() {
@@ -21,5 +23,9 @@ public abstract class GameController {
 
     public Player getPlayer() {
         return this.player;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }

@@ -1,28 +1,26 @@
 package it.unipa.iss.rpg.screen.model;
 
-import it.unipa.iss.rpg.screen.controller.WorldMapController;
-import it.unipa.iss.rpg.screen.view.WorldPanel;
+import it.unipa.iss.rpg.screen.controller.WorldController;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class MovementHandler implements KeyListener {
-    private WorldMapController worldMapController;
-    private boolean upPressed, downPressed, rightPressed, leftPressed;
+    private WorldController worldController;
 
     public MovementHandler() {
     }
 
-    public void attach(WorldMapController controller) {
-        this.worldMapController = controller;
+    public void attach(WorldController controller) {
+        this.worldController = controller;
     }
 
-    public void detach(WorldMapController controller) {
-        this.worldMapController = null;
+    public void detach() {
+        this.worldController = null;
     }
 
     private void notifyController(EventType e){
-        this.worldMapController.update(e);
+        this.worldController.update(e);
     }
 
     @Override
@@ -33,10 +31,12 @@ public class MovementHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         //TODO: mettere check null
-        if(this.worldMapController == null) return;
+        if(this.worldController == null) {
+            System.out.println("Sono null");
+            return;
+        }
 
         int code = e.getKeyCode();
-
         switch (code) {
             case KeyEvent.VK_W -> {
                 this.notifyController(EventType.MOVED_UP);
@@ -54,7 +54,5 @@ public class MovementHandler implements KeyListener {
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
+    public void keyReleased(KeyEvent e) {}
 }

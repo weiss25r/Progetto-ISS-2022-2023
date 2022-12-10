@@ -9,7 +9,7 @@ class PlayerTest {
 
     @BeforeEach
     void setUp() {
-        p = Player.getInstance();
+        p = new Player();
     }
 
     @AfterEach
@@ -24,13 +24,13 @@ class PlayerTest {
 
     @Test
     void testMove() {
-        p.move(Direction.DOWN);
+        p.move(EventType.MOVED_DOWN);
         Assertions.assertEquals(4, p.getWorldY());
-        p.move(Direction.UP);
+        p.move(EventType.MOVED_UP);
         Assertions.assertEquals(0, p.getWorldY());
-        p.move(Direction.RIGHT);
+        p.move(EventType.MOVED_RIGHT);
         Assertions.assertEquals(4, p.getWorldX());
-        p.move(Direction.LEFT);
+        p.move(EventType.MOVED_LEFT);
         Assertions.assertEquals(0, p.getWorldX());
     }
 }
