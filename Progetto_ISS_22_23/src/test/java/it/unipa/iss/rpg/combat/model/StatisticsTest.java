@@ -29,21 +29,6 @@ class StatisticsTest {
 
 
 
-    @Test
-    void getMaxHp() {
-    }
-
-    @Test
-    void getDef() {
-    }
-
-    @Test
-    void getStamina() {
-    }
-
-    @Test
-    void getAtk() {
-    }
 
     @Test
     void testClone() {

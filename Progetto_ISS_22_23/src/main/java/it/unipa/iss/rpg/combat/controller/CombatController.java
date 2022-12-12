@@ -11,11 +11,15 @@ import it.unipa.iss.rpg.screen.view.GamePanel;
 public class CombatController extends GameController {
 
     public Fight combat;
-    public GamePanel view;
+    public Mob enemies[];
+
+    public CombatController(Player player, GamePanel view,Mob enemies[]){
+        super(player, view);
+        this.enemies = enemies;
+    }
 
     public CombatController(Player player, GamePanel view){
-        super(player, view);
-        this.view = view;
+        super(player,view);
     }
 
     public void update(){
