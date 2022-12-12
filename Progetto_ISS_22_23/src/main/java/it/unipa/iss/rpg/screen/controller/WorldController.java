@@ -11,14 +11,14 @@ public class WorldController extends GameController implements IPlayerListener {
 
     private MovementHandler movementHandler;
 
-    public WorldController(Player player, GamePanel gamePanel) {
+    public WorldController(Player player, WorldPanel gamePanel) {
         super(player, gamePanel);
         movementHandler = new MovementHandler();
         movementHandler.attach(this);
         this.getGamePanel().addKeyListener(movementHandler);
 
         //TODO: REFACTOR
-        ((WorldPanel)gamePanel).addController(this);
+        gamePanel.addController(this);
     }
 
     public void drawPlayer(Graphics2D g) {
@@ -53,6 +53,11 @@ public class WorldController extends GameController implements IPlayerListener {
         int drawCount = 0;
 
         while(isActive()) {
+            //TODO: It must be initialize the Subscribers Entity
+            //      of Observer-Pattern
+            //TODO: When the player collide into a Entity gamePanel
+            //      must send as parameter to the Observer-Pattern
+            //      notifyController(gamePanel)
             currentTime = System.nanoTime();
 
             delta += (currentTime - lastTime) / drawInterval;
@@ -72,4 +77,9 @@ public class WorldController extends GameController implements IPlayerListener {
             }
         }
     }
+
+    public void notifyController(){
+        //TODO: notify the Collision Entity
+    }
+
 }

@@ -4,6 +4,7 @@ import it.unipa.iss.rpg.combat.controller.CombatController;
 import it.unipa.iss.rpg.screen.controller.WorldController;
 import it.unipa.iss.rpg.screen.model.Player;
 import it.unipa.iss.rpg.screen.view.Screen;
+import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 public class Game{
     private WorldController worldController;
@@ -11,7 +12,7 @@ public class Game{
 
     public Game() {
         Player p = new Player();
-        this.worldController = new WorldController(p, Screen.getIstance().getGamePanel());
+        this.worldController = new WorldController(p, (WorldPanel) Screen.getIstance().getGamePanel());
         this.combatController = new CombatController(p, Screen.getIstance().getGamePanel());
     }
 
