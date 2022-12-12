@@ -33,6 +33,8 @@ public class CombatController extends GameController {
 
     @Override
     public void runController() {
+
         System.out.println("Combat started");
+
     }
 }

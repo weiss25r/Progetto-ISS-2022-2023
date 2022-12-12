@@ -1,5 +1,5 @@
 package it.unipa.iss.rpg.combat.model;
-import java.lang.Cloneable
+import java.lang.Cloneable;
 public  class Statistics implements IAttack,Cloneable{
     private int maxHp;
     private int def;
