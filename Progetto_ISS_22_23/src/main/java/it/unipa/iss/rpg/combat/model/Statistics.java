@@ -1,18 +1,18 @@
 package it.unipa.iss.rpg.combat.model;
 
-public  class Statistics implements IAttack,Cloneable{
+public  class Statistics implements IAttack{
     private int maxHp;
     private int def;
     private int stamina;
     private int atk;
 
-    public void Statistics(){
+    public  Statistics(){
         this.maxHp = 0;
         this.def = 0;
         this.stamina = 0;
         this.atk = 0;
     }
-    public void Statistics(int hp,int def,int stamina , int atk){
+    public  Statistics(int hp,int def,int stamina , int atk){
         this.atk = atk;
         this.def = def;
         this.stamina = stamina;
@@ -31,10 +31,7 @@ public  class Statistics implements IAttack,Cloneable{
     public int getAtk(){
         return this.atk;
     }
-    @Override
-    public Statistics clone(){
-        return null;
-    }
+
     public void attack(){
         //change
     }

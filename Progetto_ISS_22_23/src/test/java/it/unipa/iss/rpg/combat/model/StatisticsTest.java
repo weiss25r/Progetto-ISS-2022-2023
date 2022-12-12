@@ -23,7 +23,7 @@ class StatisticsTest {
         assertEquals(-1,stat.getMaxHp());
         assertEquals(-1,stat.getStamina());
         assertEquals(-1,stat.getDef());
-        assertNotNull(stat.clone());
+
 
     }
 
