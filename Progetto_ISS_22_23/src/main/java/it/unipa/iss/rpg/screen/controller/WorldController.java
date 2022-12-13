@@ -5,7 +5,11 @@ import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class WorldController extends GameController implements IPlayerListener {
 
@@ -16,7 +20,6 @@ public class WorldController extends GameController implements IPlayerListener {
         movementHandler = new MovementHandler();
         movementHandler.attach(this);
         this.getGamePanel().addKeyListener(movementHandler);
-
         //TODO: REFACTOR
         gamePanel.addController(this);
     }
@@ -29,6 +32,21 @@ public class WorldController extends GameController implements IPlayerListener {
                     getGamePanel().scaleTile(),
                     null
         );
+    }
+
+    public void drawWorld(Graphics2D g){
+        try {
+            BufferedImage testTile = ImageIO.read(new File("src/res/world/level_start/road_03.png"));
+
+            //sistema di coordinate di swing: basso +y, destra +x
+            for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
+                for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
+                    g.drawImage(testTile, i*getGamePanel().scaleTile(), j*getGamePanel().scaleTile(), getGamePanel().scaleTile(),getGamePanel().scaleTile(), null);
+                }
+            }
+        }catch (IOException ex){
+            System.out.println("errore");
+        }
     }
 
     @Override

@@ -9,6 +9,8 @@ public class WorldPanel extends GamePanel {
     private WorldController controller;
 
     public WorldPanel(){
+
+        super();
         setPanel();
     }
 
@@ -34,6 +36,7 @@ public class WorldPanel extends GamePanel {
 
         if(controller != null) {
             Graphics2D g2 = (Graphics2D) g;
+            controller.drawWorld(g2);
             controller.drawPlayer(g2);
             g2.dispose();
         }
