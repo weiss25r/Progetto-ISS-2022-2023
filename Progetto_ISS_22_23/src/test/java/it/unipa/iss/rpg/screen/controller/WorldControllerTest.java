@@ -1,8 +1,9 @@
 package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.screen.model.EventType;
-import it.unipa.iss.rpg.screen.model.Player;
+import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.Screen;
+import it.unipa.iss.rpg.screen.view.WorldPanel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ class WorldControllerTest {
     @BeforeEach
     void setUp() {
         p = new Player();
-        worldController = new WorldController(p, Screen.getIstance().getGamePanel());
+        worldController = new WorldController(p, (WorldPanel) Screen.getIstance().getGamePanel());
     }
 
     @AfterEach

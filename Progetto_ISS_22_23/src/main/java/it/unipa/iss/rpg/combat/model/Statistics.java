@@ -1,6 +1,6 @@
 package it.unipa.iss.rpg.combat.model;
 import java.lang.Cloneable;
-public  class Statistics implements IAttack,Cloneable{
+public  class Statistics implements Cloneable{
     private int maxHp;
     private int def;
     private int stamina;
@@ -32,9 +32,7 @@ public  class Statistics implements IAttack,Cloneable{
         return this.atk;
     }
 
-    public void attack(){
-        //change
-    }
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();

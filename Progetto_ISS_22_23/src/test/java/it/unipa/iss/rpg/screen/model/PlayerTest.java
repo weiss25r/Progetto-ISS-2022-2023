@@ -1,8 +1,7 @@
 package it.unipa.iss.rpg.screen.model;
 
+import it.unipa.iss.rpg.screen.model.entitities.Player;
 import org.junit.jupiter.api.*;
-
-import static org.junit.Assert.*;
 
 class PlayerTest {
     private Player p;

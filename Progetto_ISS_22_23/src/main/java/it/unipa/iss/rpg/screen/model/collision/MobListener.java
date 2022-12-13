@@ -13,6 +13,11 @@ public class MobListener implements CollisionListener{
     }
 
     @Override
+    public void update() {
+
+    }
+
+    @Override
     public void update(GameController gameController) {
         gameController.setActive(false);
     }

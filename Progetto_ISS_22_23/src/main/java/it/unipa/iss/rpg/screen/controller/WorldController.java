@@ -2,7 +2,7 @@ package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.screen.model.*;
-import it.unipa.iss.rpg.screen.view.GamePanel;
+import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 import java.awt.*;
@@ -23,8 +23,8 @@ public class WorldController extends GameController implements IPlayerListener {
 
     public void drawPlayer(Graphics2D g) {
         g.drawImage(getPlayer().getDirectionImage(),
-                    getPlayer().getWorldX(),
-                    getPlayer().getWorldY(),
+                    getPlayer().getPlayerSprite().getWorldX(),
+                    getPlayer().getPlayerSprite().getWorldY(),
                     getGamePanel().scaleTile(),
                     getGamePanel().scaleTile(),
                     null
