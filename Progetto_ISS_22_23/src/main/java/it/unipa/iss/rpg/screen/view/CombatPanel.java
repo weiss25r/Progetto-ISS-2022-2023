@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CombatPanel extends GamePanel{
-
+    private JButton btnFight;
     public CombatPanel(){
         super();
     }
@@ -15,6 +15,11 @@ public class CombatPanel extends GamePanel{
         this.setDoubleBuffered(true);
         //panel.addKeyListener(handler);
         this.setFocusable(true);
+        this.btnFight = new JButton("Attack");
+    }
+
+    public JButton getBtnFight() {
+        return btnFight;
     }
 
     public int scaleTile() {
