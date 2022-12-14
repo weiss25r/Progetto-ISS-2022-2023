@@ -4,6 +4,7 @@ import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.combat.model.Fight;
 
 import it.unipa.iss.rpg.screen.model.EventType;
+import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.GamePanel;
@@ -15,7 +16,7 @@ public class CombatController extends GameController {
 
     public Fight fight;
     // trowAway declaration when mob class is implemented
-    public Mob enemies[];
+    public Mob[] enemies;
 
     public Fight combat;
     //public Mob enemies[];
