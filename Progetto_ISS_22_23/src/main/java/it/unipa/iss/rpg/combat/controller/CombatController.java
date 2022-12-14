@@ -13,14 +13,12 @@ import it.unipa.iss.rpg.screen.view.GamePanel;
 
 public class CombatController extends GameController {
 
-
     public Fight fight;
     // trowAway declaration when mob class is implemented
     public Mob[] enemies;
 
     public Fight combat;
     //public Mob enemies[];
-
 
     public CombatController(Player player, CombatPanel view /*,Mob enemies[]*/){
         super(player, view);
@@ -42,13 +40,11 @@ public class CombatController extends GameController {
 
     @Override
     public void runController()  {
-
         System.out.println("Combat started");
         try {
             fight = new Fight();
         } catch(CloneNotSupportedException e){
             System.out.println("Error clone");
         }
-
     }
 }

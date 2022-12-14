@@ -20,7 +20,9 @@ public class Game{
         //game loop
         while(true) {
             worldController.runController();
-            combatController.runController();
+            break;
+            //combatController.runController();
         }
+
     }
 }
