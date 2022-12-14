@@ -36,7 +36,7 @@ public class WorldController extends GameController implements IPlayerListener {
 
     public void drawWorld(Graphics2D g){
         try {
-            BufferedImage testTile = ImageIO.read(new File("src/res/world/level_start/road_03.png"));
+            BufferedImage testTile = ImageIO.read(new File("src/res/world/level_start/03.png"));
 
             //sistema di coordinate di swing: basso +y, destra +x
             for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
