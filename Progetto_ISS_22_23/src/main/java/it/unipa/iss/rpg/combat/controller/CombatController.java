@@ -1,5 +1,6 @@
 package it.unipa.iss.rpg.combat.controller;
 
+import com.sun.jdi.event.Event;
 import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.combat.model.Fight;
 
@@ -8,23 +9,31 @@ import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.GamePanel;
+
+
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+
 /**
-* @Autor Alessia Boni * **/
+ * @Autor Alessia Boni * **/
 
 public class CombatController extends GameController {
 
 
-    public Fight fight;
-    // trowAway declaration when mob class is implemented
-    public Mob[] enemies;
+    private Fight fight;
+    //trowAway declaration when mob class is implemented
+    private Mob[] enemies;
+    //access to class fight
+    private Fight combat;
+    //gestore del bottone fight
 
-    public Fight combat;
-    //public Mob enemies[];
 
 
-    public CombatController(Player player, CombatPanel view /*,Mob enemies[]*/){
+    public CombatController(Player player, CombatPanel view ,Mob[] enemies){
         super(player, view);
-        //this.enemies = enemies;
+        this.enemies = enemies;
+        //completa la lambda expression
+        view.getBtnFight().addActionListener(e -> );
     }
 
     public CombatController(Player player, GamePanel view){
@@ -32,6 +41,8 @@ public class CombatController extends GameController {
     }
 
     public void update(){
+        //inizializzare la view
+        if(fight.)
 
     }
 
@@ -45,10 +56,15 @@ public class CombatController extends GameController {
 
         System.out.println("Combat started");
         try {
-            fight = new Fight();
+            fight = new Fight(player.getStats,enemies[0].getStats);
         } catch(CloneNotSupportedException e){
             System.out.println("Error clone");
         }
+        while(isActive()) {
 
+            update();
+
+        }
     }
 }
+
