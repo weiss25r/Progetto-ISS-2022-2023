@@ -141,4 +141,8 @@ public class WorldController extends GameController implements IPlayerListener {
         //TODO: notify the Collision Entity
     }
 
+    public Mob getCollisionMob(){
+        return null;
+    }
+
 }

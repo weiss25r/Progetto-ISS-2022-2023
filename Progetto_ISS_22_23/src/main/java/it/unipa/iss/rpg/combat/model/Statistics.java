@@ -1,13 +1,30 @@
 package it.unipa.iss.rpg.combat.model;
 import java.lang.Cloneable;
 public  class Statistics implements Cloneable{
-    private int maxHp;
+    private int hp;
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setDef(int def) {
+        this.def = def;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public void setAtk(int atk) {
+        this.atk = atk;
+    }
+
     private int def;
     private int stamina;
     private int atk;
 
     public  Statistics(){
-        this.maxHp = 0;
+        this.hp = 0;
         this.def = 0;
         this.stamina = 0;
         this.atk = 0;
@@ -16,11 +33,11 @@ public  class Statistics implements Cloneable{
         this.atk = atk;
         this.def = def;
         this.stamina = stamina;
-        this.maxHp = hp;
+        this.hp = hp;
 
     }
-    public  int getMaxHp(){
-        return this.maxHp;
+    public  int getHp(){
+        return this.hp;
     }
     public int getDef(){
         return this.def;

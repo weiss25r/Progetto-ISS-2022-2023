@@ -5,6 +5,10 @@ import java.awt.*;
 
 public class CombatPanel extends GamePanel{
     private JButton btnFight;
+
+    private JLabel lblPlayerHp;
+    private JLabel lblEnemyHp;
+
     public CombatPanel(){
         super();
     }
@@ -24,5 +28,12 @@ public class CombatPanel extends GamePanel{
 
     public int scaleTile() {
         return tileSize * scale;
+    }
+
+    public void setLblPlayerHp(String playerHp){
+        this.lblPlayerHp.setText(playerHp);
+    }
+    public void setLblEnemyHp(String EnemyHp){
+        this.lblEnemyHp.setText(EnemyHp);
     }
 }
