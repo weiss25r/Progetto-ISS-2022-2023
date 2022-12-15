@@ -1,17 +1,12 @@
 package it.unipa.iss.rpg.screen.model.entitities;
 
-import it.unipa.iss.rpg.combat.model.IAttack;
 import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.EventType;
 import it.unipa.iss.rpg.screen.model.Tile;
-import jdk.jfr.Event;
 
 import javax.imageio.ImageIO;
-import javax.xml.transform.dom.DOMResult;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.nio.Buffer;
 import java.util.*;
 
 public class Player implements Entity {
@@ -79,7 +74,7 @@ public class Player implements Entity {
 
     public Statistics getStats() {
         //defensive copying
-        return new Statistics(stats.getMaxHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
+        return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
     }
 
 
