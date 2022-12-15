@@ -9,7 +9,6 @@ public class WorldPanel extends GamePanel {
     private WorldController controller;
 
     public WorldPanel(){
-
         super();
         setPanel();
     }

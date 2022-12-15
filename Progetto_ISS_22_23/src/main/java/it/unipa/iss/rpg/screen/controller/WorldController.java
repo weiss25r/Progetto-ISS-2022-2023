@@ -21,7 +21,7 @@ public class WorldController extends GameController implements IPlayerListener {
 
     private MovementHandler movementHandler;
     private MobListener mobListener;
-    private List<Mob> collisions;
+    private boolean[][] collisions;
     private BufferedImage[][] worldTiles;
 
     public WorldController(Player player, WorldPanel gamePanel) {
@@ -29,14 +29,17 @@ public class WorldController extends GameController implements IPlayerListener {
         movementHandler = new MovementHandler();
         movementHandler.attach(this);
         this.getGamePanel().addKeyListener(movementHandler);
+
         //TODO: REFACTOR
         gamePanel.addController(this);
-        collisions = new LinkedList<>();
         this.mobListener = new MobListener(null);
-
         this.worldTiles = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
         loadWorldTiles();
 
+        collisions = new boolean[6][8];
+
+        collisions[4][3] = true;
+        //collisions[]
     }
 
     private void loadWorldTiles() {
@@ -92,15 +95,12 @@ public class WorldController extends GameController implements IPlayerListener {
         int x = player.getPlayerSprite().getWorldX();
         int y = player.getPlayerSprite().getWorldY();
 
-        //System.out.printf("(%d, %d)\n", x, y);
+        int col = x/96 + 1;
+        int row = y/96 +1 ;
 
-        if(x >= 288- (getGamePanel().scaleTile()/2) && x <= 288 + (getGamePanel().scaleTile()/2) &&
-           y >= 384 -(getGamePanel().scaleTile()/2) && y <= 384 + (getGamePanel().scaleTile()/2)) {
-            this.collisions.add(new Mob( new Statistics(10, 10, 10 ,10)));
+        if(collisions[row][col]) {
             this.mobListener.update(this);
         }
-
-        //System.out.printf("New Coordinates: %d %d\n", player.getWorldX(), player.getWorldY());
         this.getGamePanel().repaint();
     }
 
