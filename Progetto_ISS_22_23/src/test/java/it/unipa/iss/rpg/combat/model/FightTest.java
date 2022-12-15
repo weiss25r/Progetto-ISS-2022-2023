@@ -15,7 +15,7 @@ class FightTest {
 
     @BeforeEach
     void setUp() throws CloneNotSupportedException {
-        Fight fight = new Fight(hero, enemy);
+        Fight fight = new Fight(s1, s2);
         assertNotNull(fight);
     }
 
@@ -27,7 +27,7 @@ class FightTest {
 
     @Test
     void cmdAttack() {
-        assertEquals(91, fight.hero.getMaxHp() - fight.cmdAttack(),
+        assertEquals(91, fight. - fight.cmdAttack(),
                 "Considering boolean default value of myTurn variable");
     }
 

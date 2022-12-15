@@ -7,24 +7,24 @@ import it.unipa.iss.rpg.screen.model.entitities.Player;
  * @author Bonura Giovanni*/
 
 public class Fight implements CombatHandler{
-    Statistics hero;
-    Statistics enemy;
+    Player hero;
+    Mob enemy;
 
     private int turn = 1;
     boolean myTurn = true;
     boolean gameOver;
 
     /**Constructor with two parameters*/
-    public Fight(Player hero, Mob enemy) throws CloneNotSupportedException {
-        this.hero = (Statistics) hero.getStats().clone();
-        this.enemy = (Statistics) enemy.getStats().clone();
+    public Fight(Statistics hero, Statistics enemy) throws CloneNotSupportedException {
+        this.hero = (Player) hero.clone();
+        this.enemy = (Mob) enemy.clone();
     }
 
     /**Method returns damage's attack
      * @return value of a single attack*/
     public int cmdAttack() {
-        if(myTurn) return ((hero.getAtk() * enemy.getDef())/ enemy.getMaxHp())*turn;
-        else return ((enemy.getAtk() * hero.getDef())/ hero.getMaxHp())*(turn-1);
+        if(myTurn) return ((hero.getStats().getAtk() * enemy.getStats().getDef())/ enemy.getStats().getMaxHp())*turn;
+        else return ((enemy.getStats().getAtk() * hero.getStats().getDef())/ hero.getStats().getMaxHp())*(turn-1);
     }
 
     /**Method returns number of turns played by the hero
@@ -41,7 +41,7 @@ public class Fight implements CombatHandler{
         switch (choice){
             case 1:
                 System.out.println("Turn " + getTurn());
-                int hpEnemyCurr = enemy.getMaxHp() - cmdAttack();
+                int hpEnemyCurr = enemy.getStats().getMaxHp() - cmdAttack();
                 hpEnemyRemaining = hpEnemyCurr;
                 turn++;
                 myTurn = false;
@@ -51,7 +51,7 @@ public class Fight implements CombatHandler{
                 }
                 break;
         }
-        int hpHeroCurr = hero.getMaxHp() - cmdAttack();
+        int hpHeroCurr = hero.getStats().getMaxHp() - cmdAttack();
         hpHeroRemaining = hpHeroCurr;
         myTurn = true;
         System.out.println(getHpHeroRemaining(hpHeroRemaining));
@@ -81,9 +81,9 @@ public class Fight implements CombatHandler{
         return gameOver;
     }
 
-    public static void main(String[] args) throws CloneNotSupportedException {
-        Fight fight = new Fight(new Player(), new Mob(new Statistics()));
+    /*public static void main(String[] args) throws CloneNotSupportedException {
+        Fight fight = new Fight(new Statistics(), new Statistics());
         int choice = 1;
         fight.inputAction(1);
-    }
+    }*/
 }
