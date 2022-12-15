@@ -15,6 +15,7 @@ import java.nio.Buffer;
 import java.util.*;
 
 public class Player implements Entity {
+
     private Statistics stats;
     private PlayerSprite playerSprite;
 
@@ -26,7 +27,6 @@ public class Player implements Entity {
         this.playerSprite = new PlayerSprite();
         playerSprite.loadSprites(loadTiles());
     }
-
 
     private List<Tile> loadTiles() {
         List<Tile> playerSprites = new ArrayList<>();
@@ -50,6 +50,7 @@ public class Player implements Entity {
             case MOVED_DOWN -> {
                 this.playerSprite.setWorldY(playerSprite.getWorldY() + this.movementSpeed);
                 this.directionImage = this.playerSprite.getSprites().get(0).getTileImage();
+
             }
             case MOVED_UP -> {
                 this.playerSprite.setWorldY(playerSprite.getWorldY() - this.movementSpeed);
@@ -73,5 +74,11 @@ public class Player implements Entity {
     public BufferedImage getDirectionImage() {
         return this.directionImage;
     }
+
+    public Statistics getStats() {
+        //defensive copying
+        return new Statistics(stats.getMaxHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
+    }
+
 
 }

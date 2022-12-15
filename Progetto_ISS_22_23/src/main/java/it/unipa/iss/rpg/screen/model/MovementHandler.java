@@ -32,7 +32,6 @@ public class MovementHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         //TODO: mettere check null
         if(this.worldController == null) {
-            System.out.println("Sono null");
             return;
         }
 

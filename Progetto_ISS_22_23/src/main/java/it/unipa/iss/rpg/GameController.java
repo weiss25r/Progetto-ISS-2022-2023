@@ -7,7 +7,7 @@ import it.unipa.iss.rpg.screen.view.GamePanel;
 public abstract class GameController {
     private Player player;
     private GamePanel gamePanel;
-    protected boolean active;
+    private boolean active;
 
     public abstract void update(EventType e);
     public abstract void runController();

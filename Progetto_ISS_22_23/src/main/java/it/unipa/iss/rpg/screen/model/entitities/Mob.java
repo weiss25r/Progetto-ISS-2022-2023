@@ -8,7 +8,9 @@ public class Mob implements Entity{
 
     public Mob(Statistics stas) {
         this.stats = stas;
-
     }
 
+    public Statistics getStats() {
+        return new Statistics(stats.getMaxHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
+    }
 }

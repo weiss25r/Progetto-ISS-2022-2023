@@ -22,7 +22,6 @@ public class WorldController extends GameController implements IPlayerListener {
     private MovementHandler movementHandler;
     private MobListener mobListener;
     private List<Mob> collisions;
-
     private BufferedImage[][] worldTiles;
 
     public WorldController(Player player, WorldPanel gamePanel) {
@@ -118,11 +117,6 @@ public class WorldController extends GameController implements IPlayerListener {
         int drawCount = 0;
 
         while(isActive()) {
-            //TODO: It must be initialize the Subscribers Entity
-            //      of Observer-Pattern
-            //TODO: When the player collide into a Entity gamePanel
-            //      must send as parameter to the Observer-Pattern
-            //      notifyController(gamePanel)
             currentTime = System.nanoTime();
 
             delta += (currentTime - lastTime) / drawInterval;
@@ -147,11 +141,4 @@ public class WorldController extends GameController implements IPlayerListener {
         //TODO: notify the Collision Entity
     }
 
-    public List<Mob> getCollisions() {
-        return collisions;
-    }
-
-    public void setCollisions(List<Mob> collisions) {
-        this.collisions = collisions;
-    }
 }
