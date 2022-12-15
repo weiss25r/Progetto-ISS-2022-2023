@@ -1,26 +1,30 @@
 package it.unipa.iss.rpg.combat.model;
 
+import it.unipa.iss.rpg.screen.model.entitities.Mob;
+import it.unipa.iss.rpg.screen.model.entitities.Player;
+
 /**Class Fight, manages fighting event
  * @author Bonura Giovanni*/
 
-public class Fight extends Statistics implements CombatHandler{
-    Statistics hero = new Statistics(100, 30, 0, 60);
-    Statistics clone1 = (Statistics) hero.clone();
-    Statistics enemy = new Statistics(100, 50, 0, 80);
-    Statistics clone2 = (Statistics) enemy.clone();
+public class Fight implements CombatHandler{
+    Statistics hero;
+    Statistics enemy;
 
     private int turn = 1;
     boolean myTurn = true;
     boolean gameOver;
 
-    /**Constructor without parameters*/
-    public Fight() throws CloneNotSupportedException {}
+    /**Constructor with two parameters*/
+    public Fight(Player hero, Mob enemy) throws CloneNotSupportedException {
+        this.hero = (Statistics) hero.getStats().clone();
+        this.enemy = (Statistics) enemy.getStats().clone();
+    }
 
     /**Method returns damage's attack
      * @return value of a single attack*/
     public int cmdAttack() {
-        if(myTurn) return ((clone1.getAtk() * clone2.getDef())/ clone2.getMaxHp())*turn;
-        else return ((clone2.getAtk() * clone1.getDef())/ clone1.getMaxHp())*(turn-1);
+        if(myTurn) return ((hero.getAtk() * enemy.getDef())/ enemy.getMaxHp())*turn;
+        else return ((enemy.getAtk() * hero.getDef())/ hero.getMaxHp())*(turn-1);
     }
 
     /**Method returns number of turns played by the hero
@@ -37,7 +41,7 @@ public class Fight extends Statistics implements CombatHandler{
         switch (choice){
             case 1:
                 System.out.println("Turn " + getTurn());
-                int hpEnemyCurr = clone2.getMaxHp() - cmdAttack();
+                int hpEnemyCurr = enemy.getMaxHp() - cmdAttack();
                 hpEnemyRemaining = hpEnemyCurr;
                 turn++;
                 myTurn = false;
@@ -47,7 +51,7 @@ public class Fight extends Statistics implements CombatHandler{
                 }
                 break;
         }
-        int hpHeroCurr = clone1.getMaxHp() - cmdAttack();
+        int hpHeroCurr = hero.getMaxHp() - cmdAttack();
         hpHeroRemaining = hpHeroCurr;
         myTurn = true;
         System.out.println(getHpHeroRemaining(hpHeroRemaining));
@@ -59,20 +63,26 @@ public class Fight extends Statistics implements CombatHandler{
         else if(hpHeroRemaining < 0) System.out.println("\nEnemy wins!");
     }
 
+    /**Method returns health points hero's remaining
+     * @return hp hero'r remaining*/
     public int getHpHeroRemaining(int hpHeroRemaining){
         return hpHeroRemaining;
     }
 
+    /**Method returns health points enemy's remaining
+     * @return hp enemy's remaining*/
     public int getHpEnemyRemaining(int hpEnemyRemaining){
         return hpEnemyRemaining;
     }
 
+    /**Method checks game over conditions
+     * @return boolean game over value*/
     public boolean gameOverCheck(boolean gameOver){
         return gameOver;
     }
 
     public static void main(String[] args) throws CloneNotSupportedException {
-        Fight fight = new Fight();
+        Fight fight = new Fight(new Player(), new Mob(new Statistics()));
         int choice = 1;
         fight.inputAction(1);
     }
