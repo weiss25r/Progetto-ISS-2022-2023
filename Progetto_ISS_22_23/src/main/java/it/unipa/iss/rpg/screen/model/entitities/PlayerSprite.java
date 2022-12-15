@@ -9,8 +9,8 @@ public class PlayerSprite extends EntitySprite{
     private BufferedImage direction;
 
     public PlayerSprite() {
-        this.setWorldX(4);
-        this.setWorldY(188);
+        this.setWorldX(240);
+        this.setWorldY(360);
     }
 
     @Override

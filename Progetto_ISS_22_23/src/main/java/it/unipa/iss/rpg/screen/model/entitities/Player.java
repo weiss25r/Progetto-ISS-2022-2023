@@ -65,6 +65,8 @@ public class Player implements Entity {
                 this.directionImage = this.playerSprite.getSprites().get(3).getTileImage();
             }
         }
+
+        System.out.printf("(%d %d)\n", playerSprite.getWorldX(), playerSprite.getWorldY());
     }
 
     public PlayerSprite getPlayerSprite() {
