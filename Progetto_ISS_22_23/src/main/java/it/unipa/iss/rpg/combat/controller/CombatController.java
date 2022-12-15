@@ -33,7 +33,7 @@ public class CombatController extends GameController {
         super(player, view);
         this.enemies = enemies;
         //completa la lambda expression
-        view.getBtnFight().addActionListener(e -> );
+        //view.getBtnFight().addActionListener(e -> );
     }
 
     public CombatController(Player player, GamePanel view){
@@ -42,7 +42,7 @@ public class CombatController extends GameController {
 
     public void update(){
         //inizializzare la view
-        if(fight.)
+        //if(fight.)
 
     }
 
@@ -53,6 +53,7 @@ public class CombatController extends GameController {
 
     @Override
     public void runController()  {
+        /*
 
         System.out.println("Combat started");
         try {
@@ -65,6 +66,8 @@ public class CombatController extends GameController {
             update();
 
         }
+
+        */
     }
 }
 
