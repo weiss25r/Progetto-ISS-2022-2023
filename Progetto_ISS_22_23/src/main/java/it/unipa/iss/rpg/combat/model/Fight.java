@@ -24,13 +24,13 @@ public class Fight implements CombatHandler{
      * @return value of a single attack*/
     public int cmdAttack() {
         if(myTurn) return ((hero.getAtk() * enemy.getDef())/ enemy.getHp())*turn;
-        else return ((enemy.getAtk() * hero.getDef())/ hero.getHp())*(turn-1);
+        else return ((enemy.getAtk() * hero.getDef())/ hero.getHp())*turn;
     }
 
     /**Method returns number of turns played by the hero
      * @return rounds played by the player*/
     public int getTurn(){
-        return turn;
+        return this.turn;
     }
 
     /**Override CombatHandler interface's method*/
@@ -40,15 +40,15 @@ public class Fight implements CombatHandler{
         switch (choice){
             case 1:
                 System.out.println("Turn " + getTurn());
-                enemy.setHp(enemy.getHp() - cmdAttack());
-                turn++;
+                this.enemy.setHp(enemy.getHp() - cmdAttack());
                 myTurn = false;
-                if(enemy.getHp() < 0){
+                if(this.enemy.getHp() < 0){
                     gameOver = true;
                 }
                 break;
         }
         this.hero.setHp(hero.getHp() - cmdAttack());
+        turn++;
         myTurn = true;
         if(this.hero.getHp() < 0){
             gameOver = true;
@@ -69,18 +69,12 @@ public class Fight implements CombatHandler{
     /**Method returns health points enemy's remaining
      * @return hp enemy's remaining*/
     public int getHpEnemyRemaining(){
-        return this.hero.getHp();
+        return this.enemy.getHp();
     }
 
     /**Method checks game over conditions
      * @return boolean game over value*/
     public boolean gameOverCheck(){
         return this.gameOver;
-    }
-
-    public static void main(String[] args) throws CloneNotSupportedException {
-        Fight fight = new Fight(new Player(), new Mob(new Statistics()));
-        int choice = 1;
-        fight.inputAction(1);
     }
 }

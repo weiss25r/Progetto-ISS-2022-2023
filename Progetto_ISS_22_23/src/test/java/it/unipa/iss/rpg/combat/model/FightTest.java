@@ -25,11 +25,11 @@ class FightTest {
         assertNull(fight);
     }
 
-    /*@Test
+    @Test
     void cmdAttack() {
-        assertEquals(91, fight. - fight.cmdAttack(),
+        assertEquals(51, fight.getHpHeroRemaining() - fight.cmdAttack(),
                 "Considering boolean default value of myTurn variable");
-    }*/
+    }
 
     @Disabled
     void inputAction() {

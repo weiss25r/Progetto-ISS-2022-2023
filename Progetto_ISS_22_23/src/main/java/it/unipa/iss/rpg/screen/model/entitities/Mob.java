@@ -7,7 +7,7 @@ public class Mob implements Entity{
     private Statistics stats;
 
     public Mob(Statistics stats) {
-        this.stats = stats;
+        this.stats = new Statistics(80, 70, 0, 50);
     }
 
     public Statistics getStats() {
