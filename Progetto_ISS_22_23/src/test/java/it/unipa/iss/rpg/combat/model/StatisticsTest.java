@@ -32,6 +32,10 @@ class StatisticsTest {
             System.out.println("Error clone");
         }
         assertTrue(this.v instanceof Statistics);
+        assertEquals(stats.getHp(),v.getHp());
+        assertEquals(stats.getStamina(),v.getStamina());
+        assertEquals(stats.getDef(),v.getDef());
+        assertEquals(stats.getAtk(),v.getAtk());
     }
 
     @Test

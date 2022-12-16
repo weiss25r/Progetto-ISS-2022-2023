@@ -11,6 +11,7 @@ import it.unipa.iss.rpg.screen.view.ComponentImage;
 import it.unipa.iss.rpg.screen.view.GamePanel;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * @Autor Alessia Boni * **/
@@ -61,6 +62,8 @@ public class CombatController extends GameController {
     public void update(){
         view.setLblPlayerHp(Integer.toString(fight.getHpHeroRemaining()));
         view.setLblEnemyHp(Integer.toString(fight.getHpEnemyRemaining()));
+        //temporaneo, la stamina diminuisce se uso un abilità
+        view.setLblPlayerStamina(Integer.toString(this.getPlayer().getStats().getStamina()));
     }
 
     //ascoltatore per update
@@ -77,6 +80,14 @@ public class CombatController extends GameController {
     public void runController()  {
         while(isActive()) {
             if(fight.gameOverCheck()){
+               /*
+                for(ActionListener al: this.view.getBtnFight().getActionListeners()){
+                    this.view.getBtnFight().removeActionListener(al);
+                }
+                */
+
+
+
                 super.setActive(false);
             }
         }

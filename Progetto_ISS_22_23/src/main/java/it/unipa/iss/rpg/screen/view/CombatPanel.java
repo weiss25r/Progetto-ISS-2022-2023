@@ -75,6 +75,10 @@ public class CombatPanel extends GamePanel{
     public void setLblEnemyHp(String EnemyHp){
         this.lblEnemyHp.setText(EnemyHp);
     }
+     public void setLblPlayerStamina(String playerStamina){
+          this.lblPlayerStamina.setText(playerStamina);
+     }
+
 
     public void setEnemyImage(ComponentImage mob) {
         this.add(mob, BorderLayout.CENTER);
