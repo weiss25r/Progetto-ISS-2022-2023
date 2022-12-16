@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class WorldController extends GameController implements IPlayerListener {
     private MobListener mobListener;
     private boolean[][] collisions;
     private BufferedImage[][] worldTiles;
+    private BufferedImage[][] worldEnemies;
 
     public WorldController(Player player, WorldPanel gamePanel) {
         super(player, gamePanel);
@@ -35,26 +37,36 @@ public class WorldController extends GameController implements IPlayerListener {
         gamePanel.addController(this);
         this.mobListener = new MobListener(null);
         this.worldTiles = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
-        loadWorldTiles();
 
         collisions = new boolean[6][8];
 
-        collisions[4][3] = true;
+        this.worldEnemies = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
+        loadWorldTiles();
         //collisions[]
     }
 
     private void loadWorldTiles() {
         File map = new File("src/res/world/level_start/map.txt");
+        File enemies = new File("src/res/world/level_start/enemies/enemies.txt");
+
         try {
+            FileInputStream stream = new FileInputStream(enemies);
             Scanner s = new Scanner(map);
 
             for (int i = 0; i < getGamePanel().getMaxRow(); i++) {
                 for (int j = 0; j < getGamePanel().getMaxCol(); j++) {
-                    this.worldTiles[i][j] = ImageIO.read(new File("src/res/world/level_start/" + s.nextInt() + ".png"));
+                    this.worldTiles[i][j] = ImageIO.read(new File("src/res/world/level_start/world/" + s.nextInt() + ".png"));
+                    char t = (char)stream.read();
+
+                    if(Character.isDigit(t)) {
+                        this.worldEnemies[i][j] = ImageIO.read(new File("src/res/world/level_start/enemies/" + t + ".png"));
+                        this.collisions[i][j] = true;
+                    }
                 }
             }
 
             s.close();
+            stream.close();
         }catch (IOException ex){
             ex.printStackTrace();
         }
@@ -71,20 +83,23 @@ public class WorldController extends GameController implements IPlayerListener {
     }
 
     public void drawWorld(Graphics2D g){
-        try {
-            //sistema di coordinate di swing: basso +y, destra +x
-            int k = 0;
+        //sistema di coordinate di swing: basso +y, destra +x
+        int k = 0;
 
-            for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
-                for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
-                    g.drawImage(this.worldTiles[j][i], i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
-                }
+        for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
+            for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
+                g.drawImage(this.worldTiles[j][i], i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
             }
+        }
+    }
 
-            BufferedImage testEnemy = ImageIO.read(new File("src/res/mob/baboon.png"));
-            g.drawImage(testEnemy, 288, 384, getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
-        }catch (IOException ex){
-            ex.printStackTrace();
+    public void drawEnemies(Graphics2D g) {
+        int k = 0;
+
+        for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
+            for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
+                g.drawImage(this.worldEnemies[j][i], i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
+            }
         }
     }
 
@@ -96,8 +111,8 @@ public class WorldController extends GameController implements IPlayerListener {
         int x = player.getPlayerSprite().getWorldX();
         int y = player.getPlayerSprite().getWorldY();
 
-        int col = x/96 + 1;
-        int row = y/96 +1 ;
+        int col = x/96;
+        int row = y/96 ;
 
         if(collisions[row][col]) {
             this.mobListener.update(this);

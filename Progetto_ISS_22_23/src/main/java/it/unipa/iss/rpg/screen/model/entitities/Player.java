@@ -75,7 +75,8 @@ public class Player implements Entity {
 
     public Statistics getStats() {
         //defensive copying
-        return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
+        return this.stats;
+        //return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
     }
 
 

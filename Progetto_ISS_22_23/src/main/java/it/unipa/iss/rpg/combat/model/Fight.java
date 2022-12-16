@@ -23,7 +23,7 @@ public class Fight implements CombatHandler{
     /**Method returns damage's attack
      * @return value of a single attack*/
     public int cmdAttack() {
-        if(myTurn) return ((hero.getAtk() * enemy.getDef())/ enemy.getHp())*turn;
+        if(myTurn) return ((hero.getAtk() * enemy.getDef()) / enemy.getHp())*turn;
         else return ((enemy.getAtk() * hero.getDef())/ hero.getHp())*turn;
     }
 
