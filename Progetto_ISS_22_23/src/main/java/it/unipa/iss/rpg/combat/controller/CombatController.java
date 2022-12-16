@@ -13,8 +13,6 @@ import it.unipa.iss.rpg.screen.view.GamePanel;
  * @Autor Alessia Boni * **/
 
 public class CombatController extends GameController {
-
-
     private Fight fight;
     //trowAway declaration when mob class is implemented
     private Mob enemy;
@@ -25,12 +23,10 @@ public class CombatController extends GameController {
 
      */
 
-
-
-
     public CombatController(Player player, CombatPanel view ,Mob enemy){
         super(player, view);
         this.setEnemies(enemy);
+
         try {
             this.fight = new Fight(this.getPlayer(),enemy);
         } catch(CloneNotSupportedException e){
@@ -38,7 +34,6 @@ public class CombatController extends GameController {
         }
 
         this.view.getBtnFight().addActionListener(event -> fight.cmdAttack());
-
 
         //completa la lambda expression
         view.getBtnFight().addActionListener(e -> {
@@ -59,7 +54,6 @@ public class CombatController extends GameController {
     public void update(){
         view.setLblPlayerHp(Integer.toString(fight.getHpHeroRemaining()));
         view.setLblEnemyHp(Integer.toString(fight.getHpEnemyRemaining()));
-
     }
 
     //ascoltatore per update
@@ -70,15 +64,11 @@ public class CombatController extends GameController {
 
     @Override
     public void runController()  {
-        System.out.println("Combat started");
-
         while(isActive()) {
             if(fight.gameOverCheck()){
                 super.setActive(false);
             }
         }
-
-
     }
 }
 
