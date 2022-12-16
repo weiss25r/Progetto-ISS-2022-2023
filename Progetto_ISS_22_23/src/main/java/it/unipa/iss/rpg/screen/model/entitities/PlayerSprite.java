@@ -9,16 +9,20 @@ public class PlayerSprite extends EntitySprite{
     private BufferedImage direction;
 
     public PlayerSprite() {
-        this.setWorldX(100);
-        this.setWorldY(120);
+        super(100, 120);
     }
 
     @Override
-    public void loadSprites(List<Tile> list) {
-        this.setSprites(list);
-        this.direction = this.getSprites().get(0).getTileImage();
+    public void addSprite(Tile tile) {
+        super.getSprites().add(tile);
+
     }
 
+    @Override
+    public void setSprites(List<Tile> sprites) {
+        super.setSprites(sprites);
+        this.direction = this.getSprites().get(0).getTileImage();
+    }
 
     public BufferedImage getDirection() {
         return direction;

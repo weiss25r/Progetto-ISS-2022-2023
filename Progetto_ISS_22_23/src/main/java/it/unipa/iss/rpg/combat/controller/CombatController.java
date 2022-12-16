@@ -9,6 +9,8 @@ import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.GamePanel;
 
+import java.awt.*;
+
 /**
  * @Autor Alessia Boni * **/
 
@@ -25,6 +27,7 @@ public class CombatController extends GameController {
 
     public CombatController(Player player, CombatPanel view ,Mob enemy){
         super(player, view);
+        this.view = view;
         this.setEnemies(enemy);
 
         try {
@@ -33,11 +36,15 @@ public class CombatController extends GameController {
             System.out.println("Error clone");
         }
 
+        //TODO: paint mob
+        view.setController(this);
+        view.repaint();
+
         this.view.getBtnFight().addActionListener(event -> fight.cmdAttack());
 
         //completa la lambda expression
         view.getBtnFight().addActionListener(e -> {
-            fight.cmdAttack();
+            fight.inputAction(1);
             this.update();
         });
 
@@ -60,6 +67,10 @@ public class CombatController extends GameController {
     @Override
     public void update(EventType e) {
         this.update();
+    }
+
+    public Mob getEnemy() {
+        return enemy;
     }
 
     @Override

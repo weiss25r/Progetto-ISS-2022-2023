@@ -5,6 +5,7 @@ import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
+import it.unipa.iss.rpg.screen.model.entitities.MobSprite;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.GamePanel;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
@@ -20,12 +21,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class WorldController extends GameController implements IPlayerListener {
-
     private MovementHandler movementHandler;
     private MobListener mobListener;
     private boolean[][] collisions;
     private BufferedImage[][] worldTiles;
-    private BufferedImage[][] worldEnemies;
+    private Mob[][] worldEnemies;
+
+    private Mob lastCollisionMob;
 
     public WorldController(Player player, WorldPanel gamePanel) {
         super(player, gamePanel);
@@ -40,7 +42,7 @@ public class WorldController extends GameController implements IPlayerListener {
 
         collisions = new boolean[6][8];
 
-        this.worldEnemies = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
+        this.worldEnemies = new Mob[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
         loadWorldTiles();
         //collisions[]
     }
@@ -59,8 +61,11 @@ public class WorldController extends GameController implements IPlayerListener {
                     char t = (char)stream.read();
 
                     if(Character.isDigit(t)) {
-                        this.worldEnemies[i][j] = ImageIO.read(new File("src/res/world/level_start/enemies/" + t + ".png"));
-                        this.collisions[i][j] = true;
+                        MobSprite mobSprite = new MobSprite(i*getGamePanel().scaleTile(), j*getGamePanel().scaleTile());
+                        mobSprite.addSprite(new Tile(ImageIO.read(new File("src/res/world/level_start/enemies/" + t + ".png"))));
+                        Mob mob = new Mob(new Statistics(80, 80, 80, 80), mobSprite);
+
+                        worldEnemies[i][j] = mob;
                     }
                 }
             }
@@ -98,7 +103,8 @@ public class WorldController extends GameController implements IPlayerListener {
 
         for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
             for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
-                g.drawImage(this.worldEnemies[j][i], i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
+                if(this.worldEnemies[j][i] != null)
+                    g.drawImage(this.worldEnemies[j][i].getMobSprite().getDefaultSprite(), i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
             }
         }
     }
@@ -114,8 +120,9 @@ public class WorldController extends GameController implements IPlayerListener {
         int col = x/96;
         int row = y/96 ;
 
-        if(collisions[row][col]) {
+        if(worldEnemies[row][col] != null) {
             this.mobListener.update(this);
+            this.lastCollisionMob = worldEnemies[row][col];
         }
         this.getGamePanel().repaint();
     }
@@ -158,7 +165,7 @@ public class WorldController extends GameController implements IPlayerListener {
     }
 
     public Mob getCollisionMob(){
-        return null;
+        return this.lastCollisionMob;
     }
 
 }

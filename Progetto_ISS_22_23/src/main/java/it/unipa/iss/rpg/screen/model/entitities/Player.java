@@ -20,7 +20,7 @@ public class Player implements Entity {
     public Player() {
         this.movementSpeed = 10;
         this.playerSprite = new PlayerSprite();
-        playerSprite.loadSprites(loadTiles());
+        playerSprite.setSprites(loadTiles());
         this.stats = new Statistics(100, 50, 0, 70);
     }
 

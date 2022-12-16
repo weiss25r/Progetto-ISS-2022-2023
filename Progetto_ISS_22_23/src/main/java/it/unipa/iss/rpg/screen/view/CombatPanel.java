@@ -1,5 +1,7 @@
 package it.unipa.iss.rpg.screen.view;
 
+import it.unipa.iss.rpg.combat.controller.CombatController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,8 +13,11 @@ public class CombatPanel extends GamePanel{
     private JButton btnFight,btnAbility,btnInv;
     private JPanel btns;
 
+    private CombatController controller;
+
     public CombatPanel(){
         super();
+        setPanel();
     }
 
     public void setPanel() {
@@ -68,5 +73,18 @@ public class CombatPanel extends GamePanel{
     }
     public void setLblEnemyHp(String EnemyHp){
         this.lblEnemyHp.setText(EnemyHp);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        Graphics2D g2 = (Graphics2D)g;
+        g2.drawImage(controller.getEnemy().getMobSprite().getDefaultSprite(), 3*scaleTile(), 2*scaleTile(), scaleTile(),scaleTile(), null);
+        g2.dispose();
+    }
+
+    public void setController(CombatController controller) {
+        this.controller = controller;
     }
 }

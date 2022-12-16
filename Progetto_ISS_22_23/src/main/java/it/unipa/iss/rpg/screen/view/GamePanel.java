@@ -28,7 +28,6 @@ public abstract class GamePanel extends JPanel {
         screenHeight = scaleTile() * maxRow;
         screenWidth = scaleTile() * maxCol;
         System.out.println(screenHeight + " " + screenWidth );
-        this.setPanel();
     }
 
     public abstract void setPanel();

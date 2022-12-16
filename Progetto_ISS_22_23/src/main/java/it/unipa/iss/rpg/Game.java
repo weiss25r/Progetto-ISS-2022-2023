@@ -34,9 +34,10 @@ public class Game{
             screen.setGamePanel(combatPanel);
 
             //TODO: usare il costruttore corretto (null pointer exception)
-            this.combatController = new CombatController(p,combatPanel);
+            this.combatController = new CombatController(p,combatPanel, worldController.getCollisionMob());
             combatController.runController();
-        }
 
+
+        }
     }
 }

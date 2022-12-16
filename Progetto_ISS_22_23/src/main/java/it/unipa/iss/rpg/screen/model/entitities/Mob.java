@@ -10,7 +10,16 @@ public class Mob implements Entity{
         this.stats = new Statistics(80, 70, 0, 50);
     }
 
+    public Mob(Statistics stats, MobSprite mobSprite) {
+        this.stats = stats;
+        this.mobSprite = mobSprite;
+    }
+
     public Statistics getStats() {
         return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
+    }
+
+    public MobSprite getMobSprite() {
+        return mobSprite;
     }
 }
