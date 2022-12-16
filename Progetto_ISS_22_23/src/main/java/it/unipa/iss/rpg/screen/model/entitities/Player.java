@@ -21,6 +21,7 @@ public class Player implements Entity {
         this.movementSpeed = 10;
         this.playerSprite = new PlayerSprite();
         playerSprite.loadSprites(loadTiles());
+        this.stats = new Statistics(100, 50, 0, 70);
     }
 
     private List<Tile> loadTiles() {

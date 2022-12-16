@@ -54,10 +54,10 @@ public class Fight implements CombatHandler{
             gameOver = true;
         }
 
-        /*
-        if (hpEnemyRemaining < 0) System.out.println("\nHero wins!");
-        else if(hpHeroRemaining < 0) System.out.println("\nEnemy wins!");
-        */
+
+        if (getHpEnemyRemaining() < 0) System.out.println("\nHero wins!");
+        else if(getHpHeroRemaining() < 0) System.out.println("\nEnemy wins!");
+
     }
 
     /**Method returns health points hero's remaining

@@ -15,7 +15,7 @@ class FightTest {
 
     @BeforeEach
     void setUp() throws CloneNotSupportedException {
-        Fight fight = new Fight(hero, enemy);
+        fight = new Fight(hero, enemy);
         assertNotNull(fight);
     }
 
@@ -34,5 +34,20 @@ class FightTest {
     @Disabled
     void inputAction() {
 
+    }
+
+    @Test
+    public void getHpHeroRemaining(){
+        assertEquals(100, fight.getHpHeroRemaining());
+    }
+
+    @Test
+    public void getHpEnemyRemaining(){
+        assertEquals(80, fight.getHpEnemyRemaining());
+    }
+
+    @Test
+    public void gameOverCheck(){
+        assertFalse(fight.gameOverCheck(), "We are considering default value of a boolean");
     }
 }
