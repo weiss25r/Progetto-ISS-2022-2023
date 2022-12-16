@@ -6,6 +6,7 @@ import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
+import it.unipa.iss.rpg.screen.view.GamePanel;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 import javax.imageio.ImageIO;

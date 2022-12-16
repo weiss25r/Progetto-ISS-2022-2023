@@ -19,7 +19,7 @@ class WorldControllerTest {
     @BeforeEach
     void setUp() {
         p = new Player();
-        worldController = new WorldController(p, (WorldPanel) Screen.getIstance().getGamePanel());
+        //worldController = new WorldController(p, (WorldPanel) Screen.getIstance().getGamePanel());
     }
 
     @AfterEach

@@ -3,28 +3,21 @@ package it.unipa.iss.rpg.screen.view;
 import javax.swing.*;
 
 public class Screen {
-    private static Screen instance = null;
+    private Screen instance = null;
     private JFrame window;
+    private GamePanel gamePanel;
+
+    public Screen() {}
+    public Screen(GamePanel gamePanel) {
+        setGamePanel(gamePanel);
+    }
 
     public GamePanel getGamePanel() {
         return gamePanel;
     }
 
-    private GamePanel gamePanel;
-
-    private Screen() {
-        gamePanel = new WorldPanel();
-        this.setWindow();
-    }
-
-    public static Screen getIstance(){
-        if (instance == null)
-            instance = new Screen();
-        return instance;
-    }
-
-    public void setWindow() {
-        this.gamePanel = new WorldPanel();
+    public void setGamePanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setTitle("RPG Game");
