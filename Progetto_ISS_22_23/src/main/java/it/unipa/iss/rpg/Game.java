@@ -33,7 +33,7 @@ public class Game{
             worldController.runController();
             screen.setGamePanel(combatPanel);
 
-            //T
+            //TODO: usare il costruttore corretto (null pointer exception)
             this.combatController = new CombatController(p,combatPanel);
             combatController.runController();
         }
