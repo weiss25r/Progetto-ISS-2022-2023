@@ -7,6 +7,7 @@ import it.unipa.iss.rpg.screen.model.EventType;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.CombatPanel;
+import it.unipa.iss.rpg.screen.view.ComponentImage;
 import it.unipa.iss.rpg.screen.view.GamePanel;
 
 import java.awt.*;
@@ -37,8 +38,7 @@ public class CombatController extends GameController {
         }
 
         //TODO: paint mob
-        view.setController(this);
-        view.repaint();
+        view.setEnemyImage(new ComponentImage(this.enemy.getMobSprite().getDefaultSprite(), 300,180 ));
 
         this.view.getBtnFight().addActionListener(event -> fight.cmdAttack());
 

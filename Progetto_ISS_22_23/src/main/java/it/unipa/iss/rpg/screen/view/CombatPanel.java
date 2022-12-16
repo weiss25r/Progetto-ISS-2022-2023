@@ -4,6 +4,7 @@ import it.unipa.iss.rpg.combat.controller.CombatController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class CombatPanel extends GamePanel{
     private JLabel lblPlayerHp;
@@ -75,13 +76,8 @@ public class CombatPanel extends GamePanel{
         this.lblEnemyHp.setText(EnemyHp);
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        Graphics2D g2 = (Graphics2D)g;
-        g2.drawImage(controller.getEnemy().getMobSprite().getDefaultSprite(), 3*scaleTile(), 2*scaleTile(), scaleTile(),scaleTile(), null);
-        g2.dispose();
+    public void setEnemyImage(ComponentImage mob) {
+        this.add(mob, BorderLayout.CENTER);
     }
 
     public void setController(CombatController controller) {

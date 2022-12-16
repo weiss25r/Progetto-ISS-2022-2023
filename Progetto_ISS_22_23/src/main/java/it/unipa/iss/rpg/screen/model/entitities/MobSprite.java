@@ -3,6 +3,7 @@ package it.unipa.iss.rpg.screen.model.entitities;
 import it.unipa.iss.rpg.screen.model.Tile;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 public class MobSprite extends EntitySprite{
@@ -16,7 +17,7 @@ public class MobSprite extends EntitySprite{
         super.getSprites().add(tile);
     }
 
-    public Image getDefaultSprite() {
+    public BufferedImage getDefaultSprite() {
         return this.getSprites().get(0).getTileImage();
     }
 }
