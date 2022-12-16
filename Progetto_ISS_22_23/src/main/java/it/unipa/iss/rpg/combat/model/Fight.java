@@ -11,7 +11,7 @@ public class Fight implements CombatHandler{
     private Statistics enemy;
 
     private int turn = 1;
-    boolean myTurn = true;
+    boolean myTurn;
     boolean gameOver;
 
     /**Constructor with two parameters*/

@@ -27,7 +27,7 @@ class FightTest {
 
     @Test
     void cmdAttack() {
-        assertEquals(51, fight.getHpHeroRemaining() - fight.cmdAttack(),
+        assertEquals(75, fight.getHpHeroRemaining() - fight.cmdAttack(),
                 "Considering boolean default value of myTurn variable");
     }
 
