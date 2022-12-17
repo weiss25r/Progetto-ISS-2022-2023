@@ -7,6 +7,8 @@ import it.unipa.iss.rpg.screen.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.Screen;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
+import javax.swing.*;
+
 public class Game{
     private WorldController worldController;
     private CombatController combatController;
@@ -32,9 +34,10 @@ public class Game{
             screen.setGamePanel(worldPanel);
             worldController.runController();
             screen.setGamePanel(combatPanel);
-            //TODO: usare il costruttore corretto (null pointer exception)
             this.combatController = new CombatController(p,combatPanel, worldController.getCollisionMob());
             combatController.runController();
+            this.combatPanel = new CombatPanel();
+            screen.getWindow().getContentPane().removeAll();
         }
     }
 }

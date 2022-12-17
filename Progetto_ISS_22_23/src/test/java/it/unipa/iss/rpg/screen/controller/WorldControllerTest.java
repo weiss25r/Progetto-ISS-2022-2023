@@ -19,7 +19,7 @@ class WorldControllerTest {
     @BeforeEach
     void setUp() {
         p = new Player();
-        //worldController = new WorldController(p, (WorldPanel) Screen.getIstance().getGamePanel());
+        worldController = new WorldController(p, new WorldPanel());
     }
 
     @AfterEach
@@ -28,27 +28,22 @@ class WorldControllerTest {
     }
 
     @Test
-    void drawPlayer() {
+    void testUpdate() {
+        this.worldController.update(EventType.MOVED_RIGHT);
+        assertEquals(110, p.getPlayerSprite().getWorldX());
 
+        this.worldController.update(EventType.MOVED_LEFT);
+        assertEquals(100, p.getPlayerSprite().getWorldX());
+
+        this.worldController.update(EventType.MOVED_DOWN);
+        assertEquals(130, p.getPlayerSprite().getWorldY());
+
+        this.worldController.update(EventType.MOVED_UP);
+        assertEquals(120, p.getPlayerSprite().getWorldY());
     }
 
     @Test
-    void testDrawPlayer() {
-
+    void testLoadWorldTiles() {
+        assertTrue(this.worldController.loadWorldTiles());
     }
-
-    /*@Test
-    void testUpdate() {
-        this.worldController.update(EventType.MOVED_RIGHT);
-        assertEquals(p.getWorldX(), 4);
-
-        this.worldController.update(EventType.MOVED_LEFT);
-        assertEquals(p.getWorldX(), 0);
-
-        this.worldController.update(EventType.MOVED_DOWN);
-        assertEquals(p.getWorldY(), 4);
-
-        this.worldController.update(EventType.MOVED_UP);
-        assertEquals(p.getWorldY(), 0);
-    }*/
 }

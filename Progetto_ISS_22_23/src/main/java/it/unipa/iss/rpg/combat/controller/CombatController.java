@@ -38,7 +38,6 @@ public class CombatController extends GameController {
             System.out.println("Error clone");
         }
 
-        //TODO: paint mob
         view.setEnemyImage(new ComponentImage(this.enemy.getMobSprite().getDefaultSprite(), 300,180 ));
 
         this.view.getBtnFight().addActionListener(event -> fight.cmdAttack());
@@ -46,7 +45,7 @@ public class CombatController extends GameController {
         //completa la lambda expression
         view.getBtnFight().addActionListener(e -> {
             fight.inputAction(1);
-            this.update();
+            this.update(null);
         });
 
     }
@@ -59,7 +58,8 @@ public class CombatController extends GameController {
         this.enemy = enemy;
     }
 
-    public void update(){
+    @Override
+    public void update(EventType e){
         view.setLblPlayerHp(Integer.toString(fight.getHpHeroRemaining()));
         view.setLblEnemyHp(Integer.toString(fight.getHpEnemyRemaining()));
         //temporaneo, la stamina diminuisce se uso un abilità
@@ -67,10 +67,6 @@ public class CombatController extends GameController {
     }
 
     //ascoltatore per update
-    @Override
-    public void update(EventType e) {
-        this.update();
-    }
 
     public Mob getEnemy() {
         return enemy;
@@ -79,17 +75,16 @@ public class CombatController extends GameController {
     @Override
     public void runController()  {
         while(isActive()) {
-            if(fight.gameOverCheck()){
-               /*
-                for(ActionListener al: this.view.getBtnFight().getActionListeners()){
-                    this.view.getBtnFight().removeActionListener(al);
-                }
-                */
-
-
-
-                super.setActive(false);
+            try {
+                Thread.sleep(1000);
+            }catch (Exception ex) {
+                ex.printStackTrace();
             }
+            if(fight.gameOverCheck()){
+                view.getBtnFight().removeActionListener(view.getBtnFight().getActionListeners()[0]);
+                this.setActive(false);
+            }
+
         }
     }
 }

@@ -23,7 +23,6 @@ import java.util.Scanner;
 public class WorldController extends GameController implements IPlayerListener {
     private MovementHandler movementHandler;
     private MobListener mobListener;
-    private boolean[][] collisions;
     private BufferedImage[][] worldTiles;
     private Mob[][] worldEnemies;
 
@@ -32,7 +31,6 @@ public class WorldController extends GameController implements IPlayerListener {
     public WorldController(Player player, WorldPanel gamePanel) {
         super(player, gamePanel);
         movementHandler = new MovementHandler();
-        movementHandler.attach(this);
         this.getGamePanel().addKeyListener(movementHandler);
 
         //TODO: REFACTOR
@@ -40,14 +38,13 @@ public class WorldController extends GameController implements IPlayerListener {
         this.mobListener = new MobListener(null);
         this.worldTiles = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
-        collisions = new boolean[6][8];
 
         this.worldEnemies = new Mob[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
         loadWorldTiles();
         //collisions[]
     }
 
-    private void loadWorldTiles() {
+    public boolean loadWorldTiles() {
         File map = new File("src/res/world/level_start/map.txt");
         File enemies = new File("src/res/world/level_start/enemies/enemies.txt");
 
@@ -72,8 +69,10 @@ public class WorldController extends GameController implements IPlayerListener {
 
             s.close();
             stream.close();
+            return true;
         }catch (IOException ex){
             ex.printStackTrace();
+            return false;
         }
     }
 
@@ -123,12 +122,16 @@ public class WorldController extends GameController implements IPlayerListener {
         if(worldEnemies[row][col] != null) {
             this.mobListener.update(this);
             this.lastCollisionMob = worldEnemies[row][col];
+
+            this.worldEnemies[row][col] = null;
         }
         this.getGamePanel().repaint();
     }
 
     @Override
     public void runController() {
+        setActive(true);
+        movementHandler.attach(this);
         //TODO: ATTACH/DETACH QUA
         int fps = 60;
         double drawInterval = (double)1000000000/fps;

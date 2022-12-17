@@ -15,7 +15,6 @@ public class PlayerSprite extends EntitySprite{
     @Override
     public void addSprite(Tile tile) {
         super.getSprites().add(tile);
-
     }
 
     @Override

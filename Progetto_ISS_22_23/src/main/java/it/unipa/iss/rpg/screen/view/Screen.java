@@ -21,6 +21,7 @@ public class Screen {
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setTitle("RPG Game");
+        window.getContentPane().add(gamePanel);
         window.add(gamePanel);
         window.pack();
 
