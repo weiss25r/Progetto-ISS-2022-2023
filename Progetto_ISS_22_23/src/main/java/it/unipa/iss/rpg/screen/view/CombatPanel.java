@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class CombatPanel extends GamePanel{
+
+
     private JLabel lblPlayerHp;
     private JLabel lblPlayerStamina;
     private JLabel lblEnemyHp;
@@ -86,5 +88,17 @@ public class CombatPanel extends GamePanel{
 
     public void setController(CombatController controller) {
         this.controller = controller;
+    }
+
+    public JLabel getLblPlayerHp() {
+        return lblPlayerHp;
+    }
+
+    public JLabel getLblPlayerStamina() {
+        return lblPlayerStamina;
+    }
+
+    public JLabel getLblEnemyHp() {
+        return lblEnemyHp;
     }
 }

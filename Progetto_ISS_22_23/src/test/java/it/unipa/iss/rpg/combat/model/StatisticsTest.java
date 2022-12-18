@@ -17,19 +17,16 @@ class StatisticsTest {
 
     }
 
-
     @AfterEach
     void tearDown() {
     }
-
-
 
     @Test
     void testClone() {
         try{
              this.v = (Statistics) stats.clone();
         }catch(CloneNotSupportedException e){
-            System.out.println("Error clone");
+            e.printStackTrace();
         }
         assertTrue(this.v instanceof Statistics);
         assertEquals(stats.getHp(),v.getHp());
@@ -38,43 +35,4 @@ class StatisticsTest {
         assertEquals(stats.getAtk(),v.getAtk());
     }
 
-    @Test
-    void attack() {
-    }
-
-    @Test
-    void setHp() {
-    }
-
-    @Test
-    void setDef() {
-    }
-
-    @Test
-    void setStamina() {
-    }
-
-    @Test
-    void setAtk() {
-    }
-
-    @Test
-    void getHp() {
-        assertEquals(100,stats.getHp());
-    }
-
-    @Test
-    void getDef() {
-        assertEquals(20,stats.getDef());
-    }
-
-    @Test
-    void getStamina() {
-        assertEquals(50,stats.getStamina());
-    }
-
-    @Test
-    void getAtk() {
-        assertEquals(20,stats.getAtk());
-    }
 }

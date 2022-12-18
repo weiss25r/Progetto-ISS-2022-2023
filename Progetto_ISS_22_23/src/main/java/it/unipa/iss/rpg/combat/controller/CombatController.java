@@ -13,6 +13,7 @@ import it.unipa.iss.rpg.screen.view.GamePanel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+
 /**
  * @Autor Alessia Boni * **/
 
@@ -35,23 +36,18 @@ public class CombatController extends GameController {
         try {
             this.fight = new Fight(this.getPlayer(),enemy);
         } catch(CloneNotSupportedException e){
-            System.out.println("Error clone");
+            e.printStackTrace();
+        }
+        if(this.enemy.getMobSprite() != null) {
+            view.setEnemyImage(new ComponentImage(this.enemy.getMobSprite().getDefaultSprite(), 300, 180));
         }
 
-        view.setEnemyImage(new ComponentImage(this.enemy.getMobSprite().getDefaultSprite(), 300,180 ));
-
         this.view.getBtnFight().addActionListener(event -> fight.cmdAttack());
-
-        //completa la lambda expression
         view.getBtnFight().addActionListener(e -> {
             fight.inputAction(1);
-            this.update(null);
+            this.update(EventType.PLAYER_ATK);
         });
 
-    }
-
-    public CombatController(Player player, GamePanel view){
-        super(player,view);
     }
 
     public void setEnemies(Mob enemy) {
@@ -60,17 +56,24 @@ public class CombatController extends GameController {
 
     @Override
     public void update(EventType e){
-        view.setLblPlayerHp(Integer.toString(fight.getHpHeroRemaining()));
-        view.setLblEnemyHp(Integer.toString(fight.getHpEnemyRemaining()));
-        //temporaneo, la stamina diminuisce se uso un abilità
-        view.setLblPlayerStamina(Integer.toString(this.getPlayer().getStats().getStamina()));
+        switch(e){
+            case PLAYER_ATK ->{
+                view.setLblPlayerHp(Integer.toString(fight.getHpHeroRemaining()));
+                view.setLblEnemyHp(Integer.toString(fight.getHpEnemyRemaining()));
+                break;
+            }
+            case PLAYER_ABILITY -> {
+                //Attenzione da modificare
+                view.setLblPlayerStamina(Integer.toString(this.getPlayer().getStats().getStamina()));
+                break;
+            }
+
+        }
+
     }
 
     //ascoltatore per update
 
-    public Mob getEnemy() {
-        return enemy;
-    }
 
     @Override
     public void runController()  {
@@ -86,6 +89,13 @@ public class CombatController extends GameController {
             }
 
         }
+    }
+
+    public CombatPanel getView(){
+        return this.view;
+    }
+    public Fight getFight(){
+        return this.fight;
     }
 }
 
