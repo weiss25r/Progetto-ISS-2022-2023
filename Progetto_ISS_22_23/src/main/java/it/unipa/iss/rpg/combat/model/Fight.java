@@ -11,8 +11,8 @@ public class Fight implements CombatHandler{
     private Statistics enemy;
 
     private int turn = 1;
-    boolean myTurn;
-    boolean gameOver;
+    private boolean myTurn;
+    private boolean gameOver;
 
     /**Constructor with two parameters*/
     public Fight(Player hero, Mob enemy) throws CloneNotSupportedException {
@@ -25,12 +25,6 @@ public class Fight implements CombatHandler{
     public int cmdAttack() {
         if(myTurn) return ((hero.getAtk() * enemy.getDef()) / enemy.getHp())*turn;
         else return ((enemy.getAtk() * hero.getDef())/ hero.getHp())*turn;
-    }
-
-    /**Method returns number of turns played by the hero
-     * @return rounds played by the player*/
-    public int getTurn(){
-        return this.turn;
     }
 
     /**Override CombatHandler interface's method*/
@@ -58,6 +52,12 @@ public class Fight implements CombatHandler{
         if (getHpEnemyRemaining() < 0) System.out.println("\nHero wins!");
         else if(getHpHeroRemaining() < 0) System.out.println("\nEnemy wins!");
 
+    }
+
+    /**Method returns number of turns played by the hero
+     * @return rounds played by the player*/
+    public int getTurn(){
+        return this.turn;
     }
 
     /**Method returns health points hero's remaining
