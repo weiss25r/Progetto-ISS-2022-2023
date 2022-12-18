@@ -87,7 +87,6 @@ public class CombatController extends GameController {
                 view.getBtnFight().removeActionListener(view.getBtnFight().getActionListeners()[0]);
                 this.setActive(false);
             }
-
         }
     }
 

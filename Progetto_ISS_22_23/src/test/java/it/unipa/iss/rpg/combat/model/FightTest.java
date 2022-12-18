@@ -7,10 +7,9 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FightTest {
-    Statistics s1 = new Statistics(100, 50, 0, 70);
-    Statistics s2 = new Statistics(80, 70, 0, 50);
+    Statistics stats = new Statistics();
     Player hero = new Player();
-    Mob enemy = new Mob(s2);
+    Mob enemy = new Mob(stats);
     private Fight fight;
 
     @BeforeEach
@@ -31,9 +30,13 @@ class FightTest {
                 "Considering boolean default value of myTurn variable");
     }
 
-    @Disabled
+    @Test
     void inputAction() {
+        do{
+            fight.inputAction(1);
+        }while(!fight.gameOverCheck());
 
+        assertTrue(fight.gameOverCheck());
     }
 
     @Test
