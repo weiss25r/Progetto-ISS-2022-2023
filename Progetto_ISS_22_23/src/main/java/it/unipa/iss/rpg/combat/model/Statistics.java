@@ -23,6 +23,7 @@ public  class Statistics implements Cloneable{
     private int stamina;
     private int atk;
 
+    //da cancellare
     public  Statistics(){
         this.hp = 0;
         this.def = 0;
