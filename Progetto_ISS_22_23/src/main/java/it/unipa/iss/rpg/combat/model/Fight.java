@@ -33,7 +33,6 @@ public class Fight implements CombatHandler{
 
         switch (choice){
             case 1:
-                System.out.println("Turn " + getTurn());
                 this.enemy.setHp(enemy.getHp() - cmdAttack());
                 myTurn = false;
                 if(this.enemy.getHp() < 0){

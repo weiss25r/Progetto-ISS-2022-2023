@@ -3,7 +3,6 @@ package it.unipa.iss.rpg.screen.view;
 import javax.swing.*;
 
 public class Screen {
-    private Screen instance = null;
     private JFrame window;
     private GamePanel gamePanel;
 

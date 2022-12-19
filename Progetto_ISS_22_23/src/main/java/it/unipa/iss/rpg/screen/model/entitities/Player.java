@@ -62,7 +62,6 @@ public class Player implements Entity {
             }
         }
 
-        System.out.printf("(%d %d)\n", playerSprite.getWorldX(), playerSprite.getWorldY());
     }
 
     public PlayerSprite getPlayerSprite() {

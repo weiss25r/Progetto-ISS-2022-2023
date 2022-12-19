@@ -58,16 +58,13 @@ public class CombatController extends GameController {
     public void update(EventType e){
         switch(e){
             case PLAYER_ATK ->{
-                view.setLblPlayerHp(Integer.toString(fight.getHpHeroRemaining()));
-                view.setLblEnemyHp(Integer.toString(fight.getHpEnemyRemaining()));
-                break;
+                view.setLblPlayerHp("HP: " + fight.getHpHeroRemaining());
+                view.setLblEnemyHp("HP: " + fight.getHpEnemyRemaining());
             }
             case PLAYER_ABILITY -> {
                 //Attenzione da modificare
                 view.setLblPlayerStamina(Integer.toString(this.getPlayer().getStats().getStamina()));
-                break;
             }
-
         }
 
     }

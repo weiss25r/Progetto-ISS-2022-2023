@@ -16,8 +16,6 @@ public class CombatPanel extends GamePanel{
     private JButton btnFight,btnAbility,btnInv;
     private JPanel btns;
 
-    private CombatController controller;
-
     public CombatPanel(){
         super();
         setPanel();
@@ -77,17 +75,12 @@ public class CombatPanel extends GamePanel{
     public void setLblEnemyHp(String EnemyHp){
         this.lblEnemyHp.setText(EnemyHp);
     }
-     public void setLblPlayerStamina(String playerStamina){
+    public void setLblPlayerStamina(String playerStamina){
           this.lblPlayerStamina.setText(playerStamina);
      }
 
-
     public void setEnemyImage(ComponentImage mob) {
         this.add(mob, BorderLayout.CENTER);
-    }
-
-    public void setController(CombatController controller) {
-        this.controller = controller;
     }
 
     public JLabel getLblPlayerHp() {
