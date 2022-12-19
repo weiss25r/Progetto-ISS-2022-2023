@@ -891,7 +891,7 @@
 											"top": 318,
 											"width": 186.05615234375,
 											"height": 13,
-											"text": "-hero Statistics",
+											"text": "-hero: Statistics",
 											"horizontalAlignment": 0
 										},
 										{
@@ -908,7 +908,7 @@
 											"top": 333,
 											"width": 186.05615234375,
 											"height": 13,
-											"text": "-enemy Statistics",
+											"text": "-enemy: Statistics",
 											"horizontalAlignment": 0
 										},
 										{
@@ -925,7 +925,7 @@
 											"top": 348,
 											"width": 186.05615234375,
 											"height": 13,
-											"text": "-turn int",
+											"text": "-turn: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -942,7 +942,7 @@
 											"top": 363,
 											"width": 186.05615234375,
 											"height": 13,
-											"text": "-myTurn boolean",
+											"text": "-myTurn: boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -959,7 +959,7 @@
 											"top": 378,
 											"width": 186.05615234375,
 											"height": 13,
-											"text": "-gameOver boolean",
+											"text": "-gameOver: boolean",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1628,7 +1628,7 @@
 							"top": 376,
 							"width": 169,
 							"height": 73,
-							"text": "this.hero = (Statisstics) hero.getStats.clone();\n\n\nthis.enemy = (Statistics) enemy.getStats.clone();"
+							"text": "this.hero = (Statistics) hero.getStats.clone();\n\n\nthis.enemy = (Statistics) enemy.getStats.clone();"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -1823,8 +1823,11 @@
 							"_parent": {
 								"$ref": "AAAAAAGE0qAwiLEGPzU="
 							},
-							"name": "hero Statistics",
-							"visibility": "private"
+							"name": "hero",
+							"visibility": "private",
+							"type": {
+								"$ref": "AAAAAAGE0p+JD7Cnse4="
+							}
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1832,8 +1835,11 @@
 							"_parent": {
 								"$ref": "AAAAAAGE0qAwiLEGPzU="
 							},
-							"name": "enemy Statistics",
-							"visibility": "private"
+							"name": "enemy",
+							"visibility": "private",
+							"type": {
+								"$ref": "AAAAAAGE0p+JD7Cnse4="
+							}
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1841,8 +1847,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGE0qAwiLEGPzU="
 							},
-							"name": "turn int",
-							"visibility": "private"
+							"name": "turn",
+							"visibility": "private",
+							"type": "int"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1850,8 +1857,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGE0qAwiLEGPzU="
 							},
-							"name": "myTurn boolean",
-							"visibility": "private"
+							"name": "myTurn",
+							"visibility": "private",
+							"type": "boolean"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1859,8 +1867,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGE0qAwiLEGPzU="
 							},
-							"name": "gameOver boolean",
-							"visibility": "private"
+							"name": "gameOver",
+							"visibility": "private",
+							"type": "boolean"
 						}
 					],
 					"operations": [
@@ -1878,7 +1887,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGE0qI3ZLFVRoc="
 									},
-									"name": "hero Player"
+									"name": "hero Player",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -1886,7 +1896,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGE0qI3ZLFVRoc="
 									},
-									"name": "enemy Mob"
+									"name": "enemy Mob",
+									"type": ""
 								}
 							]
 						},
