@@ -11,6 +11,9 @@ public class MobSprite extends EntitySprite{
     public MobSprite(int worldX, int worldY) {
         super(worldX, worldY);
     }
+    public MobSprite(int worldX, int worldY, List<Tile> sprites) {
+        super(worldX, worldY, sprites);
+    }
 
     @Override
     public void addSprite(Tile tile) {

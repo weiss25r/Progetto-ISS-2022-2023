@@ -15,6 +15,12 @@ public abstract class EntitySprite {
         this.worldY = worldY;
     }
 
+    public EntitySprite(int worldX, int worldY, List<Tile> sprites) {
+        this.sprites = new ArrayList<>();
+        this.worldX = worldX;
+        this.worldY = worldY;
+    }
+
     public void addSprite(Tile tile) {
         this.sprites.add(tile);
     }

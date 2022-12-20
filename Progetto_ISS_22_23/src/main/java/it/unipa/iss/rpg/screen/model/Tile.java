@@ -11,8 +11,6 @@ import java.awt.image.BufferedImage;
 public class Tile {
     private final BufferedImage tileImage;
 
-
-
     public Tile(BufferedImage tileImage) {
         this.tileImage = tileImage;
     }
@@ -20,4 +18,6 @@ public class Tile {
     public BufferedImage getTileImage() {
         return this.tileImage;
     }
+
+    
 }
