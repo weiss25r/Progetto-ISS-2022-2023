@@ -1,13 +1,12 @@
 package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.GameController;
-import it.unipa.iss.rpg.combat.model.Statistics;
+import it.unipa.iss.rpg.screen.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.MobSprite;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
-import it.unipa.iss.rpg.screen.view.GamePanel;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 import javax.imageio.ImageIO;
@@ -16,8 +15,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class WorldController extends GameController implements IPlayerListener {

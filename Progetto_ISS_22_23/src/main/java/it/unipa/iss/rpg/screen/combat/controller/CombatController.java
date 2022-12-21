@@ -1,17 +1,13 @@
-package it.unipa.iss.rpg.combat.controller;
+package it.unipa.iss.rpg.screen.combat.controller;
 
 import it.unipa.iss.rpg.GameController;
-import it.unipa.iss.rpg.combat.model.Fight;
+import it.unipa.iss.rpg.screen.combat.model.Fight;
 
 import it.unipa.iss.rpg.screen.model.EventType;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.ComponentImage;
-import it.unipa.iss.rpg.screen.view.GamePanel;
-
-import java.awt.*;
-import java.awt.event.ActionListener;
 
 
 /**

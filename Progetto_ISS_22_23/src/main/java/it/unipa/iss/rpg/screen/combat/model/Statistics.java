@@ -1,4 +1,4 @@
-package it.unipa.iss.rpg.combat.model;
+package it.unipa.iss.rpg.screen.combat.model;
 import java.lang.Cloneable;
 public  class Statistics implements Cloneable{
     private int hp;

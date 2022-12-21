@@ -1,5 +1,7 @@
 package it.unipa.iss.rpg.combat.model;
 
+import it.unipa.iss.rpg.screen.combat.model.Fight;
+import it.unipa.iss.rpg.screen.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import org.junit.jupiter.api.*;

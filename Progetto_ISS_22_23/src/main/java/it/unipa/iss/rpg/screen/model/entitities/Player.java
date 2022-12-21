@@ -1,6 +1,6 @@
 package it.unipa.iss.rpg.screen.model.entitities;
 
-import it.unipa.iss.rpg.combat.model.Statistics;
+import it.unipa.iss.rpg.screen.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.EventType;
 import it.unipa.iss.rpg.screen.model.Tile;
 

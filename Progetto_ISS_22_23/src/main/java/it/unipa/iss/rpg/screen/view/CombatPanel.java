@@ -1,10 +1,7 @@
 package it.unipa.iss.rpg.screen.view;
 
-import it.unipa.iss.rpg.combat.controller.CombatController;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class CombatPanel extends GamePanel{
 
