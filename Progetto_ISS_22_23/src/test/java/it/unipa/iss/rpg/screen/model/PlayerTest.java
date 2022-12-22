@@ -21,15 +21,15 @@ class PlayerTest {
 
     }
 
-    /*@Test
+    @Test
     void testMove() {
         p.move(EventType.MOVED_DOWN);
-        Assertions.assertEquals(4, p.getWorldY());
+        Assertions.assertEquals(130, p.getPlayerSprite().getWorldY());
         p.move(EventType.MOVED_UP);
-        Assertions.assertEquals(0, p.getWorldY());
+        Assertions.assertEquals(120, p.getPlayerSprite().getWorldY());
         p.move(EventType.MOVED_RIGHT);
-        Assertions.assertEquals(4, p.getWorldX());
+        Assertions.assertEquals(110, p.getPlayerSprite().getWorldX());
         p.move(EventType.MOVED_LEFT);
-        Assertions.assertEquals(0, p.getWorldX());
-    }*/
+        Assertions.assertEquals(100, p.getPlayerSprite().getWorldX());
+    }
 }
