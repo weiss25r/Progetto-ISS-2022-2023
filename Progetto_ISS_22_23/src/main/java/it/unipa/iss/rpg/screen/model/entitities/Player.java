@@ -13,7 +13,6 @@ public class Player implements Entity {
 
     private Statistics stats;
     private PlayerSprite playerSprite;
-
     private final int movementSpeed;
     private BufferedImage directionImage;
 
@@ -77,6 +76,4 @@ public class Player implements Entity {
         return this.stats;
         //return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
     }
-
-
 }
