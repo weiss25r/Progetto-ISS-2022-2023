@@ -21,20 +21,26 @@ public class DialogPanel extends GamePanel{
     public DialogPanel(){
         super();
         setPanel();
-        dialogFrame.setVisible(false);
     }
 
     public void setPanel(){
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight/3));
-        this.setBackground(new Color(238,203,155));
+        this.setSize(new Dimension(screenWidth*3, screenHeight/3));
         this.setLayout(new BorderLayout());
         this.setDoubleBuffered(true);
 
-        npcIcon.setBorder(new EmptyBorder(10, 10, 10, 30));
+        npcIcon.setBorder(new EmptyBorder(10, 10, 10, 10));
+        npcIcon.setBackground(new Color(238,203,155));
         dialogBox.setBorder(new EmptyBorder(10, 10, 10, 10));
+        dialogBox.setBackground(new Color(238,203,155));
         answerDialogBox.setBorder(new EmptyBorder(10, 10, 10, 10));
+        answerDialogBox.setBackground(new Color(238,203,155));
 
-        answerDialogBox.setLayout(new GridLayout(1,4));
+        text.setBackground(null);
+        text.setFont(new Font("Calibri", Font.PLAIN, 22));
+        text.setFocusable(false);
+
+        answerDialogBox.setLayout(new GridLayout(1,5));
+
         btn1.addActionListener(e -> this.closeDialog());
         btn2.addActionListener(e -> this.closeDialog());
 
@@ -42,6 +48,7 @@ public class DialogPanel extends GamePanel{
         dialogBox.add(text);
         answerDialogBox.add(new Label());
         answerDialogBox.add(btn1);
+        answerDialogBox.add(new Label());
         answerDialogBox.add(btn2);
         answerDialogBox.add(new Label());
 
@@ -49,8 +56,9 @@ public class DialogPanel extends GamePanel{
         this.add(dialogBox,BorderLayout.EAST);
         this.add(answerDialogBox,BorderLayout.SOUTH);
 
+        dialogFrame.getContentPane().add(this);
         dialogFrame.setUndecorated(true);
-        dialogFrame.add(this);
+        dialogFrame.pack();
         dialogFrame.setLocationRelativeTo(null);
     }
 
