@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class CombatPanel extends GamePanel{
 
-
     private JLabel lblPlayerHp;
     private JLabel lblPlayerStamina;
     private JLabel lblEnemyHp;
