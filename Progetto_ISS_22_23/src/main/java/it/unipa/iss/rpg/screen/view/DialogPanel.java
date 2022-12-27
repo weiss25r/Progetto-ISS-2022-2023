@@ -11,10 +11,12 @@ public class DialogPanel extends GamePanel{
     JPanel dialogBox = new JPanel();
     JPanel answerDialogBox = new JPanel();
 
-    JTextArea text = new JTextArea("Buongiorno Scrum Master, ha avuto una bella giornata?\n" +
-                                   "Ne sono alquanto contento, andiamo a cominciare" +
-                                   "una nuova giornata lavorativa");
     //dialogData;
+    JTextArea text = new JTextArea("Buongiorno Scrum Master, ha avuto una bella giornata?\n" +
+                                   "Ne sono alquanto contento, andiamo a cominciare\n" +
+                                   "una nuova giornata lavorativa\n");
+    JButton btn1 = new JButton("Yes");
+    JButton btn2 = new JButton("No");
 
     public DialogPanel(){
         super();
@@ -33,12 +35,14 @@ public class DialogPanel extends GamePanel{
         answerDialogBox.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         answerDialogBox.setLayout(new GridLayout(1,4));
+        btn1.addActionListener(e -> this.closeDialog());
+        btn2.addActionListener(e -> this.closeDialog());
 
         npcIcon.add(new JLabel(new ImageIcon("src/res/npc/bob.png")));
         dialogBox.add(text);
         answerDialogBox.add(new Label());
-        answerDialogBox.add(new Button("Yes"));
-        answerDialogBox.add(new Button("No"));
+        answerDialogBox.add(btn1);
+        answerDialogBox.add(btn2);
         answerDialogBox.add(new Label());
 
         this.add(npcIcon,BorderLayout.WEST);
@@ -47,7 +51,7 @@ public class DialogPanel extends GamePanel{
 
         dialogFrame.setUndecorated(true);
         dialogFrame.add(this);
-        dialogFrame.setSize(500,200);
+        dialogFrame.setLocationRelativeTo(null);
     }
 
     public void showDialog(){
@@ -56,6 +60,7 @@ public class DialogPanel extends GamePanel{
 
     public void closeDialog(){
         dialogFrame.setVisible(false);
+        dialogFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @Override

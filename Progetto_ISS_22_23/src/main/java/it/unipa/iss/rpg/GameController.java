@@ -2,6 +2,7 @@ package it.unipa.iss.rpg;
 
 import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
+import it.unipa.iss.rpg.screen.view.DialogPanel;
 import it.unipa.iss.rpg.screen.view.GamePanel;
 
 public abstract class GameController {
@@ -30,5 +31,9 @@ public abstract class GameController {
         return active;
     }
 
-    public void setActive(boolean active) { this.active = active; }
+    public void setActive(boolean active) {
+
+        DialogPanel dialogPanel = new DialogPanel();
+        dialogPanel.showDialog();
+        this.active = active; }
 }
