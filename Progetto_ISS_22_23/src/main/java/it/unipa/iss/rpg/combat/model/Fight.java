@@ -1,4 +1,4 @@
-package it.unipa.iss.rpg.screen.combat.model;
+package it.unipa.iss.rpg.combat.model;
 
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Player;

@@ -1,11 +1,10 @@
 package it.unipa.iss.rpg.combat.controller;
 
-import it.unipa.iss.rpg.screen.combat.controller.CombatController;
-import it.unipa.iss.rpg.screen.combat.model.Statistics;
+import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.EventType;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
-import it.unipa.iss.rpg.screen.view.CombatPanel;
+import it.unipa.iss.rpg.combat.view.CombatPanel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

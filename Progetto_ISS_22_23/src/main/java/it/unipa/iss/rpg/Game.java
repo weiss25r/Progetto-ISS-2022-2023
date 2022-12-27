@@ -1,9 +1,9 @@
 package it.unipa.iss.rpg;
 
-import it.unipa.iss.rpg.screen.combat.controller.CombatController;
+import it.unipa.iss.rpg.combat.controller.CombatController;
 import it.unipa.iss.rpg.screen.controller.WorldController;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
-import it.unipa.iss.rpg.screen.view.CombatPanel;
+import it.unipa.iss.rpg.combat.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.Screen;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 

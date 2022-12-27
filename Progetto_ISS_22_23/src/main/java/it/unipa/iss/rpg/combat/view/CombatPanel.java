@@ -1,9 +1,12 @@
-package it.unipa.iss.rpg.screen.view;
+package it.unipa.iss.rpg.combat.view;
+
+import it.unipa.iss.rpg.screen.view.ComponentImage;
+import it.unipa.iss.rpg.screen.view.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class CombatPanel extends GamePanel{
+public class CombatPanel extends GamePanel {
 
     private JLabel lblPlayerHp;
     private JLabel lblPlayerStamina;

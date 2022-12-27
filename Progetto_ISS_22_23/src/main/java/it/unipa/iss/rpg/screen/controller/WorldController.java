@@ -1,7 +1,7 @@
 package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.GameController;
-import it.unipa.iss.rpg.screen.combat.model.Statistics;
+import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;

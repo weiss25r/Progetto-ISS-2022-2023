@@ -1,6 +1,5 @@
 package it.unipa.iss.rpg.combat.model;
 
-import it.unipa.iss.rpg.screen.combat.model.Statistics;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
