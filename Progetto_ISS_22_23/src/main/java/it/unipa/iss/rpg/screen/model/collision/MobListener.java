@@ -16,4 +16,7 @@ public class MobListener implements CollisionListener{
     public void update(GameController gameController) {
         gameController.setActive(false);
     }
+
+    @Override
+    public void update(String path, String dialog, String choose_one, String choose_two) { }
 }
