@@ -6,6 +6,7 @@ import java.util.List;
 
 public class DecisionTree extends Decision{
     private List<Decision> decisions;
+    private boolean direction;
 
     public DecisionTree() {
         this.decisions = new LinkedList<>();
@@ -13,12 +14,7 @@ public class DecisionTree extends Decision{
 
     @Override
     public void makeDecision(boolean value) {
-        if(value) {
-            this.decisions.get(0).setDecisionValue(true);
-        }
-        else {
-            this.decisions.get(1).setDecisionValue(true);
-        }
+        this.direction = value;
     }
 
     @Override
@@ -33,23 +29,11 @@ public class DecisionTree extends Decision{
     }
 
     @Override
-    public Decision traverse() {
-
-        //TODO: refactoring...
-        Decision d = decisions.get(0).getDecisionValue() ? decisions.get(0) : decisions.get(1);
+    public DecisionEntry traverse() {
+        Decision d = direction ? decisions.get(0) : decisions.get(1);
 
         if(d instanceof DecisionLeaf)
-            return d;
+            return d.traverse();
         else return d.traverse();
-
-        /*
-        for (Decision d : decisions) {
-            if(d.traverse() instanceof DecisionLeaf && d.traverse().getDecisionValue()) {
-                ret = d;
-                break;
-            }
-        }
-
-         */
     }
 }

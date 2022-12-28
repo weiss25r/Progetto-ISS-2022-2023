@@ -28,18 +28,21 @@ public class DecisionTreeTest {
         decisionTree.add(one);
         decisionTree.add(two);
 
-        three.setDecisionValue(true);
-        four.setDecisionValue(false);
+        three.makeDecision(true);
+        four.makeDecision(false);
 
-        DecisionLeaf decision = (DecisionLeaf) this.decisionTree.traverse();
+        decisionTree.makeDecision(true);
 
-        assertEquals(1, decision.getLeafNumber());
+        DecisionEntry decisionEntry = decisionTree.traverse();
+
+        assertEquals(1, decisionEntry.getLeafNumber());
+
+        // ------------------------------------------------------------
 
         this.decisionTree = new DecisionTree();
 
         DecisionTree treeO = new DecisionTree();
         DecisionTree treeT = new DecisionTree();
-
 
         treeO.add(one);
         treeO.add(two);
@@ -47,24 +50,22 @@ public class DecisionTreeTest {
         treeT.add(three);
         treeT.add(four);
 
+        treeO.makeDecision(true);
+
         decisionTree.add(treeO);
         decisionTree.add(treeT);
-        /*
-
         decisionTree.makeDecision(true);
 
-        decision = (DecisionLeaf) this.decisionTree.traverse();
+        decisionEntry = decisionTree.traverse();
+        assertEquals(1, decisionEntry.getLeafNumber());
+        assertTrue(decisionEntry.getDecisionValue());
 
-        assertEquals(1, decision.getLeafNumber());
-
-
-         */
 
         decisionTree.makeDecision(false);
 
-        decision = (DecisionLeaf) this.decisionTree.traverse();
+        decisionEntry = decisionTree.traverse();
 
-        assertEquals(3, decision.getLeafNumber());
+        assertEquals(4, decisionEntry.getLeafNumber());
 
     }
 }
