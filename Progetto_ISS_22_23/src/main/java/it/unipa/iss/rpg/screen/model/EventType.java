@@ -9,5 +9,4 @@ public enum EventType {
     PLAYER_ATK,
     PLAYER_ABILITY,
     PLAYER_OBJ
-
 }

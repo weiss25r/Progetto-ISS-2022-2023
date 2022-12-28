@@ -45,7 +45,6 @@ public class Player implements Entity {
             case MOVED_DOWN -> {
                 this.playerSprite.setWorldY(playerSprite.getWorldY() + this.movementSpeed);
                 this.directionImage = this.playerSprite.getSprites().get(0).getTileImage();
-
             }
             case MOVED_UP -> {
                 this.playerSprite.setWorldY(playerSprite.getWorldY() - this.movementSpeed);

@@ -1,9 +1,16 @@
 package it.unipa.iss.rpg.decision;
 
 public class DecisionLeaf extends Decision{
+
+    private final int leafNumber;
+
+    public DecisionLeaf(int leafNumber) {
+        this.leafNumber = leafNumber;
+    }
+
     @Override
     public void makeDecision(boolean value) {
-
+        this.setDecisionValue(value);
     }
 
     @Override
@@ -17,6 +24,11 @@ public class DecisionLeaf extends Decision{
     }
 
     @Override
-    public void traverse() {
+    public Decision traverse() {
+        return this;
+    }
+
+    public int getLeafNumber() {
+        return this.leafNumber;
     }
 }
