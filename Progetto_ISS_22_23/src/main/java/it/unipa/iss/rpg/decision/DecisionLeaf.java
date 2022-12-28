@@ -1,16 +1,14 @@
 package it.unipa.iss.rpg.decision;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DecisionLeaf extends Decision{
 
     private final int leafNumber;
 
     public DecisionLeaf(int leafNumber) {
         this.leafNumber = leafNumber;
-    }
-
-    @Override
-    public void makeDecision(boolean value) {
-        this.setDecisionValue(value);
     }
 
     @Override
@@ -24,8 +22,8 @@ public class DecisionLeaf extends Decision{
     }
 
     @Override
-    public Decision traverse() {
-        return this;
+    public DecisionEntry traverse() {
+        return new DecisionEntry(this.leafNumber, this.getDecisionValue());
     }
 
     public int getLeafNumber() {
