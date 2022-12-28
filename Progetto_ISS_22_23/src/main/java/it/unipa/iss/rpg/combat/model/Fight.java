@@ -20,11 +20,20 @@ public class Fight implements CombatHandler{
         this.enemy = (Statistics) enemy.getStats().clone();
     }
 
+    /**Constructor without parameters*/
+    public Fight(){}
+
     /**Method returns damage's attack
      * @return value of a single attack*/
     public int cmdAttack() {
         if(myTurn) return ((hero.getAtk() * enemy.getDef()) / enemy.getHp())*turn;
         else return ((enemy.getAtk() * hero.getDef())/ hero.getHp())*turn;
+    }
+
+    /**Method that allows player to use their abilities*/
+    public void cmdAbility(){
+        Ability ability = new Ability();
+        ability.conditions();
     }
 
     /**Override CombatHandler interface's method*/
@@ -38,6 +47,10 @@ public class Fight implements CombatHandler{
                 if(this.enemy.getHp() < 0){
                     gameOver = true;
                 }
+                break;
+
+            case 2:
+                cmdAbility();
                 break;
         }
         this.hero.setHp(hero.getHp() - cmdAttack());
