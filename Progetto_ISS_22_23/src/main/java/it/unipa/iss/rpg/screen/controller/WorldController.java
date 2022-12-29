@@ -4,9 +4,9 @@ import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
-import it.unipa.iss.rpg.screen.model.entitities.Mob;
-import it.unipa.iss.rpg.screen.model.entitities.MobSprite;
-import it.unipa.iss.rpg.screen.model.entitities.Player;
+import it.unipa.iss.rpg.screen.model.collision.NPCListener;
+import it.unipa.iss.rpg.screen.model.entitities.*;
+import it.unipa.iss.rpg.screen.view.DialogPanel;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 import javax.imageio.ImageIO;
@@ -22,6 +22,8 @@ public class WorldController extends GameController implements IPlayerListener {
     private MobListener mobListener;
     private BufferedImage[][] worldTiles;
     private Mob[][] worldEnemies;
+    private NPC[][] worldNPcs;
+    private NPCListener npcListener;
 
     private Mob lastCollisionMob;
 
@@ -33,12 +35,13 @@ public class WorldController extends GameController implements IPlayerListener {
         //TODO: REFACTOR
         gamePanel.addController(this);
         this.mobListener = new MobListener(null);
+        this.npcListener = new NPCListener();
         this.worldTiles = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
-
         this.worldEnemies = new Mob[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
+        this.worldNPcs = new NPC[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
+
         loadWorldTiles();
-        //collisions[]
     }
 
     public boolean loadWorldTiles() {
@@ -57,12 +60,22 @@ public class WorldController extends GameController implements IPlayerListener {
                     if(Character.isDigit(t)) {
                         MobSprite mobSprite = new MobSprite(i*getGamePanel().scaleTile(), j*getGamePanel().scaleTile());
                         mobSprite.addSprite(new Tile(ImageIO.read(new File("src/res/world/level_start/enemies/" + t + ".png"))));
+
+                        //TODO: CARICAMENTO MOB DA DATABASE
                         Mob mob = new Mob(new Statistics(80, 80, 80, 80), mobSprite);
 
                         worldEnemies[i][j] = mob;
                     }
                 }
             }
+
+            //TODO: refactoring
+
+            NPCSprite npcSprite = new NPCSprite(2* getGamePanel().scaleTile(), 2* getGamePanel().scaleTile());
+            npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/mob/baboon.png"))));
+
+            NPC npc = new NPC(npcSprite, null, null, null);
+            this.worldNPcs[2][2] = npc;
 
             s.close();
             stream.close();
@@ -105,6 +118,18 @@ public class WorldController extends GameController implements IPlayerListener {
         }
     }
 
+    //TODO: assente nei class diagram
+    public void drawCharacters(Graphics2D g) {
+        int k = 0;
+
+        for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
+            for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
+                if(this.worldNPcs[j][i] != null)
+                    g.drawImage(this.worldNPcs[j][i].getNpcSprite().getDefaultSprite(), i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
+            }
+        }
+    }
+
     @Override
     public void update(EventType e) {
         Player player = this.getPlayer();
@@ -121,7 +146,17 @@ public class WorldController extends GameController implements IPlayerListener {
             this.lastCollisionMob = worldEnemies[row][col];
 
             this.worldEnemies[row][col] = null;
+        } else if (worldNPcs[row][col] != null) {
+
+            //TODO: deletable
+            this.npcListener.update("src/res/npc/bob.png",
+                    "Buongiorno Scrum Master, ha avuto una bella giornata?\n" +
+                    "Ne sono alquanto contento, andiamo a cominciare\n" +
+                    "una nuova giornata lavorativa?\n",
+                    "Yes", "No");
+            this.worldNPcs[row][col] = null;
         }
+
         this.getGamePanel().repaint();
     }
 

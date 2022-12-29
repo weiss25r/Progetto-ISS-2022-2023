@@ -7,7 +7,6 @@ import java.util.List;
 
 public class MobListener implements CollisionListener{
     List<Mob> dataEntity;
-    //TODO: it must be create the Class: Mob
     public MobListener(List<Mob> dataEntity) {
         this.dataEntity = dataEntity;
     }

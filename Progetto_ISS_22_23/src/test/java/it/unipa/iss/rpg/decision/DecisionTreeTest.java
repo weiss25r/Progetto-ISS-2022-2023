@@ -3,8 +3,6 @@ package it.unipa.iss.rpg.decision;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.text.DefaultEditorKit;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DecisionTreeTest {
@@ -66,6 +64,5 @@ public class DecisionTreeTest {
         decisionEntry = decisionTree.traverse();
 
         assertEquals(4, decisionEntry.getLeafNumber());
-
     }
 }

@@ -32,8 +32,6 @@ public class DecisionTree extends Decision{
     public DecisionEntry traverse() {
         Decision d = direction ? decisions.get(0) : decisions.get(1);
 
-        if(d instanceof DecisionLeaf)
-            return d.traverse();
-        else return d.traverse();
+        return d.traverse();
     }
 }
