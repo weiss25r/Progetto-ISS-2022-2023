@@ -120,8 +120,14 @@ public class WorldController extends GameController implements IPlayerListener {
 
     //TODO: assente nei class diagram
     public void drawCharacters(Graphics2D g) {
-        if(this.worldNPcs[2][2] != null)
-            g.drawImage(this.worldNPcs[2][2].getNpcSprite().getDefaultSprite(), 2* getGamePanel().scaleTile(), 2* getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
+        int k = 0;
+
+        for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
+            for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
+                if(this.worldNPcs[j][i] != null)
+                    g.drawImage(this.worldNPcs[j][i].getNpcSprite().getDefaultSprite(), i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
+            }
+        }
     }
 
     @Override
