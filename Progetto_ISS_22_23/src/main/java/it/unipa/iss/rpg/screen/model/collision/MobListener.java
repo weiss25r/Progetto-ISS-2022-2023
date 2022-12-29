@@ -17,5 +17,6 @@ public class MobListener implements CollisionListener{
     }
 
     @Override
-    public void update(String path, String dialog, String choose_one, String choose_two) { }
+    public void update() { }
+
 }

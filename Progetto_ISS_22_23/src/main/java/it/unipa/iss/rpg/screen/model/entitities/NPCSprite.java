@@ -7,8 +7,15 @@ import java.util.List;
 
 public class NPCSprite extends EntitySprite{
 
+    String dialogIconPath;
+
     public NPCSprite(int worldX, int worldY) {
         super(worldX, worldY);
+    }
+
+    public NPCSprite(int worldX, int worldY, String dialogIconPath) {
+        super(worldX, worldY);
+        this.dialogIconPath = dialogIconPath;
     }
 
     public NPCSprite(int worldX, int worldY, List<Tile> sprites) {
@@ -22,5 +29,9 @@ public class NPCSprite extends EntitySprite{
 
     public BufferedImage getDefaultSprite() {
         return this.getSprites().get(0).getTileImage();
+    }
+
+    public String getDialogIconPath() {
+        return dialogIconPath;
     }
 }

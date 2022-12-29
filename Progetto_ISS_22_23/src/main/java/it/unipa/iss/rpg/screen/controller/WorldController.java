@@ -35,7 +35,6 @@ public class WorldController extends GameController implements IPlayerListener {
         //TODO: REFACTOR
         gamePanel.addController(this);
         this.mobListener = new MobListener(null);
-        this.npcListener = new NPCListener();
         this.worldTiles = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
         this.worldEnemies = new Mob[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
@@ -149,11 +148,8 @@ public class WorldController extends GameController implements IPlayerListener {
         } else if (worldNPcs[row][col] != null) {
 
             //TODO: deletable
-            this.npcListener.update("src/res/npc/bob.png",
-                    "Buongiorno Scrum Master, ha avuto una bella giornata?\n" +
-                    "Ne sono alquanto contento, andiamo a cominciare\n" +
-                    "una nuova giornata lavorativa?\n",
-                    "Yes", "No");
+            this.npcListener = new NPCListener(worldNPcs[row][col]);
+            this.npcListener.update();
             this.worldNPcs[row][col] = null;
         }
 
