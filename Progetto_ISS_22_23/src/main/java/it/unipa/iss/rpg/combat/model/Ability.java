@@ -12,7 +12,6 @@ public class Ability {
             case HEALING:
                 if(hero.getHp() <= 50){
                     hero.setHp(hero.getHp() + 30);
-                    System.out.println("You recovered 30 HP");
                 }
                 break;
 
@@ -29,7 +28,7 @@ public class Ability {
             case SINNER_ATK:
                 enemy.setHp((hero.getAtk() * hero.getDef())/enemy.getDef()+10);
                 hero.setStamina(hero.getStamina() - 10);
-                hero.setDef(hero.getDef() -10);
+                hero.setDef(hero.getDef() - 10);
                 hero.setAtk(hero.getAtk() - 5);
                 break;
         }
