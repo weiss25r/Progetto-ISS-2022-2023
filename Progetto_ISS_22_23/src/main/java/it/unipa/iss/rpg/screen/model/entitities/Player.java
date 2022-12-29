@@ -20,7 +20,7 @@ public class Player implements Entity {
         this.movementSpeed = 10;
         this.playerSprite = new PlayerSprite();
         playerSprite.setSprites(loadTiles());
-        this.stats = new Statistics(100, 50, 0, 70);
+        this.stats = new Statistics(100, 50, 100, 70);
     }
 
     private List<Tile> loadTiles() {

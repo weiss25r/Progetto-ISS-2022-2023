@@ -13,15 +13,13 @@ public class Fight implements CombatHandler{
     private int turn = 1;
     private boolean myTurn;
     private boolean gameOver;
+    AbilityBox skill;
 
     /**Constructor with two parameters*/
     public Fight(Player hero, Mob enemy) throws CloneNotSupportedException {
         this.hero = (Statistics) hero.getStats().clone();
         this.enemy = (Statistics) enemy.getStats().clone();
     }
-
-    /**Constructor without parameters*/
-    public Fight(){}
 
     /**Method returns damage's attack
      * @return value of a single attack*/
@@ -32,8 +30,8 @@ public class Fight implements CombatHandler{
 
     /**Method that allows player to use their abilities*/
     public void cmdAbility(){
-        Ability ability = new Ability();
-        ability.conditions();
+        Ability ability = new Ability(skill);
+        ability.useAbility(hero, enemy);
     }
 
     /**Override CombatHandler interface's method*/
