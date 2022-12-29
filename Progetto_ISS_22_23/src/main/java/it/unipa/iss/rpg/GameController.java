@@ -33,15 +33,6 @@ public abstract class GameController {
 
     public void setActive(boolean active) {
 
-        //TODO: deletable
-        String w = "src/res/npc/bob.png",
-               x = "Buongiorno Scrum Master, ha avuto una bella giornata?\n" +
-                   "Ne sono alquanto contento, andiamo a cominciare\n" +
-                   "una nuova giornata lavorativa?\n",
-               y = "Yes",
-               z = "No";
-        DialogPanel dialogPanel = new DialogPanel(w,x,y,z);
-        dialogPanel.showDialog();
 
         this.active = active;
     }
