@@ -11,8 +11,8 @@ public class Fight implements CombatHandler{
     private Statistics enemy;
 
     private int turn = 1;
-    private boolean myTurn;
     private boolean gameOver;
+    static boolean myTurn;
     AbilityBox skill;
 
     /**Constructor with two parameters*/
@@ -28,7 +28,7 @@ public class Fight implements CombatHandler{
         else return ((enemy.getAtk() * hero.getDef())/ hero.getHp())*turn;
     }
 
-    /**Method that allows player to use their abilities*/
+    /**Method that allows player to use his abilities*/
     public void cmdAbility(){
         Ability ability = new Ability(skill);
         ability.useAbility(hero, enemy);
@@ -42,13 +42,12 @@ public class Fight implements CombatHandler{
             case 1:
                 this.enemy.setHp(enemy.getHp() - cmdAttack());
                 myTurn = false;
-                if(this.enemy.getHp() < 0){
-                    gameOver = true;
-                }
+                if(this.enemy.getHp() < 0) gameOver = true;
                 break;
 
             case 2:
                 cmdAbility();
+                if(this.enemy.getHp() < 0) gameOver = true;
                 break;
         }
         this.hero.setHp(hero.getHp() - cmdAttack());
