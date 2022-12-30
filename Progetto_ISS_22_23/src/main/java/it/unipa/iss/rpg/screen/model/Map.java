@@ -1,26 +1,26 @@
 package it.unipa.iss.rpg.screen.model;
 
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
-import it.unipa.iss.rpg.screen.model.entitities.Npc;
+import it.unipa.iss.rpg.screen.model.entitities.NPC;
 
 import java.awt.image.BufferedImage;
 
 public class Map {
    private Mob[][] mapEnemies;
-   private Npc[][] mapNpc;
+   private NPC[][] mapNPC;
    private BufferedImage[][] worldTiles;
    private  BufferedImage[][] endMap;
 
    public Map(Map map){
         this.mapEnemies = map.getMapEnemies();
-        this.mapNpc = map.getNpc();
+        this.mapNPC = map.getNpc();
         this.worldTiles = map.getWorldTiles();
         this.endMap = map.getEndMap();
    }
-   public Map(Mob[][] mapEnemies, Npc[][] mapNpc,
+   public Map(Mob[][] mapEnemies, NPC[][] mapNPC,
               BufferedImage[][] worldTiles , BufferedImage[][] endMap){
         this.mapEnemies = mapEnemies;
-        this.mapNpc = mapNpc;
+        this.mapNPC = mapNPC;
         this.worldTiles = worldTiles;
         this.endMap = endMap;
    }
@@ -33,15 +33,15 @@ public class Map {
         this.mapEnemies[x][y] = null;
     }
     // Aggiune un Npc
-   public void addNpc (Npc npc, int x, int y){
-        this.mapNpc[x][y] = npc;
+   public void addNpc (NPC npc, int x, int y){
+        this.mapNPC[x][y] = npc;
     }
     //Rimuove un Npc
-   public void removeNpc (Npc npc, int x, int y){
-       this.mapNpc[x][y] = null;
+   public void removeNpc (NPC npc, int x, int y){
+       this.mapNPC[x][y] = null;
     }
-   public Npc[][] getNpc(){
-        return  this.mapNpc;
+   public NPC[][] getNpc(){
+        return  this.mapNPC;
     }
     //Restituisce un singolo nemico
    public Mob getEnemy(int x,int y){

@@ -21,7 +21,7 @@ public class WorldController extends GameController implements IPlayerListener {
     private MobListener mobListener;
     private BufferedImage[][] worldTiles;
     private Mob[][] worldEnemies;
-    private Npc[][] worldNPcs;
+    private NPC[][] worldNPcs;
     private NPCListener npcListener;
     private DecisionController decisionController;
 
@@ -39,7 +39,7 @@ public class WorldController extends GameController implements IPlayerListener {
         this.worldTiles = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
         this.worldEnemies = new Mob[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
-        this.worldNPcs = new Npc[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
+        this.worldNPcs = new NPC[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
         loadWorldTiles();
     }
@@ -74,7 +74,7 @@ public class WorldController extends GameController implements IPlayerListener {
             NPCSprite npcSprite = new NPCSprite(2* getGamePanel().scaleTile(), 2* getGamePanel().scaleTile(),"src/res/npc/bob.png");
             npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/npc/bob_down.png"))));
 
-            Npc npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
+            NPC npc = new NPC(npcSprite, "Lorem ipsum ....", "Yes", "No");
             this.worldNPcs[2][2] = npc;
 
             s.close();
