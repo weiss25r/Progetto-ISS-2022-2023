@@ -14,7 +14,6 @@ public class NPCListener implements CollisionListener{
 
     @Override
     public void update(GameController gameController) {
-
         WorldController worldController = (WorldController)gameController;
         DialogPanel dialogPanel = new DialogPanel(npc.getNpcSprite().getDialogIconPath(), npc.getDialog(), npc.getChoose_one(), npc.getChoose_two());
         dialogPanel.showDialog();
@@ -28,8 +27,6 @@ public class NPCListener implements CollisionListener{
             dialogPanel.closeDialog();
             worldController.updateDecisionTree(false);
         });
-
-
     }
 
     @Override

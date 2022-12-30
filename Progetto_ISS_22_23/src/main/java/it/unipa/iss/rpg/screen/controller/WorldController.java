@@ -2,12 +2,10 @@ package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.combat.model.Statistics;
-import it.unipa.iss.rpg.decision.DecisionTree;
 import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
 import it.unipa.iss.rpg.screen.model.collision.NPCListener;
 import it.unipa.iss.rpg.screen.model.entitities.*;
-import it.unipa.iss.rpg.screen.view.DialogPanel;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 import javax.imageio.ImageIO;
@@ -23,7 +21,7 @@ public class WorldController extends GameController implements IPlayerListener {
     private MobListener mobListener;
     private BufferedImage[][] worldTiles;
     private Mob[][] worldEnemies;
-    private NPC[][] worldNPcs;
+    private Npc[][] worldNPcs;
     private NPCListener npcListener;
     private DecisionController decisionController;
 
@@ -35,15 +33,13 @@ public class WorldController extends GameController implements IPlayerListener {
         this.getGamePanel().addKeyListener(movementHandler);
         this.decisionController = new DecisionController();
 
-
-
         //TODO: REFACTOR
         gamePanel.addController(this);
         this.mobListener = new MobListener(null);
         this.worldTiles = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
         this.worldEnemies = new Mob[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
-        this.worldNPcs = new NPC[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
+        this.worldNPcs = new Npc[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
         loadWorldTiles();
     }
@@ -78,7 +74,7 @@ public class WorldController extends GameController implements IPlayerListener {
             NPCSprite npcSprite = new NPCSprite(2* getGamePanel().scaleTile(), 2* getGamePanel().scaleTile(),"src/res/npc/bob.png");
             npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/npc/bob_down.png"))));
 
-            NPC npc = new NPC(npcSprite, "Lorem ipsum ....", "Yes", "No");
+            Npc npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
             this.worldNPcs[2][2] = npc;
 
             s.close();
