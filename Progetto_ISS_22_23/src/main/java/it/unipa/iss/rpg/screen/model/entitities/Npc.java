@@ -1,10 +1,10 @@
 package it.unipa.iss.rpg.screen.model.entitities;
 
-public class NPC implements Entity{
+public class Npc implements Entity{
     private NPCSprite npcSprite;
     private String path, dialog, choose_one, choose_two;
 
-    public NPC(NPCSprite npcSprite, String dialog, String choose_one, String choose_two) {
+    public Npc(NPCSprite npcSprite, String dialog, String choose_one, String choose_two) {
         this.path = path;
         this.npcSprite = npcSprite;
         this.dialog = dialog;

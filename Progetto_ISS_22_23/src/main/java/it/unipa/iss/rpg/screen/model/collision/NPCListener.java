@@ -2,13 +2,13 @@ package it.unipa.iss.rpg.screen.model.collision;
 
 import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.screen.controller.WorldController;
-import it.unipa.iss.rpg.screen.model.entitities.NPC;
+import it.unipa.iss.rpg.screen.model.entitities.Npc;
 import it.unipa.iss.rpg.screen.view.DialogPanel;
 
 public class NPCListener implements CollisionListener{
-    private NPC npc;
+    private Npc npc;
     private boolean lastDecision;
-    public NPCListener(NPC npc) {
+    public NPCListener(Npc npc) {
         this.npc = npc;
     }
 
