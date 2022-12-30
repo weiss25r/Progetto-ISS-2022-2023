@@ -1,16 +1,17 @@
 package it.unipa.iss.rpg.screen.model;
 
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
-import it.unipa.iss.rpg.screen.model.entitities.NPC;
+import it.unipa.iss.rpg.screen.model.entitities.Npc;
 
 import java.awt.image.BufferedImage;
 
 public class MapBuilder implements IMapBuilder{
 
     private Mob[][] mapEnemies;
-    private NPC[][] mapNpc;
+    private Npc[][] mapNpc;
     private BufferedImage[][] worldTiles;
     private  BufferedImage[][] endMap;
+
     @Override
     public void reset() {
         this.mapEnemies = null;
@@ -20,7 +21,7 @@ public class MapBuilder implements IMapBuilder{
     }
 
     @Override
-    public void buildNpc(NPC[][] npc) {
+    public void buildNpc(Npc[][] npc) {
         this.mapNpc = npc;
     }
 

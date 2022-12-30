@@ -6,16 +6,17 @@ import java.awt.*;
 
 public class DialogPanel extends GamePanel{
 
-    JFrame dialogFrame = new JFrame();
-    JPanel npcIcon = new JPanel();
-    JPanel dialogBox = new JPanel();
-    JPanel answerDialogBox = new JPanel();
+    private JFrame dialogFrame = new JFrame();
+    private JPanel npcIcon = new JPanel();
+    private JPanel dialogBox = new JPanel();
+    private JPanel answerDialogBox = new JPanel();
 
     //dialogData;
-    JTextArea text;
-    JButton btn1;
-    JButton btn2;
-    String path;
+    private JTextArea text;
+
+    private JButton btn1;
+    private JButton btn2;
+    private String path;
 
     public DialogPanel(String path, String dialog, String choose_one, String choose_two){
         super();
@@ -43,11 +44,6 @@ public class DialogPanel extends GamePanel{
         text.setFocusable(false);
 
         answerDialogBox.setLayout(new GridLayout(1,5));
-
-        btn1.addActionListener(e -> this.closeDialog());
-        //TODO: add some event for btn1
-        btn2.addActionListener(e -> this.closeDialog());
-        //TODO: add some event for btn2
 
         npcIcon.add(new JLabel(new ImageIcon(path)));
         dialogBox.add(text);
@@ -78,6 +74,14 @@ public class DialogPanel extends GamePanel{
     @Override
     public int scaleTile() {
         return 0;
+    }
+
+    public JButton getBtn1() {
+        return btn1;
+    }
+
+    public JButton getBtn2() {
+        return btn2;
     }
 
 }

@@ -32,8 +32,6 @@ public abstract class GameController {
     }
 
     public void setActive(boolean active) {
-
-
         this.active = active;
     }
 }
