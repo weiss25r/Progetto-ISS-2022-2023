@@ -7,11 +7,18 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Map {
-    Mob[][] mapEnemies;
-    NPC[][] mapNpc;
-    BufferedImage[][] worldTiles;
-    BufferedImage[][] endMap;
+   private Mob[][] mapEnemies;
+   private NPC[][] mapNpc;
+    private BufferedImage[][] worldTiles;
+   private  BufferedImage[][] endMap;
 
+
+    public Map(Map map){
+        this.mapEnemies = map.getMapEnemies();
+        this.mapNpc = map.getNpc();
+        this.worldTiles = map.getWorldTiles();
+        this.endMap = map.getEndMap();
+    }
     public Map(Mob[][] mapEnemies,NPC[][] mapNpc,
         BufferedImage[][] worldTiles , BufferedImage[][] endMap){
         this.mapEnemies = mapEnemies;
@@ -51,4 +58,6 @@ public class Map {
     public BufferedImage[][] getEndMap(){
         return this.endMap;
     }
+
+    public BufferedImage[][] getWorldTiles(){ return  this.worldTiles;}
 }
