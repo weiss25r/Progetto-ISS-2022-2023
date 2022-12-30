@@ -16,7 +16,7 @@ public class Mob implements Entity{
     }
 
     public Statistics getStats() {
-        return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
+        return this.stats;
     }
 
     public MobSprite getMobSprite() {
