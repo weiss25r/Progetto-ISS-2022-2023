@@ -1,5 +1,6 @@
 package it.unipa.iss.rpg.decision;
 
+import java.util.ArrayList;
 import java.util.IllegalFormatCodePointException;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,7 +10,7 @@ public class DecisionTree extends Decision{
     private boolean direction;
 
     public DecisionTree() {
-        this.decisions = new LinkedList<>();
+        this.decisions = new ArrayList<>();
     }
 
     @Override
@@ -22,10 +23,17 @@ public class DecisionTree extends Decision{
         this.decisions.add(decision);
     }
 
+    public Decision get(int index){
+
+        if(index < 0)
+            return this;
+        else
+            return this.decisions.get(index);
+    }
+
     @Override
     public void remove(Decision decision) {
         this.decisions.remove(decision);
-
     }
 
     @Override
@@ -34,4 +42,5 @@ public class DecisionTree extends Decision{
 
         return d.traverse();
     }
+
 }

@@ -11,6 +11,7 @@ public class MapBuilder implements IMapBuilder{
     private NPC[][] mapNpc;
     private BufferedImage[][] worldTiles;
     private  BufferedImage[][] endMap;
+
     @Override
     public void reset() {
         this.mapEnemies = null;

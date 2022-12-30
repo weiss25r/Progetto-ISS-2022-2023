@@ -2,6 +2,7 @@ package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.combat.model.Statistics;
+import it.unipa.iss.rpg.decision.DecisionTree;
 import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
 import it.unipa.iss.rpg.screen.model.collision.NPCListener;
@@ -24,6 +25,7 @@ public class WorldController extends GameController implements IPlayerListener {
     private Mob[][] worldEnemies;
     private NPC[][] worldNPcs;
     private NPCListener npcListener;
+    private DecisionController decisionController;
 
     private Mob lastCollisionMob;
 
@@ -31,6 +33,9 @@ public class WorldController extends GameController implements IPlayerListener {
         super(player, gamePanel);
         movementHandler = new MovementHandler();
         this.getGamePanel().addKeyListener(movementHandler);
+        this.decisionController = new DecisionController();
+
+
 
         //TODO: REFACTOR
         gamePanel.addController(this);
@@ -70,10 +75,10 @@ public class WorldController extends GameController implements IPlayerListener {
 
             //TODO: refactoring
 
-            NPCSprite npcSprite = new NPCSprite(2* getGamePanel().scaleTile(), 2* getGamePanel().scaleTile());
-            npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/mob/baboon.png"))));
+            NPCSprite npcSprite = new NPCSprite(2* getGamePanel().scaleTile(), 2* getGamePanel().scaleTile(),"src/res/npc/bob.png");
+            npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/npc/bob_down.png"))));
 
-            NPC npc = new NPC(npcSprite, null, null, null);
+            NPC npc = new NPC(npcSprite, "Lorem ipsum ....", "Yes", "No");
             this.worldNPcs[2][2] = npc;
 
             s.close();
@@ -149,7 +154,7 @@ public class WorldController extends GameController implements IPlayerListener {
 
             //TODO: deletable
             this.npcListener = new NPCListener(worldNPcs[row][col]);
-            this.npcListener.update();
+            this.npcListener.update(this);
             this.worldNPcs[row][col] = null;
         }
 
@@ -158,6 +163,7 @@ public class WorldController extends GameController implements IPlayerListener {
 
     @Override
     public void runController() {
+        //this.lastCollisionMob = null;
         setActive(true);
         movementHandler.attach(this);
         //TODO: ATTACH/DETACH QUA
@@ -199,4 +205,7 @@ public class WorldController extends GameController implements IPlayerListener {
         return this.lastCollisionMob;
     }
 
+    public void updateDecisionTree(boolean b) {
+        this.decisionController.updateDecisionTree(b);
+    }
 }
