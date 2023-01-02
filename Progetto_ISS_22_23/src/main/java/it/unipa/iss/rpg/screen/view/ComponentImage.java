@@ -6,7 +6,9 @@ import java.awt.image.BufferedImage;
 
 public class ComponentImage extends JComponent {
     final BufferedImage image;
-    private int x, y;
+    private final int x;
+    private final int y;
+
     public ComponentImage(BufferedImage image, int x, int y) {
         super();
         this.x = x;

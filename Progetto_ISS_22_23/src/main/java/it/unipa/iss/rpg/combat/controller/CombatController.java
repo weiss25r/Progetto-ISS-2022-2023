@@ -9,7 +9,6 @@ import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.combat.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.ComponentImage;
 
-
 /**
  * @Autor Alessia Boni * **/
 
@@ -34,9 +33,7 @@ public class CombatController extends GameController {
         } catch(CloneNotSupportedException e){
             e.printStackTrace();
         }
-        if(this.enemy.getMobSprite() != null) {
-            view.setEnemyImage(new ComponentImage(this.enemy.getMobSprite().getDefaultSprite(), 300, 180));
-        }
+
 
         this.view.getBtnFight().addActionListener(event -> fight.cmdAttack());
         view.getBtnFight().addActionListener(e -> {
@@ -44,6 +41,9 @@ public class CombatController extends GameController {
             this.update(EventType.PLAYER_ATK);
         });
 
+        if(this.enemy.getMobSprite() != null) {
+            view.setEnemyImage(new ComponentImage(this.enemy.getMobSprite().getDefaultSprite(), 300, 180));
+        }
     }
 
     public void setEnemies(Mob enemy) {

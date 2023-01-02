@@ -35,7 +35,6 @@ public class Game{
             this.combatController = new CombatController(p,combatPanel, worldController.getCollisionMob());
             combatController.runController();
             this.combatPanel = new CombatPanel();
-            screen.getWindow().getContentPane().removeAll();
         }
     }
 }
