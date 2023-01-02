@@ -7,10 +7,10 @@ import java.awt.image.BufferedImage;
 
 public interface IMapBuilder {
     public void reset();
-    public void buildNpc(Npc[][] npc);
-    public void buildMob(Mob[][] mobs);
-    public void buildWorldTiles(BufferedImage[][] worldTiles);
-    public void buildEndMap(BufferedImage[][] endMap);
+    public void buildMapNpc(int x,int y);
+    public void buildMapEnemies(int x,int y);
+    public void buildWorldTiles(int x,int y);
+    public void buildEndMap(int x, int y);
     public Map build();
 
 }
