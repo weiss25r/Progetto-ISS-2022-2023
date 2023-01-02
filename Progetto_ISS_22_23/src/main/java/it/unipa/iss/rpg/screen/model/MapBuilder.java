@@ -4,6 +4,7 @@ import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Npc;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MapBuilder implements IMapBuilder {
@@ -13,12 +14,11 @@ public class MapBuilder implements IMapBuilder {
     private BufferedImage[][] worldTiles;
     private BufferedImage[][] endMap;
     private int worldX, worldY;
-    Scanner in = new Scanner(System.in);
+
 
     public MapBuilder() {
 
     }
-
     @Override
     public void reset() {
         this.mapEnemies = null;
@@ -27,14 +27,12 @@ public class MapBuilder implements IMapBuilder {
         this.mapNpc = null;
     }
 
-
     public void setMapNpc(Npc[][] npc) {
         this.mapNpc = npc;
     }
     public void setMapMob(Mob[][] mobs) {
         this.mapEnemies = mobs;
     }
-
     public void setWorldTiles(BufferedImage[][] worldTiles) {
         this.worldTiles = worldTiles;
     }
@@ -95,5 +93,7 @@ public class MapBuilder implements IMapBuilder {
         this.mapNpc[x][y] = npc;
     }
 
-
+    public void addWorldTile(BufferedImage tile,int x,int y){
+        this.worldTiles[x][y] = tile;
+    }
 }
