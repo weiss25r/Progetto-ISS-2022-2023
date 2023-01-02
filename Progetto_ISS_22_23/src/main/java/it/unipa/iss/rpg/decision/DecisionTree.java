@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DecisionTree extends Decision{
-    private List<Decision> decisions;
+    private final List<Decision> decisions;
     private boolean direction;
     public DecisionTree() {
         this.decisions = new ArrayList<>();

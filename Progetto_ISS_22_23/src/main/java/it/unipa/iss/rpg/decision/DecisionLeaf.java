@@ -3,7 +3,7 @@ package it.unipa.iss.rpg.decision;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DecisionLeaf extends Decision{
+public class    DecisionLeaf extends Decision{
 
     private final int leafNumber;
 
@@ -24,9 +24,5 @@ public class DecisionLeaf extends Decision{
     @Override
     public DecisionEntry traverse() {
         return new DecisionEntry(this.leafNumber, this.getDecisionValue());
-    }
-
-    public int getLeafNumber() {
-        return this.leafNumber;
     }
 }
