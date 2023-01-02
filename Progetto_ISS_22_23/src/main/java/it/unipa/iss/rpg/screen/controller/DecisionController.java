@@ -9,10 +9,9 @@ import java.util.List;
 
 public class DecisionController {
     private DecisionTree decisionTree;
-    private int treeNumber;
+    private Decision lastDecision;
 
     public DecisionController( ) {
-        treeNumber = -1;
         this.decisionTree = new DecisionTree();
 
         this.decisionTree.add(new DecisionTree());
@@ -23,9 +22,19 @@ public class DecisionController {
 
         this.decisionTree.get(1).add(new DecisionLeaf(3));
         this.decisionTree.get(1).add(new DecisionLeaf(4));
+
+        lastDecision = decisionTree;
     }
 
     public void updateDecisionTree(boolean value) {
-        this.decisionTree.get(treeNumber).makeDecision(true);
+        lastDecision.makeDecision(value);
+
+        if(lastDecision instanceof DecisionTree) {
+            lastDecision = value ? ((DecisionTree) lastDecision).get(0) : ((DecisionTree) lastDecision).get(1);
+        }
+    }
+
+    public DecisionTree getDecisionTree() {
+        return this.decisionTree;
     }
 }

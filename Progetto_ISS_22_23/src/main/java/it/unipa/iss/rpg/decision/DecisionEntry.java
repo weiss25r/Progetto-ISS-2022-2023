@@ -3,7 +3,6 @@ package it.unipa.iss.rpg.decision;
 public class DecisionEntry {
     private final int leafNumber;
     private final boolean decisionValue;
-
     public DecisionEntry(int leafNumber, boolean decisionValue) {
         this.leafNumber = leafNumber;
         this.decisionValue = decisionValue;
@@ -15,5 +14,13 @@ public class DecisionEntry {
 
     public boolean getDecisionValue() {
         return decisionValue;
+    }
+
+    @Override
+    public String toString() {
+        return "DecisionEntry{" +
+                "leafNumber=" + leafNumber +
+                ", decisionValue=" + decisionValue +
+                '}';
     }
 }

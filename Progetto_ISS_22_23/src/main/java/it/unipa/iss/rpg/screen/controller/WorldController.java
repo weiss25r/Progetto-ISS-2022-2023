@@ -17,14 +17,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class WorldController extends GameController implements IPlayerListener {
-    private MovementHandler movementHandler;
-    private MobListener mobListener;
-    private BufferedImage[][] worldTiles;
-    private Mob[][] worldEnemies;
-    private Npc[][] worldNPcs;
-    private NPCListener npcListener;
-    private DecisionController decisionController;
-
+    private final MovementHandler movementHandler;
+    private final MobListener mobListener;
+    private final BufferedImage[][] worldTiles;
+    private final Mob[][] worldEnemies;
+    private final Npc[][] worldNPcs;
+    private final DecisionController decisionController;
     private Mob lastCollisionMob;
 
     public WorldController(Player player, WorldPanel gamePanel) {
@@ -149,8 +147,8 @@ public class WorldController extends GameController implements IPlayerListener {
         } else if (worldNPcs[row][col] != null) {
 
             //TODO: deletable
-            this.npcListener = new NPCListener(worldNPcs[row][col]);
-            this.npcListener.update(this);
+            NPCListener npcListener = new NPCListener(worldNPcs[row][col]);
+            npcListener.update(this);
             this.worldNPcs[row][col] = null;
         }
 

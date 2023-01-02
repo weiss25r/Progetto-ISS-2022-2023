@@ -7,7 +7,6 @@ public abstract class Decision {
     public abstract void add(Decision decision);
     public abstract void remove(Decision decision);
     public abstract DecisionEntry traverse();
-
     public boolean getDecisionValue(){
         return this.decisionMade;
     }

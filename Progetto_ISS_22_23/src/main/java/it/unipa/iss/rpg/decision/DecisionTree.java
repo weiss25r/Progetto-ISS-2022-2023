@@ -8,7 +8,6 @@ import java.util.List;
 public class DecisionTree extends Decision{
     private List<Decision> decisions;
     private boolean direction;
-
     public DecisionTree() {
         this.decisions = new ArrayList<>();
     }
@@ -24,7 +23,6 @@ public class DecisionTree extends Decision{
     }
 
     public Decision get(int index){
-
         if(index < 0)
             return this;
         else

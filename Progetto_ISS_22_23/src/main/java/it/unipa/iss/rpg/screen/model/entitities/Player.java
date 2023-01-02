@@ -10,7 +10,6 @@ import java.io.File;
 import java.util.*;
 
 public class Player implements Entity {
-
     private Statistics stats;
     private PlayerSprite playerSprite;
     private final int movementSpeed;
