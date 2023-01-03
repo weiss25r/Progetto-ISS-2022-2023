@@ -11,8 +11,10 @@ public class CombatPanel extends GamePanel {
     private JLabel lblPlayerStamina;
     private JLabel lblEnemyHp;
     private JPanel stats;
-    private JButton btnFight,btnAbility,btnInv;
-    private JPanel btns;
+    private JButton btnAttack,btnAbility,btnInv;
+    private JPanel interactive;
+    private JPanel fight;
+    private JPanel ability;
 
     public CombatPanel(){
         super();
@@ -26,18 +28,13 @@ public class CombatPanel extends GamePanel {
         this.setDoubleBuffered(true);
         //panel.addKeyListener(handler);
 
-        btns = new JPanel();
-        btns.setLayout(new GridLayout(1,3));
-        this.btnFight = new JButton("Attack");
-        this.btnFight.setFont(new Font("Arial", Font.PLAIN, 20));
-        this.btnAbility = new JButton("Ability");
-        this.btnAbility.setFont(new Font("Arial", Font.PLAIN, 20));
-        this.btnInv = new JButton("Inventory");
-        this.btnInv.setFont(new Font("Arial", Font.PLAIN, 20));
-        btns.add(btnFight);
-        btns.add(btnAbility);
-        btns.add(btnInv);
-        this.add(btns,BorderLayout.SOUTH);
+        interactive = new JPanel();
+
+        setFight();
+
+        setAbility();
+
+        this.add(interactive,BorderLayout.SOUTH);
 
         stats = new JPanel();
         stats.setBackground(Color.black);
@@ -59,37 +56,104 @@ public class CombatPanel extends GamePanel {
         this.setFocusable(true);
     }
 
-    public JButton getBtnFight() {
-        return btnFight;
+    public void setFight(){
+        this.btnAttack = new JButton("Attack");
+        this.btnAttack.setFont(new Font("Arial", Font.PLAIN, 20));
+        this.btnAbility = new JButton("Ability");
+        this.btnAbility.setFont(new Font("Arial", Font.PLAIN, 20));
+        this.btnInv = new JButton("Inventory");
+        this.btnInv.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        fight = new JPanel();
+        fight.setLayout(new GridLayout(1,3));
+        fight.add(btnAttack);
+        fight.add(btnAbility);
+        fight.add(btnInv);
+
+        interactive.add(fight);
+
+        btnAbility.addActionListener(e -> {ability.setVisible(true);
+                                           fight.setVisible(false);});
     }
 
+    public void setAbility(){
+        JButton btn1,btn2,btn3,btn4;
+
+        ability = new JPanel(new GridLayout(1,4));
+        ability.add(btn1 = new JButton("Healing"));
+        ability.add(btn2 = new JButton("Study Power"));
+        ability.add(btn3 = new JButton("Cursed Attack"));
+        ability.add(btn4 = new JButton("Sinner Attack"));
+
+        btn1.setFont(new Font("Arial", Font.PLAIN, 20));
+        btn2.setFont(new Font("Arial", Font.PLAIN, 20));
+        btn3.setFont(new Font("Arial", Font.PLAIN, 20));
+        btn4.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        btn1.addActionListener(e -> effect1());
+        btn2.addActionListener(e -> effect2());
+        btn3.addActionListener(e -> effect3());
+        btn4.addActionListener(e -> effect4());
+
+        ability.setVisible(false);
+
+        interactive.add(ability);
+    }
+
+    @Override
     public int scaleTile() {
         return tileSize * scale;
     }
 
+    public void effect1(){
+        ability.setVisible(false);
+        fight.setVisible(true);
+    }
+
+    public void effect2(){
+        ability.setVisible(false);
+        fight.setVisible(true);
+    }
+
+    public void effect3(){
+        ability.setVisible(false);
+        fight.setVisible(true);
+    }
+
+    public void effect4(){
+        ability.setVisible(false);
+        fight.setVisible(true);
+    }
+
     public void setLblPlayerHp(String playerHp){
         this.lblPlayerHp.setText(playerHp);
-    }
-    public void setLblEnemyHp(String EnemyHp){
-        this.lblEnemyHp.setText(EnemyHp);
-    }
-    public void setLblPlayerStamina(String playerStamina){
-          this.lblPlayerStamina.setText(playerStamina);
-     }
-
-    public void setEnemyImage(ComponentImage mob) {
-        this.add(mob, BorderLayout.CENTER);
     }
 
     public JLabel getLblPlayerHp() {
         return lblPlayerHp;
     }
 
+    public void setLblPlayerStamina(String playerStamina){
+        this.lblPlayerStamina.setText(playerStamina);
+    }
+
     public JLabel getLblPlayerStamina() {
         return lblPlayerStamina;
     }
 
+    public void setLblEnemyHp(String EnemyHp){
+        this.lblEnemyHp.setText(EnemyHp);
+    }
+
     public JLabel getLblEnemyHp() {
         return lblEnemyHp;
+    }
+
+    public void setEnemyImage(ComponentImage mob) {
+        this.add(mob, BorderLayout.CENTER);
+    }
+
+    public JButton getBtnFight() {
+        return btnAttack;
     }
 }

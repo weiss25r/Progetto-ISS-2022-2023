@@ -6,6 +6,7 @@ import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
 import it.unipa.iss.rpg.screen.model.collision.NPCListener;
 import it.unipa.iss.rpg.screen.model.entitities.*;
+import it.unipa.iss.rpg.screen.view.AbilityPanel;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 import javax.imageio.ImageIO;
@@ -170,6 +171,10 @@ public class WorldController extends GameController implements IPlayerListener {
         long currentTime;
         long timer = 0;
         int drawCount = 0;
+
+        //TODO: TEST ABILITY
+        //AbilityPanel abilityPanel = new AbilityPanel();
+        //abilityPanel.showAbility();
 
         while(isActive()) {
             currentTime = System.nanoTime();
