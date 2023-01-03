@@ -169,7 +169,7 @@ public class LevelController extends GameController implements IPlayerListener {
         } else if (map.getNpc(row, col) != null) {
 
             //TODO: deletable
-            NPCListener npcListener = new NPCListener(map.getNpc(x, y));
+            NPCListener npcListener = new NPCListener(map.getNpc(row, col));
             npcListener.update(this);
             map.removeNpc(row, col);
         }
