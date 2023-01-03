@@ -19,6 +19,7 @@ public class MapBuilder implements IMapBuilder {
     public MapBuilder() {
 
     }
+
     @Override
     public void reset() {
         this.mapEnemies = null;
@@ -48,7 +49,7 @@ public class MapBuilder implements IMapBuilder {
         if (x > 0 && y > 0) {
             this.worldX = x;
             this.worldY = y;
-            this.worldTiles = new BufferedImage[x][y];
+            this.worldTiles = new BufferedImage[worldX][worldY];
         } else {
             System.out.print("Wrong Dimension");
         }
@@ -57,8 +58,8 @@ public class MapBuilder implements IMapBuilder {
     @Override
     public void buildEndMap(int x, int y) {
         if (x > 0 && y > 0) {
-            if (x < this.worldX && y < this.worldY) {
-                this.endMap = new BufferedImage[x][y];
+            if (x <= this.worldX && y <= this.worldY) {
+                this.endMap = new BufferedImage[worldX][worldY];
             }
         } else {
             System.out.print("Wrong Dimension");
@@ -67,8 +68,8 @@ public class MapBuilder implements IMapBuilder {
     @Override
     public void buildMapEnemies(int x,int y){
         if (x > 0 && y > 0) {
-            if (x < this.worldX && y < this.worldY) {
-                this.mapEnemies = new Mob[x][y];
+            if (x <= this.worldX && y <= this.worldY) {
+                this.mapEnemies = new Mob[worldX][worldY];
             }
         } else {
             System.out.print("Wrong Dimension");
@@ -77,8 +78,8 @@ public class MapBuilder implements IMapBuilder {
     @Override
     public void buildMapNpc(int x,int y){
         if (x > 0 && y > 0) {
-            if (x < this.worldX && y < this.worldY) {
-                this.mapNpc = new Npc[x][y];
+            if (x <= this.worldX && y <= this.worldY) {
+                this.mapNpc = new Npc[worldX][worldY];
             }
         } else {
             System.out.print("Wrong Dimension");

@@ -14,36 +14,36 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class WorldController extends GameController implements IPlayerListener {
+public class LevelController extends GameController implements IPlayerListener {
     private final MovementHandler movementHandler;
     private final MobListener mobListener;
-    private final BufferedImage[][] worldTiles;
-    private final Mob[][] worldEnemies;
-    private final Npc[][] worldNPcs;
+    private Level level;
     private final DecisionController decisionController;
     private Mob lastCollisionMob;
 
-    public WorldController(Player player, WorldPanel gamePanel) {
+    public LevelController(Player player, WorldPanel gamePanel) {
         super(player, gamePanel);
         movementHandler = new MovementHandler();
         this.getGamePanel().addKeyListener(movementHandler);
         this.decisionController = new DecisionController();
 
-
         //TODO: REFACTOR
-        //gamePanel.addController(this);
+        gamePanel.addController(this);
         this.mobListener = new MobListener(null);
-        this.worldTiles = new BufferedImage[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
-        this.worldEnemies = new Mob[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
-        this.worldNPcs = new Npc[getGamePanel().getMaxRow()][getGamePanel().getMaxCol()];
 
-        loadWorldTiles();
+        loadMap();
+
     }
+    public boolean loadMap() {
+        MapBuilder builder = new MapBuilder();
+        builder.buildWorldTiles(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        builder.buildMapNpc(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        builder.buildMapEnemies(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
 
-    public boolean loadWorldTiles() {
         File map = new File("src/res/world/level_start/map.txt");
         File enemies = new File("src/res/world/level_start/enemies/enemies.txt");
 
@@ -53,7 +53,7 @@ public class WorldController extends GameController implements IPlayerListener {
 
             for (int i = 0; i < getGamePanel().getMaxRow(); i++) {
                 for (int j = 0; j < getGamePanel().getMaxCol(); j++) {
-                    this.worldTiles[i][j] = ImageIO.read(new File("src/res/world/level_start/world/" + s.nextInt() + ".png"));
+                    builder.addWorldTile(ImageIO.read(new File("src/res/world/level_start/world/" + s.nextInt() + ".png")), i, j);
                     char t = (char)stream.read();
 
                     if(Character.isDigit(t)) {
@@ -63,7 +63,7 @@ public class WorldController extends GameController implements IPlayerListener {
                         //TODO: CARICAMENTO MOB DA DATABASE
                         Mob mob = new Mob(new Statistics(80, 80, 80, 80), mobSprite);
 
-                        worldEnemies[i][j] = mob;
+                        builder.addMob(mob, i, j);
                     }
                 }
             }
@@ -74,7 +74,13 @@ public class WorldController extends GameController implements IPlayerListener {
             npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/npc/bob_down.png"))));
 
             Npc npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
-            this.worldNPcs[2][2] = npc;
+            builder.addNpc(npc, 2, 2);
+
+            ArrayList<Map> maps = new ArrayList<>();
+            maps.add(builder.build());
+
+            //TODO: caricare seconda mappa
+            this.level = new Level(maps);
 
             s.close();
             stream.close();
@@ -87,32 +93,41 @@ public class WorldController extends GameController implements IPlayerListener {
 
     public void drawPlayer(Graphics2D g) {
         g.drawImage(getPlayer().getDirectionImage(),
-                    getPlayer().getPlayerSprite().getWorldX(),
-                    getPlayer().getPlayerSprite().getWorldY(),
-                    getGamePanel().scaleTile(),
-                    getGamePanel().scaleTile(),
-                    null
+                getPlayer().getPlayerSprite().getWorldX(),
+                getPlayer().getPlayerSprite().getWorldY(),
+                getGamePanel().scaleTile(),
+                getGamePanel().scaleTile(),
+                null
         );
     }
 
     public void drawWorld(Graphics2D g){
+        Map map = level.getCurrentMap();
+
         //sistema di coordinate di swing: basso +y, destra +x
         int k = 0;
 
         for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
             for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
-                g.drawImage(this.worldTiles[j][i], i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
+                BufferedImage image = map.getTile(j, i);
+
+                g.drawImage(image, i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
             }
         }
     }
 
     public void drawEnemies(Graphics2D g) {
         int k = 0;
+        Map map = level.getCurrentMap();
+
 
         for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
             for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
-                if(this.worldEnemies[j][i] != null)
-                    g.drawImage(this.worldEnemies[j][i].getMobSprite().getDefaultSprite(), i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
+                Mob mob = map.getEnemy(j, i);
+
+
+                if(mob != null)
+                    g.drawImage(mob.getMobSprite().getDefaultSprite(), i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
             }
         }
     }
@@ -120,11 +135,15 @@ public class WorldController extends GameController implements IPlayerListener {
     //TODO: assente nei class diagram
     public void drawCharacters(Graphics2D g) {
         int k = 0;
+        Map map = level.getCurrentMap();
+
 
         for (int i = 0; i < getGamePanel().getMaxCol(); i++) {
             for (int j = 0; j < getGamePanel().getMaxRow(); j++) {
-                if(this.worldNPcs[j][i] != null)
-                    g.drawImage(this.worldNPcs[j][i].getNpcSprite().getDefaultSprite(), i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
+                Npc npc = map.getNpc(j, i);
+
+                if(npc != null)
+                    g.drawImage(npc.getNpcSprite().getDefaultSprite(), i * getGamePanel().scaleTile(), j * getGamePanel().scaleTile(), getGamePanel().scaleTile(), getGamePanel().scaleTile(), null);
             }
         }
     }
@@ -132,6 +151,8 @@ public class WorldController extends GameController implements IPlayerListener {
     @Override
     public void update(EventType e) {
         Player player = this.getPlayer();
+        Map map = level.getCurrentMap();
+
         player.move(e);
 
         int x = player.getPlayerSprite().getWorldX();
@@ -140,17 +161,17 @@ public class WorldController extends GameController implements IPlayerListener {
         int col = x/96;
         int row = y/96 ;
 
-        if(worldEnemies[row][col] != null) {
+        if(map.getEnemy(row, col) != null) {
             this.mobListener.update(this);
-            this.lastCollisionMob = worldEnemies[row][col];
+            this.lastCollisionMob = map.getEnemy(row, col);
 
-            this.worldEnemies[row][col] = null;
-        } else if (worldNPcs[row][col] != null) {
+            map.removeMob(row, col);
+        } else if (map.getNpc(row, col) != null) {
 
             //TODO: deletable
-            NPCListener npcListener = new NPCListener(worldNPcs[row][col]);
+            NPCListener npcListener = new NPCListener(map.getNpc(x, y));
             npcListener.update(this);
-            this.worldNPcs[row][col] = null;
+            map.removeNpc(row, col);
         }
 
         this.getGamePanel().repaint();

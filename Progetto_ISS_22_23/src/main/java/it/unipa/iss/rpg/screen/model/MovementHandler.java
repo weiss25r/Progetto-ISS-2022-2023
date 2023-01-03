@@ -1,17 +1,18 @@
 package it.unipa.iss.rpg.screen.model;
 
+import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.screen.controller.WorldController;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class MovementHandler implements KeyListener {
-    private WorldController worldController;
+    private GameController worldController;
 
     public MovementHandler() {
     }
 
-    public void attach(WorldController controller) {
+    public void attach(GameController controller) {
         this.worldController = controller;
     }
 

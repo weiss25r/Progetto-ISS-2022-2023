@@ -1,12 +1,13 @@
 package it.unipa.iss.rpg.screen.view;
 
+import it.unipa.iss.rpg.screen.controller.LevelController;
 import it.unipa.iss.rpg.screen.controller.WorldController;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class WorldPanel extends GamePanel {
-    private WorldController controller;
+    private LevelController controller;
 
     public WorldPanel(){
         super();
@@ -42,7 +43,7 @@ public class WorldPanel extends GamePanel {
             g2.dispose();
         }
     }
-    public void addController(WorldController controller) {
+    public void addController(LevelController controller) {
         this.controller = controller;
     }
 }

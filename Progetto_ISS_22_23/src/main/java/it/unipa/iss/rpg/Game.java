@@ -1,6 +1,7 @@
 package it.unipa.iss.rpg;
 
 import it.unipa.iss.rpg.combat.controller.CombatController;
+import it.unipa.iss.rpg.screen.controller.LevelController;
 import it.unipa.iss.rpg.screen.controller.WorldController;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.combat.view.CombatPanel;
@@ -8,7 +9,7 @@ import it.unipa.iss.rpg.screen.view.Screen;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
 public class Game{
-    private WorldController worldController;
+    private LevelController worldController;
     private CombatController combatController;
     private Screen screen;
 
@@ -23,7 +24,7 @@ public class Game{
         this.combatPanel = new CombatPanel();
 
         screen = new Screen();
-        this.worldController = new WorldController(p, worldPanel);
+        this.worldController = new LevelController(p, worldPanel);
     }
 
     public void startGame() {
