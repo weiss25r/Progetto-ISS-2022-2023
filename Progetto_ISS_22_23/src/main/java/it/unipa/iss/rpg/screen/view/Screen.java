@@ -6,22 +6,14 @@ public class Screen {
     private JFrame window;
     private GamePanel gamePanel;
 
-    public Screen() {}
-    public Screen(GamePanel gamePanel) {
-        setGamePanel(gamePanel);
-    }
-
-    public GamePanel getGamePanel() {
-        return gamePanel;
-    }
+    public Screen() { }
 
     public void setGamePanel(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
         window = new JFrame();
+
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setTitle("RPG Game");
         window.getContentPane().add(gamePanel);
-        window.add(gamePanel);
+        window.setTitle("RPG Game");
         window.pack();
 
         window.setLocationRelativeTo(null);
