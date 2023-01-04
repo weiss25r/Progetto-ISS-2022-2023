@@ -40,13 +40,13 @@ public class CombatPanel extends GamePanel {
         stats = new JPanel();
         stats.setBackground(Color.black);
         stats.setLayout(new GridLayout(2,5));
-        this.lblPlayerHp = new JLabel("HP: 100");
+        this.lblPlayerHp = new JLabel("Player HP: 100");
         this.lblPlayerHp.setForeground(Color.white);
         this.lblPlayerHp.setFont(new Font("Arial", Font.PLAIN, 20));
         this.lblPlayerStamina = new JLabel("SP: 50");
         this.lblPlayerStamina.setForeground(Color.white);
         this.lblPlayerStamina.setFont(new Font("Arial", Font.PLAIN, 20));
-        this.lblEnemyHp = new JLabel("HP: 100");
+        this.lblEnemyHp = new JLabel("Enemy HP: 100");
         this.lblEnemyHp.setForeground(Color.white);
         this.lblEnemyHp.setFont(new Font("Arial", Font.PLAIN, 20));
         stats.add(lblPlayerHp);
