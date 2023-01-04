@@ -42,10 +42,25 @@ public class CombatController extends GameController {
             fight.inputAction(1);
             this.update(EventType.PLAYER_ATK);
         });
-        this.view.getBtn1().addActionListener(event-> fight.setSkill(AbilityBox.HEALING));
-        this.view.getBtn2().addActionListener(event ->fight.setSkill(AbilityBox.STUDY_POWER));
-        this.view.getBtn3().addActionListener(event ->fight.setSkill(AbilityBox.CORRUPTIVE_ATK));
-        this.view.getBtn4().addActionListener(event -> fight.setSkill(AbilityBox.SINNER_ATK));
+        this.view.getBtn1().addActionListener(event-> {
+            fight.setSkill(AbilityBox.HEALING);
+            fight.inputAction(2);
+            this.update(EventType.PLAYER_ABILITY);
+        });
+        this.view.getBtn2().addActionListener(event-> {
+            fight.setSkill(AbilityBox.STUDY_POWER);
+            fight.inputAction(2);
+            this.update(EventType.PLAYER_ABILITY);
+        this.view.getBtn3().addActionListener(event-> {
+            fight.setSkill(AbilityBox.CORRUPTIVE_ATK);
+            fight.inputAction(2);
+            this.update(EventType.PLAYER_ABILITY);
+        });
+        this.view.getBtn4().addActionListener(event-> {
+            fight.setSkill(AbilityBox.SINNER_ATK);
+            fight.inputAction(2);
+            this.update(EventType.PLAYER_ABILITY);
+        });
 
         if(this.enemy.getMobSprite() != null) {
             view.setEnemyImage(new ComponentImage(this.enemy.getMobSprite().getDefaultSprite(), 300, 180));
@@ -60,12 +75,13 @@ public class CombatController extends GameController {
     public void update(EventType e){
         switch(e){
             case PLAYER_ATK ->{
-                view.setLblPlayerHp("HP: " + fight.getHpHeroRemaining());
-                view.setLblEnemyHp("HP: " + fight.getHpEnemyRemaining());
+                view.setLblPlayerHp("Player HP: " + fight.getHpHeroRemaining());
+                view.setLblEnemyHp("Enemy HP: " + fight.getHpEnemyRemaining());
             }
             case PLAYER_ABILITY -> {
-
-                view.setLblPlayerStamina(Integer.toString(fight.getStaminaHeroRemaining()));
+                view.setLblPlayerHp("Player HP: " + fight.getHpHeroRemaining());
+                view.setLblEnemyHp("Enemy HP: " + fight.getHpEnemyRemaining());
+                view.setLblPlayerStamina("Player Stamina "+ fight.getStaminaHeroRemaining());
             }
         }
 
