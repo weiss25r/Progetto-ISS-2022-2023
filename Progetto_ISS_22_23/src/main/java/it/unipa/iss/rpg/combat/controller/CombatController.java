@@ -51,6 +51,7 @@ public class CombatController extends GameController {
             fight.setSkill(AbilityBox.STUDY_POWER);
             fight.inputAction(2);
             this.update(EventType.PLAYER_ABILITY);
+        });
         this.view.getBtn3().addActionListener(event-> {
             fight.setSkill(AbilityBox.CORRUPTIVE_ATK);
             fight.inputAction(2);
