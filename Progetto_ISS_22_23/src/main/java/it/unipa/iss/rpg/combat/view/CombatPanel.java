@@ -15,6 +15,7 @@ public class CombatPanel extends GamePanel {
     private JPanel interactive;
     private JPanel fight;
     private JPanel ability;
+    private JButton btn1,btn2,btn3,btn4;
 
     public CombatPanel(){
         super();
@@ -77,23 +78,23 @@ public class CombatPanel extends GamePanel {
     }
 
     public void setAbility(){
-        JButton btn1,btn2,btn3,btn4;
+
 
         ability = new JPanel(new GridLayout(1,4));
-        ability.add(btn1 = new JButton("Healing"));
-        ability.add(btn2 = new JButton("Study Power"));
-        ability.add(btn3 = new JButton("Cursed Attack"));
-        ability.add(btn4 = new JButton("Sinner Attack"));
+        ability.add(this.btn1 = new JButton("Healing"));
+        ability.add(this.btn2 = new JButton("Study Power"));
+        ability.add(this.btn3 = new JButton("Cursed Attack"));
+        ability.add(this.btn4 = new JButton("Sinner Attack"));
 
-        btn1.setFont(new Font("Arial", Font.PLAIN, 20));
-        btn2.setFont(new Font("Arial", Font.PLAIN, 20));
-        btn3.setFont(new Font("Arial", Font.PLAIN, 20));
-        btn4.setFont(new Font("Arial", Font.PLAIN, 20));
+        this.btn1.setFont(new Font("Arial", Font.PLAIN, 20));
+        this.btn2.setFont(new Font("Arial", Font.PLAIN, 20));
+        this.btn3.setFont(new Font("Arial", Font.PLAIN, 20));
+        this.btn4.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        btn1.addActionListener(e -> effect1());
-        btn2.addActionListener(e -> effect2());
-        btn3.addActionListener(e -> effect3());
-        btn4.addActionListener(e -> effect4());
+        this.btn1.addActionListener(e -> effect1());
+        this.btn2.addActionListener(e -> effect2());
+        this.btn3.addActionListener(e -> effect3());
+        this.btn4.addActionListener(e -> effect4());
 
         ability.setVisible(false);
 
@@ -155,5 +156,19 @@ public class CombatPanel extends GamePanel {
 
     public JButton getBtnFight() {
         return btnAttack;
+    }
+
+    public JButton getBtn1(){ return btn1;}
+
+    public JButton getBtn2() {
+        return btn2;
+    }
+
+    public JButton getBtn3() {
+        return btn3;
+    }
+
+    public JButton getBtn4() {
+        return btn4;
     }
 }
