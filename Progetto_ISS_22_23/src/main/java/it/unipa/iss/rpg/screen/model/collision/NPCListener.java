@@ -1,7 +1,9 @@
 package it.unipa.iss.rpg.screen.model.collision;
 
 import it.unipa.iss.rpg.GameController;
+import it.unipa.iss.rpg.screen.controller.LevelController;
 import it.unipa.iss.rpg.screen.controller.WorldController;
+import it.unipa.iss.rpg.screen.model.Level;
 import it.unipa.iss.rpg.screen.model.entitities.Npc;
 import it.unipa.iss.rpg.screen.view.DialogPanel;
 
@@ -14,7 +16,7 @@ public class NPCListener implements CollisionListener{
 
     @Override
     public void update(GameController gameController) {
-        WorldController worldController = (WorldController)gameController;
+        LevelController worldController = (LevelController) gameController;
         DialogPanel dialogPanel = new DialogPanel(npc.getNpcSprite().getDialogIconPath(), npc.getDialog(), npc.getChoose_one(), npc.getChoose_two());
         dialogPanel.showDialog();
 
