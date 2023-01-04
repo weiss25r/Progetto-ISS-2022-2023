@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: characterstats
+-- Host: localhost    Database: entitystats
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -26,7 +26,6 @@ CREATE TABLE `enemy` (
   `enemy_id` char(3) NOT NULL,
   `enemy_name` varchar(10) NOT NULL,
   `enemy_idSprite` char(3) NOT NULL,
-  `enemy_sprite` varchar(30) NOT NULL,
   `enemy_hp` int NOT NULL,
   `enemy_defense` int NOT NULL,
   `enemy_atk` int NOT NULL,
@@ -46,6 +45,7 @@ CREATE TABLE `enemy` (
 
 LOCK TABLES `enemy` WRITE;
 /*!40000 ALTER TABLE `enemy` DISABLE KEYS */;
+INSERT INTO `enemy` VALUES ('001','spider','002',80,50,50,100),('002','wolf','003',85,60,50,100);
 /*!40000 ALTER TABLE `enemy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,12 +58,10 @@ DROP TABLE IF EXISTS `entitysprite`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `entitysprite` (
   `sprite_id` char(3) NOT NULL,
-  `worldX` int NOT NULL,
-  `worldY` int NOT NULL,
-  `sprite1` varchar(30) NOT NULL,
-  `sprite2` varchar(30) NOT NULL,
-  `sprite3` varchar(30) NOT NULL,
-  `sprite4` varchar(30) NOT NULL,
+  `sprite1` varchar(60) NOT NULL,
+  `sprite2` varchar(60) DEFAULT NULL,
+  `sprite3` varchar(60) DEFAULT NULL,
+  `sprite4` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`sprite_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -74,6 +72,7 @@ CREATE TABLE `entitysprite` (
 
 LOCK TABLES `entitysprite` WRITE;
 /*!40000 ALTER TABLE `entitysprite` DISABLE KEYS */;
+INSERT INTO `entitysprite` VALUES ('001','src/res/character/move/down/char_down_00.png','src/res/character/move/up/char_up_00.png','src/res/character/move/left/char_left_00.png','src/res/character/move/right/char_right_00.png'),('002','src/res/world/level_start/enemies/0.png',NULL,NULL,NULL),('003','src/res/world/level_start/enemies/1.png',NULL,NULL,NULL),('004','src/res/world/level_start/enemies/0.png',NULL,NULL,NULL),('005','src/res/world/level_start/enemies/1.png',NULL,NULL,NULL),('006','src/res/npc/bob_down.png',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `entitysprite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +87,6 @@ CREATE TABLE `hero` (
   `hero_id` char(3) NOT NULL,
   `hero_name` varchar(10) NOT NULL,
   `hero_idSprite` char(3) NOT NULL,
-  `hero_sprite` varchar(30) NOT NULL,
   `hero_hp` int NOT NULL,
   `hero_defense` int NOT NULL,
   `hero_atk` int NOT NULL,
@@ -108,6 +106,7 @@ CREATE TABLE `hero` (
 
 LOCK TABLES `hero` WRITE;
 /*!40000 ALTER TABLE `hero` DISABLE KEYS */;
+INSERT INTO `hero` VALUES ('001','default','001',100,60,40,100);
 /*!40000 ALTER TABLE `hero` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,17 +120,12 @@ DROP TABLE IF EXISTS `npc`;
 CREATE TABLE `npc` (
   `npc_id` char(3) NOT NULL,
   `npc_idDialogue` char(3) NOT NULL,
-  `npc_idSprite` char(3) NOT NULL,
-  `npc_sprite` varchar(30) NOT NULL,
-  `npc_dialogue` varchar(100) DEFAULT NULL,
   `option1` varchar(10) NOT NULL,
   `option2` varchar(10) NOT NULL,
+  `npc_sprite` varchar(60) NOT NULL,
   PRIMARY KEY (`npc_id`),
-  UNIQUE KEY `npc_idSprite` (`npc_idSprite`),
-  UNIQUE KEY `npc_dialogue` (`npc_dialogue`),
   KEY `npc_idDialogue` (`npc_idDialogue`),
-  CONSTRAINT `npc_ibfk_1` FOREIGN KEY (`npc_idDialogue`) REFERENCES `plot` (`id_dialogue`),
-  CONSTRAINT `npc_ibfk_2` FOREIGN KEY (`npc_idSprite`) REFERENCES `entitysprite` (`sprite_id`)
+  CONSTRAINT `npc_ibfk_1` FOREIGN KEY (`npc_idDialogue`) REFERENCES `plot` (`id_dialogue`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -141,6 +135,7 @@ CREATE TABLE `npc` (
 
 LOCK TABLES `npc` WRITE;
 /*!40000 ALTER TABLE `npc` DISABLE KEYS */;
+INSERT INTO `npc` VALUES ('001','001','Io','Altri','src/res/npc/bob.png');
 /*!40000 ALTER TABLE `npc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +160,58 @@ CREATE TABLE `plot` (
 
 LOCK TABLES `plot` WRITE;
 /*!40000 ALTER TABLE `plot` DISABLE KEYS */;
+INSERT INTO `plot` VALUES ('001','src/res/npc/bob.png','Chi si occuperà di queste creature?');
 /*!40000 ALTER TABLE `plot` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `positions`
+--
+
+DROP TABLE IF EXISTS `positions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `positions` (
+  `position_x` int NOT NULL,
+  `position_y` int NOT NULL,
+  UNIQUE KEY `position_x` (`position_x`,`position_y`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `positions`
+--
+
+LOCK TABLES `positions` WRITE;
+/*!40000 ALTER TABLE `positions` DISABLE KEYS */;
+INSERT INTO `positions` VALUES (2,2),(3,0),(3,2),(3,4),(3,6),(100,120);
+/*!40000 ALTER TABLE `positions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `spriteposition`
+--
+
+DROP TABLE IF EXISTS `spriteposition`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `spriteposition` (
+  `sprite_id` char(3) NOT NULL,
+  `position_x` int NOT NULL,
+  `position_y` int NOT NULL,
+  KEY `sprite_id` (`sprite_id`),
+  CONSTRAINT `spriteposition_ibfk_1` FOREIGN KEY (`sprite_id`) REFERENCES `entitysprite` (`sprite_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `spriteposition`
+--
+
+LOCK TABLES `spriteposition` WRITE;
+/*!40000 ALTER TABLE `spriteposition` DISABLE KEYS */;
+INSERT INTO `spriteposition` VALUES ('001',100,120),('002',3,0),('003',3,2),('004',3,4),('005',3,6),('006',2,2);
+/*!40000 ALTER TABLE `spriteposition` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -191,6 +237,7 @@ CREATE TABLE `stats` (
 
 LOCK TABLES `stats` WRITE;
 /*!40000 ALTER TABLE `stats` DISABLE KEYS */;
+INSERT INTO `stats` VALUES ('001',100,60,40,100),('002',80,50,50,100),('003',85,60,50,100);
 /*!40000 ALTER TABLE `stats` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -203,4 +250,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-03 12:55:32
+-- Dump completed on 2023-01-04 12:39:28
