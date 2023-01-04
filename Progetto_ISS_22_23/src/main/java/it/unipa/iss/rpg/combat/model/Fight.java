@@ -81,12 +81,6 @@ public class Fight implements CombatHandler{
         return this.enemy.getHp();
     }
 
-    public int getStaminaHeroRemaining(){ return  this.hero.getStamina();}
-
-    public void setSkill(AbilityBox skill) {
-        this.skill = skill;
-    }
-
     /**Method checks game over conditions
      * @return boolean game over value*/
     public boolean gameOverCheck(){
