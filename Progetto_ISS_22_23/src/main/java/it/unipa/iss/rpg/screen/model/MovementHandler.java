@@ -1,7 +1,6 @@
 package it.unipa.iss.rpg.screen.model;
 
 import it.unipa.iss.rpg.GameController;
-import it.unipa.iss.rpg.screen.controller.WorldController;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

@@ -1,5 +1,5 @@
 
-/*
+
 package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.GameController;
@@ -211,5 +211,3 @@ public class WorldController extends GameController implements IPlayerListener {
         this.decisionController.updateDecisionTree(b);
     }
 }
-
- */
