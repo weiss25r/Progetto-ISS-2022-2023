@@ -189,13 +189,13 @@ public class LevelController extends GameController implements IPlayerListener {
 
         player.move(e);
 
-        System.out.printf("(%d, %d)\n", player.getPlayerSprite().getWorldY(), player.getPlayerSprite().getWorldY());
+        System.out.printf("(%d, %d)\n", player.getPlayerSprite().getWorldX(), player.getPlayerSprite().getWorldY());
 
         int x = player.getPlayerSprite().getWorldX();
         int y = player.getPlayerSprite().getWorldY();
 
-        int col = x/96;
-        int row = y/96 ;
+        int col = (int)Math.floor((double)x/96);
+        int row = (int) Math.floor((double) y/96) ;
 
         if(map.getEnemy(row, col) != null) {
             this.mobListener.update(this);
@@ -206,7 +206,7 @@ public class LevelController extends GameController implements IPlayerListener {
             NPCListener npcListener = new NPCListener(map.getNpc(row, col));
             npcListener.update(this);
             map.removeNpc(row, col);
-        } else if(level.getCounter() == 0 && x >= 450 && x <= 520 && y == 100 ) {
+        } else if(map.getEndMap(row, col)) {
             level.switchMap();
             player.getPlayerSprite().setWorldX(490);
             player.getPlayerSprite().setWorldY(490);
