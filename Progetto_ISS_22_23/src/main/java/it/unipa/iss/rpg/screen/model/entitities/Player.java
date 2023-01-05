@@ -22,6 +22,12 @@ public class Player implements Entity {
         this.stats = new Statistics(100, 50, 100, 70);
     }
 
+    public Player(Statistics stats, PlayerSprite playerSprite) {
+        this.movementSpeed = 10;
+        this.playerSprite = playerSprite;
+        this.stats = stats;
+    }
+
     private List<Tile> loadTiles() {
         List<Tile> playerSprites = new ArrayList<>();
 
