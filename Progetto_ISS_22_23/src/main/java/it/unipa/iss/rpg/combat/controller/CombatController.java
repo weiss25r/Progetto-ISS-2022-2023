@@ -36,6 +36,9 @@ public class CombatController extends GameController {
             e.printStackTrace();
         }
 
+        this.view.setLblEnemyHp("Enemy Hp: "+ enemy.getStats().getHp());
+        this.view.setLblPlayerHp("Hero Hp: "+ player.getStats().getHp());
+        this.view.setLblPlayerStamina("Hero Stamina: "+ player.getStats().getStamina());
 
         this.view.getBtnFight().addActionListener(event -> fight.cmdAttack());
         view.getBtnFight().addActionListener(e -> {

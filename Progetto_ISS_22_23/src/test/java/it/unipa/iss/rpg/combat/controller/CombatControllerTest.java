@@ -1,5 +1,6 @@
 package it.unipa.iss.rpg.combat.controller;
 
+import it.unipa.iss.rpg.combat.model.AbilityBox;
 import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.EventType;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
@@ -42,13 +43,21 @@ class CombatControllerTest {
                      controller.getView().getLblPlayerHp().getText());
         assertEquals(Integer.toString(controller.getFight().getHpEnemyRemaining()),
                 controller.getView().getLblEnemyHp().getText());
-        this.controller.getFight().inputAction(1);
-        //this.controller.getFight().getHpHeroRemaining();
-        this.controller.update(EventType.PLAYER_ATK);
+
+        //Test sinner atk
+        this.controller.getFight().setSkill(AbilityBox.SINNER_ATK);
+        this.controller.getFight().inputAction(2);
+        this.controller.update(EventType.PLAYER_ABILITY);
         assertEquals(Integer.toString(controller.getFight().getHpHeroRemaining()),
                 controller.getView().getLblPlayerHp().getText());
         assertEquals(Integer.toString(controller.getFight().getHpEnemyRemaining()),
                 controller.getView().getLblEnemyHp().getText());
+        assertEquals(Integer.toString(controller.getFight().getStaminaHeroRemaining()),
+                    controller.getView().getLblPlayerStamina());
+        //Test Healing
+        this.controller.getFight().setSkill(AbilityBox.HEALING);
+        this.controller.getFight().inputAction(2);
+        this.controller.update(EventType.PLAYER_ABILITY);
 
 
     }
