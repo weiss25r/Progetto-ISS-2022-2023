@@ -12,7 +12,7 @@ public class MapBuilder implements IMapBuilder {
     private Mob[][] mapEnemies;
     private Npc[][] mapNpc;
     private BufferedImage[][] worldTiles;
-    private BufferedImage[][] endMap;
+    private boolean[][] endMap;
     private int worldX, worldY;
 
 
@@ -37,7 +37,7 @@ public class MapBuilder implements IMapBuilder {
     public void setWorldTiles(BufferedImage[][] worldTiles) {
         this.worldTiles = worldTiles;
     }
-    public void setEndMap(BufferedImage[][] endMap) {
+    public void setEndMap(boolean[][] endMap) {
         this.endMap = endMap;
     }
     public Map build() {
@@ -59,7 +59,7 @@ public class MapBuilder implements IMapBuilder {
     public void buildEndMap(int x, int y) {
         if (x > 0 && y > 0) {
             if (x <= this.worldX && y <= this.worldY) {
-                this.endMap = new BufferedImage[worldX][worldY];
+                this.endMap = new boolean[worldX][worldY];
             }
         } else {
             System.out.print("Wrong Dimension");
@@ -97,4 +97,6 @@ public class MapBuilder implements IMapBuilder {
     public void addWorldTile(BufferedImage tile,int x,int y){
         this.worldTiles[x][y] = tile;
     }
+
+    public void addEndTile(int x, int y) {this.endMap[x][y] = true;}
 }

@@ -9,7 +9,7 @@ public class Map {
    private Mob[][] mapEnemies;
    private Npc[][] mapNpc;
    private BufferedImage[][] worldTiles;
-   private  BufferedImage[][] endMap;
+   private boolean[][] endMap;
 
    /*
    public Map(Map map){
@@ -22,14 +22,14 @@ public class Map {
     */
 
     public Map() {}
-
    public Map(Mob[][] mapEnemies, Npc[][] mapNpc,
-              BufferedImage[][] worldTiles , BufferedImage[][] endMap){
+              BufferedImage[][] worldTiles , boolean[][] endMap){
         this.mapEnemies = mapEnemies;
         this.mapNpc = mapNpc;
         this.worldTiles = worldTiles;
         this.endMap = endMap;
    }
+
     //Aggiunge un Mob
    public void addMob(Mob enemy,int x,int y){
         this.mapEnemies[x][y] = enemy;
@@ -49,26 +49,30 @@ public class Map {
    public Npc getNpc(int x, int y){
         return  this.mapNpc[x][y];
     }
-    //Restituisce un singolo nemico
+   //Restituisce un singolo nemico
    public Mob getEnemy(int x,int y){
         return this.mapEnemies[x][y];
     }
 
-    public BufferedImage getTile(int x, int y) {
-
-
+   public BufferedImage getTile(int x, int y) {
         return this.worldTiles[x][y];
     }
 
-    //Restituisce la griglia dei nemici
+   //Restituisce la griglia dei nemici
    public Mob[][] getMapEnemies(){
         return this.mapEnemies;
     }
-    //Il player e' giunto a fine della mappa, si deve confrontare con il sistema di collisioni
-    //per passare alla prossima mappa
-   public BufferedImage[][] getEndMap(){
+   //Il player e' giunto a fine della mappa, si deve confrontare con il sistema di collisioni
+   //per passare alla prossima mappa
+   public boolean[][] getEndMap(){
         return this.endMap;
     }
 
    public BufferedImage[][] getWorldTiles(){ return  this.worldTiles;}
+
+    public boolean getEndMap(int x, int y) {
+        return this.endMap[x][y];
+    }
+
+
 }

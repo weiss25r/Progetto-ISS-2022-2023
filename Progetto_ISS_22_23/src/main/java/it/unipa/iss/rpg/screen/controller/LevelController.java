@@ -43,6 +43,7 @@ public class LevelController extends GameController implements IPlayerListener {
         builder.buildWorldTiles(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
         builder.buildMapNpc(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
         builder.buildMapEnemies(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        builder.buildEndMap(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
 
         File map = new File("src/res/world/level_start/map.txt");
         File enemies = new File("src/res/world/level_start/enemies/enemies.txt");
@@ -76,14 +77,19 @@ public class LevelController extends GameController implements IPlayerListener {
             Npc npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
             builder.addNpc(npc, 2, 2);
 
+            builder.addEndTile(0, 5);
+            builder.addEndTile(1, 5);
             ArrayList<Map> maps = new ArrayList<>();
             maps.add(builder.build());
+
 
             //TODO: caricare seconda mappa
             this.level = new Level(maps);
 
             s.close();
             stream.close();
+
+
             return true;
         }catch (IOException ex){
             ex.printStackTrace();
@@ -161,6 +167,8 @@ public class LevelController extends GameController implements IPlayerListener {
         int col = x/96;
         int row = y/96 ;
 
+        System.out.printf("(%d, %d)\n", x, y);
+
         if(map.getEnemy(row, col) != null) {
             this.mobListener.update(this);
             this.lastCollisionMob = map.getEnemy(row, col);
@@ -172,7 +180,17 @@ public class LevelController extends GameController implements IPlayerListener {
             NPCListener npcListener = new NPCListener(map.getNpc(row, col));
             npcListener.update(this);
             map.removeNpc(row, col);
+        } else if(x >= 450 && x <= 520 && y == 100 ) {
+            System.out.println("seconda mappa");
         }
+
+
+        /* else if() {
+            System.out.println("SECONDA MAPPA");
+        }
+        */
+
+
 
         this.getGamePanel().repaint();
     }
