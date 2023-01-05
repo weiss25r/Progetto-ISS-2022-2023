@@ -34,60 +34,80 @@ public class LevelController extends GameController implements IPlayerListener {
         gamePanel.addController(this);
         this.mobListener = new MobListener(null);
 
-
         loadMap();
-
     }
     public boolean loadMap() {
-        MapBuilder builder = new MapBuilder();
-        builder.buildWorldTiles(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
-        builder.buildMapNpc(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
-        builder.buildMapEnemies(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
-        builder.buildEndMap(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        MapBuilder firstMapBuilder = new MapBuilder();
+        MapBuilder secondMapBuilder = new MapBuilder();
 
-        File map = new File("src/res/world/level_start/map.txt");
-        File enemies = new File("src/res/world/level_start/enemies/enemies.txt");
+        //costruzione bordi prima mappa
+        firstMapBuilder.buildWorldTiles(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        firstMapBuilder.buildMapNpc(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        firstMapBuilder.buildMapEnemies(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        firstMapBuilder.buildEndMap(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+
+        //costruzione bordi seconda mappa
+        secondMapBuilder.buildWorldTiles(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        secondMapBuilder.buildMapNpc(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        secondMapBuilder.buildMapEnemies(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+        secondMapBuilder.buildEndMap(getGamePanel().getMaxRow(), getGamePanel().getMaxCol());
+
+        File firstMap = new File("src/res/world/level_start/map.txt");
+        File secondMap = new File("src/res/world/level_1/map.txt");
+        File firstMapEnemies = new File("src/res/world/level_start/enemies/enemies.txt");
+        File secondMapEnemies = new File("src/res/world/level_1/enemies/enemies.txt");
 
         try {
-            FileInputStream stream = new FileInputStream(enemies);
-            Scanner s = new Scanner(map);
+            FileInputStream firstStream = new FileInputStream(firstMapEnemies);
+            FileInputStream secondStream = new FileInputStream(secondMapEnemies);
+
+            Scanner s = new Scanner(firstMap);
+            Scanner w = new Scanner(secondMap);
 
             for (int i = 0; i < getGamePanel().getMaxRow(); i++) {
                 for (int j = 0; j < getGamePanel().getMaxCol(); j++) {
-                    builder.addWorldTile(ImageIO.read(new File("src/res/world/level_start/world/" + s.nextInt() + ".png")), i, j);
-                    char t = (char)stream.read();
+                    firstMapBuilder.addWorldTile(ImageIO.read(new File("src/res/world/level_start/world/" + s.nextInt() + ".png")), i, j);
+                    secondMapBuilder.addWorldTile(ImageIO.read(new File("src/res/world/level_1/world/" +w.nextInt() + ".png")), i, j);
+
+                    char t = (char)firstStream.read();
+                    char k = (char)secondStream.read();
 
                     if(Character.isDigit(t)) {
-                        MobSprite mobSprite = new MobSprite(i*getGamePanel().scaleTile(), j*getGamePanel().scaleTile());
-                        mobSprite.addSprite(new Tile(ImageIO.read(new File("src/res/world/level_start/enemies/" + t + ".png"))));
+                        MobSprite firstMobSprite = new MobSprite(i*getGamePanel().scaleTile(), j*getGamePanel().scaleTile());
+                        firstMobSprite.addSprite(new Tile(ImageIO.read(new File("src/res/world/level_start/enemies/" + t + ".png"))));
 
                         //TODO: CARICAMENTO MOB DA DATABASE
-                        Mob mob = new Mob(new Statistics(80, 80, 80, 80), mobSprite);
+                        Mob mob = new Mob(new Statistics(80, 80, 80, 80), firstMobSprite);
+                        firstMapBuilder.addMob(mob, i, j);
+                    }
+                    if(Character.isDigit(k)) {
+                        MobSprite secondMobSprite = new MobSprite(i*getGamePanel().scaleTile(), j*getGamePanel().scaleTile());
+                        secondMobSprite.addSprite(new Tile(ImageIO.read(new File("src/res/world/level_1/enemies/" + k + ".png"))));
 
-                        builder.addMob(mob, i, j);
+                        Mob mob2 = new Mob(new Statistics(100, 40, 50, 60), secondMobSprite);
+                        secondMapBuilder.addMob(mob2, i, j);
                     }
                 }
             }
 
             //TODO: refactoring
-
             NPCSprite npcSprite = new NPCSprite(2* getGamePanel().scaleTile(), 2* getGamePanel().scaleTile(),"src/res/npc/bob.png");
             npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/npc/bob_down.png"))));
 
             Npc npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
-            builder.addNpc(npc, 2, 2);
+            firstMapBuilder.addNpc(npc, 2, 2);
 
-            builder.addEndTile(0, 5);
-            builder.addEndTile(1, 5);
+            firstMapBuilder.addEndTile(0, 5);
+            firstMapBuilder.addEndTile(1, 5);
             ArrayList<Map> maps = new ArrayList<>();
-            maps.add(builder.build());
-
+            maps.add(firstMapBuilder.build());
+            maps.add(secondMapBuilder.build());
 
             //TODO: caricare seconda mappa
             this.level = new Level(maps);
 
             s.close();
-            stream.close();
+            firstStream.close();
 
 
             return true;
@@ -167,31 +187,22 @@ public class LevelController extends GameController implements IPlayerListener {
         int col = x/96;
         int row = y/96 ;
 
-        System.out.printf("(%d, %d)\n", x, y);
-
         if(map.getEnemy(row, col) != null) {
             this.mobListener.update(this);
             this.lastCollisionMob = map.getEnemy(row, col);
 
             map.removeMob(row, col);
         } else if (map.getNpc(row, col) != null) {
-
-            //TODO: deletable
             NPCListener npcListener = new NPCListener(map.getNpc(row, col));
             npcListener.update(this);
             map.removeNpc(row, col);
         } else if(x >= 450 && x <= 520 && y == 100 ) {
-            System.out.println("seconda mappa");
+            level.switchMap();
         }
-
-
         /* else if() {
             System.out.println("SECONDA MAPPA");
         }
         */
-
-
-
         this.getGamePanel().repaint();
     }
 
