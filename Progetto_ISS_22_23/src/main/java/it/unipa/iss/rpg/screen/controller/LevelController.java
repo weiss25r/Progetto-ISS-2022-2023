@@ -34,6 +34,7 @@ public class LevelController extends GameController implements IPlayerListener {
         gamePanel.addController(this);
         this.mobListener = new MobListener(null);
 
+
         loadMap();
     }
     public boolean loadMap() {
@@ -80,6 +81,7 @@ public class LevelController extends GameController implements IPlayerListener {
                         Mob mob = new Mob(new Statistics(80, 80, 80, 80), firstMobSprite);
                         firstMapBuilder.addMob(mob, i, j);
                     }
+
                     if(Character.isDigit(k)) {
                         MobSprite secondMobSprite = new MobSprite(i*getGamePanel().scaleTile(), j*getGamePanel().scaleTile());
                         secondMobSprite.addSprite(new Tile(ImageIO.read(new File("src/res/world/level_1/enemies/" + k + ".png"))));
@@ -97,6 +99,12 @@ public class LevelController extends GameController implements IPlayerListener {
             Npc npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
             firstMapBuilder.addNpc(npc, 2, 2);
 
+            npcSprite = new NPCSprite(2* getGamePanel().scaleTile(), 2* getGamePanel().scaleTile(),"src/res/npc/agar.png");
+            npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/npc/agar_down.png"))));
+            npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
+
+            secondMapBuilder.addNpc(npc, 1, 3);
+
             firstMapBuilder.addEndTile(0, 5);
             firstMapBuilder.addEndTile(1, 5);
             ArrayList<Map> maps = new ArrayList<>();
@@ -108,7 +116,7 @@ public class LevelController extends GameController implements IPlayerListener {
 
             s.close();
             firstStream.close();
-
+            secondStream.close();
 
             return true;
         }catch (IOException ex){
@@ -181,6 +189,8 @@ public class LevelController extends GameController implements IPlayerListener {
 
         player.move(e);
 
+        System.out.printf("(%d, %d)\n", player.getPlayerSprite().getWorldY(), player.getPlayerSprite().getWorldY());
+
         int x = player.getPlayerSprite().getWorldX();
         int y = player.getPlayerSprite().getWorldY();
 
@@ -196,8 +206,11 @@ public class LevelController extends GameController implements IPlayerListener {
             NPCListener npcListener = new NPCListener(map.getNpc(row, col));
             npcListener.update(this);
             map.removeNpc(row, col);
-        } else if(x >= 450 && x <= 520 && y == 100 ) {
+        } else if(level.getCounter() == 0 && x >= 450 && x <= 520 && y == 100 ) {
             level.switchMap();
+            player.getPlayerSprite().setWorldX(490);
+            player.getPlayerSprite().setWorldY(490);
+
         }
         /* else if() {
             System.out.println("SECONDA MAPPA");

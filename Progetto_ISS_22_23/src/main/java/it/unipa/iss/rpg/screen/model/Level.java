@@ -23,4 +23,7 @@ public class Level {
         return this.maps.get(this.counter);
     }
 
+    public int getCounter() {
+        return this.counter;
+    }
 }
