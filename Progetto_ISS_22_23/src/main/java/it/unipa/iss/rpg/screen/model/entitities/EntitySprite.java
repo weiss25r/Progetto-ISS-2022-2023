@@ -8,6 +8,7 @@ import java.util.List;
 public abstract class EntitySprite {
     private int worldX, worldY;
     private List<Tile> sprites;
+    private List<String> spritesPath;
 
     public EntitySprite(int worldX, int worldY) {
         this.sprites = new ArrayList<>();
@@ -39,6 +40,10 @@ public abstract class EntitySprite {
 
     public void setWorldY(int worldY) {
         this.worldY = worldY;
+    }
+
+    public void setSpritesPath(List<String> strings) {
+        this.spritesPath.addAll(strings);
     }
 
     public List<Tile> getSprites() {
