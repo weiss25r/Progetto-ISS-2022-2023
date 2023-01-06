@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public interface EntityDAO {
     public Player getHeroStatsById(String id);
-    public ArrayList<String> getHeroSpritesById(String id);
     public Mob getEnemyById(String id);
     public Statistics getStatsById(String id);
 }

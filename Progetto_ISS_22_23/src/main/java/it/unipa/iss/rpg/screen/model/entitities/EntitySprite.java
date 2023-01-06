@@ -14,6 +14,7 @@ public abstract class EntitySprite {
         this.sprites = new ArrayList<>();
         this.worldX = worldX;
         this.worldY = worldY;
+        this.spritesPath = new ArrayList<>();
     }
 
     public EntitySprite(int worldX, int worldY, List<Tile> sprites) {

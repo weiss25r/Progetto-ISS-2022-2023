@@ -12,6 +12,9 @@ public class PlayerSprite extends EntitySprite{
         super(100, 120);
     }
 
+    public PlayerSprite(int x, int y){
+        super(x, y);
+    }
     @Override
     public void addSprite(Tile tile) {
         super.getSprites().add(tile);
