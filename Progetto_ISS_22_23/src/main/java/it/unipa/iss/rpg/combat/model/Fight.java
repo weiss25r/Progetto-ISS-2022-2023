@@ -81,8 +81,11 @@ public class Fight implements CombatHandler{
         return this.enemy.getHp();
     }
 
+    /**Method returns stamina points hero's remaining
+     * @return stamina hero's remaining*/
     public int getStaminaHeroRemaining(){ return  this.hero.getStamina();}
 
+    /**Method sets the ability chosen by the player*/
     public void setSkill(AbilityBox skill) {
         this.skill = skill;
     }
