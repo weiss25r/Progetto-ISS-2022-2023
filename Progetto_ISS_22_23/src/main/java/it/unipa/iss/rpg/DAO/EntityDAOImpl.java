@@ -64,12 +64,14 @@ public class EntityDAOImpl  implements EntityDAO{
     @Override
     public ArrayList<String> getHeroSpritesById(String id){
         try{
-            String query = " "
+            String query = " ";
         }
 
         catch (Exception e){
             e.printStackTrace();
         }
+
+        return null;
     }
 
     @Override
