@@ -49,6 +49,4 @@ public class Player implements Entity {
         return this.stats;
         //return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
     }
-
-
 }

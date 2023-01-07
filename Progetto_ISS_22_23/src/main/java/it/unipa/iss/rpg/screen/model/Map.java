@@ -47,15 +47,21 @@ public class Map {
        this.mapNpc[x][y] = null;
     }
    public Npc getNpc(int x, int y){
-        return  this.mapNpc[x][y];
+        if(x >= 0 && y >= 0)
+            return  this.mapNpc[x][y];
+        else return null;
     }
    //Restituisce un singolo nemico
    public Mob getEnemy(int x,int y){
-        return this.mapEnemies[x][y];
+        if(x >= 0 && y >= 0)
+            return this.mapEnemies[x][y];
+        else return null;
     }
 
    public BufferedImage getTile(int x, int y) {
-        return this.worldTiles[x][y];
+        if(x >= 0 && y >= 0)
+            return this.worldTiles[x][y];
+        else return null;
     }
 
    //Restituisce la griglia dei nemici
@@ -71,8 +77,8 @@ public class Map {
    public BufferedImage[][] getWorldTiles(){ return  this.worldTiles;}
 
     public boolean getEndMap(int x, int y) {
-        return this.endMap[x][y];
+        if(x >= 0 && y >= 0)
+            return this.endMap[x][y];
+        return false;
     }
-
-
 }
