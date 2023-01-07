@@ -6,10 +6,12 @@ import it.unipa.iss.rpg.screen.model.entitities.*;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**Class EntityDAOImpl is a Singleton and implements DAO interface*/
 public class EntityDAOImpl  implements EntityDAO{
     private static EntityDAOImpl dbInstance = null;
     private Connection dbConnection;
 
+    /**Constructor private without parameters because is a Singleton class*/
     private EntityDAOImpl() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -22,6 +24,8 @@ public class EntityDAOImpl  implements EntityDAO{
         }
     }
 
+    /**Method to get a single class instance
+     * @return an instance of class*/
     public static EntityDAOImpl getDbInstance(){
         if(dbInstance == null){
             dbInstance = new EntityDAOImpl();
@@ -29,6 +33,8 @@ public class EntityDAOImpl  implements EntityDAO{
         return dbInstance;
     }
 
+    /**Method returns necessary infos for a Player
+     * @return a Player*/
     @Override
     public Player getHeroById(String id) {
         Player player = null;
@@ -76,7 +82,8 @@ public class EntityDAOImpl  implements EntityDAO{
     }
 
 
-
+    /**Method returns necessary infos for a Mob
+     * @return a Mob*/
     @Override
     public Mob getEnemyById(String id) {
         Mob mob = null;
@@ -115,6 +122,8 @@ public class EntityDAOImpl  implements EntityDAO{
         return mob;
     }
 
+    /**Method returns necessary infos for a npc
+     * @return a Npc*/
     @Override
     public Npc getNpcById(String id) {
         Npc npc = null;
