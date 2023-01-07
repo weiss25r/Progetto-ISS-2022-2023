@@ -10,6 +10,7 @@ import it.unipa.iss.rpg.screen.view.DialogPanel;
 public class NPCListener implements CollisionListener{
     private Npc npc;
     private boolean lastDecision;
+
     public NPCListener(Npc npc) {
         this.npc = npc;
     }

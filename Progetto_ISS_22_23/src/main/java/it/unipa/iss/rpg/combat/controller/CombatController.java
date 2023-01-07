@@ -40,8 +40,8 @@ public class CombatController extends GameController {
         this.view.setLblPlayerHp("Hero Hp: "+ player.getStats().getHp());
         this.view.setLblPlayerStamina("Hero Stamina: "+ player.getStats().getStamina());
 
-        this.view.getBtnFight().addActionListener(event -> fight.cmdAttack());
-        view.getBtnFight().addActionListener(e -> {
+        this.view.getBtnAttack().addActionListener(event -> fight.cmdAttack());
+        view.getBtnAttack().addActionListener(e -> {
             fight.inputAction(1);
             this.update(EventType.PLAYER_ATK);
         });
@@ -103,7 +103,7 @@ public class CombatController extends GameController {
                 ex.printStackTrace();
             }
             if(fight.gameOverCheck()){
-                view.getBtnFight().removeActionListener(view.getBtnFight().getActionListeners()[0]);
+                view.getBtnAttack().removeActionListener(view.getBtnAttack().getActionListeners()[0]);
                 this.setActive(false);
             }
         }

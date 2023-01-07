@@ -79,7 +79,6 @@ public class CombatPanel extends GamePanel {
 
     public void setAbility(){
 
-
         ability = new JPanel(new GridLayout(1,4));
         ability.add(this.btn1 = new JButton("Healing"));
         ability.add(this.btn2 = new JButton("Study Power"));
@@ -154,7 +153,7 @@ public class CombatPanel extends GamePanel {
         this.add(mob, BorderLayout.CENTER);
     }
 
-    public JButton getBtnFight() {
+    public JButton getBtnAttack() {
         return btnAttack;
     }
 
