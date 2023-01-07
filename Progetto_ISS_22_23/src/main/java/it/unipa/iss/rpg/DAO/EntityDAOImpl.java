@@ -89,7 +89,8 @@ public class EntityDAOImpl  implements EntityDAO{
 
         try {
             String query = "select enemy_hp, enemy_defense, enemy_atk, enemy_stamina, sprite1, position_x, position_y\n" +
-                    "from enemy join entitysprite on enemy.enemy_id = entitysprite.sprite_id join spriteposition on entitysprite.sprite_id = spriteposition.sprite_id\n" +
+                            "from enemy join entitysprite on enemy.enemy_idSprite = entitysprite.sprite_id join spriteposition on entitysprite.sprite_id = spriteposition.sprite_id\n"+
+
                     "where enemy.enemy_id = " + id;
 
             Statement stmt = this.dbConnection.createStatement();

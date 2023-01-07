@@ -40,7 +40,7 @@ public class LevelController extends GameController implements IPlayerListener {
         drawController = new DrawController(gamePanel.scaleTile(), gamePanel.getMaxRow(), gamePanel.getMaxCol());
         levelLoader = new LevelLoader(gamePanel.scaleTile(), gamePanel.getMaxRow(), gamePanel.getMaxCol());
         levelLoader.loadPlayer(player);
-        this.level = levelLoader.loadLevel(1);
+        this.level = levelLoader.loadLevel();
     }
 
     @Override
