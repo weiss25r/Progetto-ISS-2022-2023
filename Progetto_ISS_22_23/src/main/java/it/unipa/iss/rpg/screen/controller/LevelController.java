@@ -50,7 +50,7 @@ public class LevelController extends GameController implements IPlayerListener {
 
         player.move(e);
 
-        System.out.printf("(%d, %d)\n", player.getPlayerSprite().getWorldX(), player.getPlayerSprite().getWorldY());
+        //System.out.printf("(%d, %d)\n", player.getPlayerSprite().getWorldX(), player.getPlayerSprite().getWorldY());
 
         int x = player.getPlayerSprite().getWorldX();
         int y = player.getPlayerSprite().getWorldY();
@@ -61,7 +61,6 @@ public class LevelController extends GameController implements IPlayerListener {
         if(map.getEnemy(row, col) != null) {
             this.mobListener.update(this);
             this.lastCollisionMob = map.getEnemy(row, col);
-
             map.removeMob(row, col);
         } else if (map.getNpc(row, col) != null) {
             NPCListener npcListener = new NPCListener(map.getNpc(row, col));
@@ -71,12 +70,7 @@ public class LevelController extends GameController implements IPlayerListener {
             level.switchMap();
             player.getPlayerSprite().setWorldX(490);
             player.getPlayerSprite().setWorldY(490);
-
         }
-        /* else if() {
-            System.out.println("SECONDA MAPPA");
-        }
-        */
         this.getGamePanel().repaint();
     }
 
@@ -127,8 +121,8 @@ public class LevelController extends GameController implements IPlayerListener {
 
     public void draw(Graphics2D g2) {
         drawController.drawWorld(g2, this.level.getCurrentMap());
-        drawController.drawPlayer(g2, this.getPlayer());
         drawController.drawEnemies(g2, this.level.getCurrentMap());
         drawController.drawCharacters(g2,this.level.getCurrentMap());
+        drawController.drawPlayer(g2, this.getPlayer());
     }
 }

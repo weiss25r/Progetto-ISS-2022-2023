@@ -14,6 +14,12 @@ public class Player implements Entity {
     private PlayerSprite playerSprite;
     private final int movementSpeed;
 
+    public Player() {
+        this.movementSpeed = 10;
+        this.playerSprite = new PlayerSprite();
+        this.stats = new Statistics(100, 50, 100, 70);
+    }
+
     public Player(Statistics stats, PlayerSprite playerSprite) {
         this.movementSpeed = 10;
         this.playerSprite = playerSprite;

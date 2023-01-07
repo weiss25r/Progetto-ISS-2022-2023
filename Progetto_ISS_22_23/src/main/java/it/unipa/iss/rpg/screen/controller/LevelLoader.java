@@ -7,6 +7,7 @@ import it.unipa.iss.rpg.screen.model.entitities.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -150,21 +151,31 @@ public class LevelLoader {
             }
 
             //caricamento mob database
-            Mob mob = EntityDAOImpl.getDbInstance().getEnemyById("001");
+            Mob spider = EntityDAOImpl.getDbInstance().getEnemyById("001");
+            Mob wolf = EntityDAOImpl.getDbInstance().getEnemyById("002");
 
+            Mob spider2 = EntityDAOImpl.getDbInstance().getEnemyById("003");
+            Mob wolf2 = EntityDAOImpl.getDbInstance().getEnemyById("004");
+
+            spider.getMobSprite().addSprite(new Tile(ImageIO.read(new File(spider.getMobSprite().getSpritesPath().get(0)))));
+            wolf.getMobSprite().addSprite(new Tile(ImageIO.read(new File(wolf.getMobSprite().getSpritesPath().get(0)))));
+            spider2.getMobSprite().addSprite(new Tile(ImageIO.read(new File(spider2.getMobSprite().getSpritesPath().get(0)))));
+            wolf2.getMobSprite().addSprite(new Tile(ImageIO.read(new File(wolf.getMobSprite().getSpritesPath().get(0)))));
+
+            firstMapBuilder.addMob(spider, spider.getMobSprite().getWorldX(), spider.getMobSprite().getWorldY());
+            firstMapBuilder.addMob(spider2, spider2.getMobSprite().getWorldX(), spider2.getMobSprite().getWorldY());
+            firstMapBuilder.addMob(wolf, wolf.getMobSprite().getWorldX(), wolf.getMobSprite().getWorldY());
+            firstMapBuilder.addMob(wolf2, wolf2.getMobSprite().getWorldX(), wolf2.getMobSprite().getWorldY());
+
+            secondMapBuilder.addMob(spider, 0, 7);
+            secondMapBuilder.addMob(spider2, 4, 7);
+            secondMapBuilder.addMob(wolf, 4, 6);
+            secondMapBuilder.addMob(wolf, 4, 5);
 
             //TODO: refactoring
-            NPCSprite npcSprite = new NPCSprite(2* scale, 2* scale,"src/res/npc/bob.png");
-            npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/npc/bob_down.png"))));
-
-            Npc npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
-            firstMapBuilder.addNpc(npc, 2, 2);
-
-            npcSprite = new NPCSprite(2* scale, 2* scale,"src/res/npc/agar.png");
-            npcSprite.addSprite(new Tile(ImageIO.read(new File("src/res/npc/agar_down.png"))));
-            npc = new Npc(npcSprite, "Lorem ipsum ....", "Yes", "No");
-
-            secondMapBuilder.addNpc(npc, 1, 3);
+            Npc bob = EntityDAOImpl.getDbInstance().getNpcById("001");
+            bob.getNpcSprite().addSprite(new Tile(ImageIO.read(new File(bob.getNpcSprite().getSpritesPath().get(0)))));
+            firstMapBuilder.addNpc(bob, 2, 2);
 
             firstMapBuilder.addEndTile(0, 5);
             firstMapBuilder.addEndTile(1, 5);

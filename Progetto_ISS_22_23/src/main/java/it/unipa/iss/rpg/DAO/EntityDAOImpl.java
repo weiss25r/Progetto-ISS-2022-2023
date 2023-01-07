@@ -66,10 +66,7 @@ public class EntityDAOImpl  implements EntityDAO{
                 ps = new PlayerSprite(position_x, position_y);
                 ps.setSpritesPath(paths);
                 player = new Player(stats, ps);
-
-
             }
-
         }
 
         catch (Exception e){
@@ -90,8 +87,7 @@ public class EntityDAOImpl  implements EntityDAO{
         try {
             String query = "select enemy_hp, enemy_defense, enemy_atk, enemy_stamina, sprite1, position_x, position_y\n" +
                             "from enemy join entitysprite on enemy.enemy_idSprite = entitysprite.sprite_id join spriteposition on entitysprite.sprite_id = spriteposition.sprite_id\n"+
-
-                    "where enemy.enemy_id = " + id;
+                            "where enemy.enemy_id = " + id;
 
             Statement stmt = this.dbConnection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -128,7 +124,7 @@ public class EntityDAOImpl  implements EntityDAO{
         try{
             String query = "select sprite1, option1, option2, dialogue, dialogue_iconPath, position_x, position_y\n" +
                     "from npc join plot on npc.npc_idDialogue = plot.id_dialogue join entitysprite on entitysprite.sprite_id = npc.sprite_id join spriteposition on entitysprite.sprite_id = spriteposition.sprite_id\n" +
-                    "where npc.sprite_id = " + id;
+                    "where npc.npc_id = " + id;
 
             Statement stmt = this.dbConnection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
