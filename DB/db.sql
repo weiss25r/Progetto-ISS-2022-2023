@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: entitystats
+-- Host: 127.0.0.1    Database: entitystats
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -45,7 +45,7 @@ CREATE TABLE `enemy` (
 
 LOCK TABLES `enemy` WRITE;
 /*!40000 ALTER TABLE `enemy` DISABLE KEYS */;
-INSERT INTO `enemy` VALUES ('001','spider','002',80,50,50,100),('002','wolf','003',85,60,50,100);
+INSERT INTO `enemy` VALUES ('001','spider','002',80,50,50,100),('003','spider2','004',75,50,40,100),('002','wolf','003',85,60,50,100),('004','wolf2','005',90,65,55,100);
 /*!40000 ALTER TABLE `enemy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `entitysprite` (
 
 LOCK TABLES `entitysprite` WRITE;
 /*!40000 ALTER TABLE `entitysprite` DISABLE KEYS */;
-INSERT INTO `entitysprite` VALUES ('001','src/res/character/move/down/char_down_00.png','src/res/character/move/up/char_up_00.png','src/res/character/move/left/char_left_00.png','src/res/character/move/right/char_right_00.png'),('002','src/res/world/level_start/enemies/0.png',NULL,NULL,NULL),('003','src/res/world/level_start/enemies/1.png',NULL,NULL,NULL),('004','src/res/world/level_start/enemies/0.png',NULL,NULL,NULL),('005','src/res/world/level_start/enemies/1.png',NULL,NULL,NULL),('006','src/res/npc/bob_down.png',NULL,NULL,NULL);
+INSERT INTO `entitysprite` VALUES ('001','src/res/character/move/down/char_down_00.png','src/res/character/move/up/char_up_00.png','src/res/character/move/left/char_left_00.png','src/res/character/move/right/char_right_00.png'),('002','src/res/world/level_start/enemies/0.png',NULL,NULL,NULL),('003','src/res/world/level_start/enemies/1.png',NULL,NULL,NULL),('004','src/res/world/level_start/enemies/0.png',NULL,NULL,NULL),('005','src/res/world/level_start/enemies/1.png',NULL,NULL,NULL),('006','src/res/npc/bob_down.png',NULL,NULL,NULL),('007','src/res/npc/agar_down.png',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `entitysprite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,12 +120,14 @@ DROP TABLE IF EXISTS `npc`;
 CREATE TABLE `npc` (
   `npc_id` char(3) NOT NULL,
   `npc_idDialogue` char(3) NOT NULL,
-  `option1` varchar(10) NOT NULL,
-  `option2` varchar(10) NOT NULL,
-  `npc_sprite` varchar(60) NOT NULL,
+  `option1` varchar(50) NOT NULL,
+  `option2` varchar(50) NOT NULL,
+  `sprite_id` char(3) DEFAULT NULL,
   PRIMARY KEY (`npc_id`),
   KEY `npc_idDialogue` (`npc_idDialogue`),
-  CONSTRAINT `npc_ibfk_1` FOREIGN KEY (`npc_idDialogue`) REFERENCES `plot` (`id_dialogue`)
+  KEY `sprite_id_idx` (`sprite_id`),
+  CONSTRAINT `npc_ibfk_1` FOREIGN KEY (`npc_idDialogue`) REFERENCES `plot` (`id_dialogue`),
+  CONSTRAINT `sprite_id` FOREIGN KEY (`sprite_id`) REFERENCES `entitysprite` (`sprite_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -135,7 +137,7 @@ CREATE TABLE `npc` (
 
 LOCK TABLES `npc` WRITE;
 /*!40000 ALTER TABLE `npc` DISABLE KEYS */;
-INSERT INTO `npc` VALUES ('001','001','Io','Altri','src/res/npc/bob.png');
+INSERT INTO `npc` VALUES ('001','001','Va bene. Restami dietro.','Devo già badare a me, vattene via.','006'),('002','002','...','Scordatelo.','007');
 /*!40000 ALTER TABLE `npc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +151,7 @@ DROP TABLE IF EXISTS `plot`;
 CREATE TABLE `plot` (
   `id_dialogue` char(3) NOT NULL,
   `dialogue_iconPath` varchar(100) NOT NULL,
-  `dialogue` varchar(100) NOT NULL,
+  `dialogue` varchar(300) NOT NULL,
   PRIMARY KEY (`id_dialogue`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -160,7 +162,7 @@ CREATE TABLE `plot` (
 
 LOCK TABLES `plot` WRITE;
 /*!40000 ALTER TABLE `plot` DISABLE KEYS */;
-INSERT INTO `plot` VALUES ('001','src/res/npc/bob.png','Chi si occuperà di queste creature?');
+INSERT INTO `plot` VALUES ('001','src/res/npc/bob.png','Ehi tu, per favore aiutami, non capisco dove siamo, chi sono quelli?\\n E soprattutto cosa sono!?\\n Se mi proteggi posso darti le chiavi della struttura qui alle nostre spalle.'),('002','src/res/npc/agar.png','Ooh... vedo che stai cominciando a capire il tuo ruolo, eh eh... Molto bene, prosegui allora, da qui in poi gli incontri che farai determineranno il destino di questo mondo');
 /*!40000 ALTER TABLE `plot` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +186,7 @@ CREATE TABLE `positions` (
 
 LOCK TABLES `positions` WRITE;
 /*!40000 ALTER TABLE `positions` DISABLE KEYS */;
-INSERT INTO `positions` VALUES (2,2),(3,0),(3,2),(3,4),(3,6),(100,120);
+INSERT INTO `positions` VALUES (0,3),(2,2),(3,0),(3,2),(3,4),(3,6),(100,120);
 /*!40000 ALTER TABLE `positions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +212,7 @@ CREATE TABLE `spriteposition` (
 
 LOCK TABLES `spriteposition` WRITE;
 /*!40000 ALTER TABLE `spriteposition` DISABLE KEYS */;
-INSERT INTO `spriteposition` VALUES ('001',100,120),('002',3,0),('003',3,2),('004',3,4),('005',3,6),('006',2,2);
+INSERT INTO `spriteposition` VALUES ('001',100,120),('002',3,0),('003',3,2),('004',3,4),('005',3,6),('006',2,2),('007',0,3);
 /*!40000 ALTER TABLE `spriteposition` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,7 +239,7 @@ CREATE TABLE `stats` (
 
 LOCK TABLES `stats` WRITE;
 /*!40000 ALTER TABLE `stats` DISABLE KEYS */;
-INSERT INTO `stats` VALUES ('001',100,60,40,100),('002',80,50,50,100),('003',85,60,50,100);
+INSERT INTO `stats` VALUES ('001',100,60,40,100),('002',80,50,50,100),('003',85,60,50,100),('004',75,50,40,100),('005',90,65,55,100);
 /*!40000 ALTER TABLE `stats` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -250,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-04 12:39:28
+-- Dump completed on 2023-01-07 12:35:35

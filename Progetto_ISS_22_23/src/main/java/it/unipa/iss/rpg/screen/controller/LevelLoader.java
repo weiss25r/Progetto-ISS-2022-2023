@@ -175,7 +175,13 @@ public class LevelLoader {
             //TODO: refactoring
             Npc bob = EntityDAOImpl.getDbInstance().getNpcById("001");
             bob.getNpcSprite().addSprite(new Tile(ImageIO.read(new File(bob.getNpcSprite().getSpritesPath().get(0)))));
-            firstMapBuilder.addNpc(bob, 2, 2);
+
+            Npc agar = EntityDAOImpl.getDbInstance().getNpcById("002");
+            agar.getNpcSprite().addSprite(new Tile(ImageIO.read(new File(agar.getNpcSprite().getSpritesPath().get(0)))));
+
+            firstMapBuilder.addNpc(bob, bob.getNpcSprite().getWorldX(), bob.getNpcSprite().getWorldY());
+            secondMapBuilder.addNpc(agar, agar.getNpcSprite().getWorldX(), agar.getNpcSprite().getWorldY());
+
 
             firstMapBuilder.addEndTile(0, 5);
             firstMapBuilder.addEndTile(1, 5);
