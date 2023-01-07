@@ -89,7 +89,9 @@ public class WorldController extends GameController implements IPlayerListener {
     }
 
     public void drawPlayer(Graphics2D g) {
-        g.drawImage(getPlayer().getDirectionImage(),
+        PlayerSprite playerSprite = getPlayer().getPlayerSprite();
+
+        g.drawImage(playerSprite.getDirectionImage(),
                     getPlayer().getPlayerSprite().getWorldX(),
                     getPlayer().getPlayerSprite().getWorldY(),
                     getGamePanel().scaleTile(),

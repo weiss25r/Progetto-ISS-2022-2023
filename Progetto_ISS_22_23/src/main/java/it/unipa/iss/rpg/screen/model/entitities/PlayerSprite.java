@@ -1,12 +1,13 @@
 package it.unipa.iss.rpg.screen.model.entitities;
 
+import it.unipa.iss.rpg.screen.model.EventType;
 import it.unipa.iss.rpg.screen.model.Tile;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
 
 public class PlayerSprite extends EntitySprite{
-    private BufferedImage direction;
+    private BufferedImage directionImage;
 
     public PlayerSprite() {
         super(100, 120);
@@ -23,10 +24,18 @@ public class PlayerSprite extends EntitySprite{
     @Override
     public void setSprites(List<Tile> sprites) {
         super.setSprites(sprites);
-        this.direction = this.getSprites().get(0).getTileImage();
     }
 
-    public BufferedImage getDirection() {
-        return direction;
+    public BufferedImage getDirectionImage() {
+        return this.directionImage;
+    }
+
+    public void setDirectionImage(EventType eventType) {
+        switch (eventType) {
+            case MOVED_DOWN -> this.directionImage = getSprites().get(0).getTileImage();
+            case MOVED_UP -> this.directionImage = getSprites().get(1).getTileImage();
+            case MOVED_LEFT -> this.directionImage = getSprites().get(2).getTileImage();
+            case MOVED_RIGHT -> this.directionImage = getSprites().get(3).getTileImage();
+        }
     }
 }

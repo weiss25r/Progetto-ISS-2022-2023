@@ -1,16 +1,11 @@
 package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.combat.model.Statistics;
-import it.unipa.iss.rpg.screen.model.Level;
-import it.unipa.iss.rpg.screen.model.Map;
-import it.unipa.iss.rpg.screen.model.MapBuilder;
-import it.unipa.iss.rpg.screen.model.Tile;
-import it.unipa.iss.rpg.screen.model.entitities.Mob;
-import it.unipa.iss.rpg.screen.model.entitities.MobSprite;
-import it.unipa.iss.rpg.screen.model.entitities.NPCSprite;
-import it.unipa.iss.rpg.screen.model.entitities.Npc;
+import it.unipa.iss.rpg.screen.model.*;
+import it.unipa.iss.rpg.screen.model.entitities.*;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -114,6 +109,19 @@ public class LevelLoader {
         }catch (IOException ex){
             ex.printStackTrace();
             return null;
+        }
+    }
+
+    public void loadPlayer(Player p) {
+        try{
+            p.getPlayerSprite().addSprite(new Tile(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(0)))));
+            p.getPlayerSprite().addSprite(new Tile(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(1)))));
+            p.getPlayerSprite().addSprite(new Tile(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(2)))));
+            p.getPlayerSprite().addSprite(new Tile(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(3)))));
+
+            p.getPlayerSprite().setDirectionImage(EventType.MOVED_DOWN);
+        }catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }

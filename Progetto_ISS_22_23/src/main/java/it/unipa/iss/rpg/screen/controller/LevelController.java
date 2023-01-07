@@ -28,6 +28,7 @@ public class LevelController extends GameController implements IPlayerListener {
 
     public LevelController(Player player, WorldPanel gamePanel) {
         super(player, gamePanel);
+
         movementHandler = new MovementHandler();
         this.getGamePanel().addKeyListener(movementHandler);
         this.decisionController = new DecisionController();
@@ -38,6 +39,7 @@ public class LevelController extends GameController implements IPlayerListener {
 
         drawController = new DrawController(gamePanel.scaleTile(), gamePanel.getMaxRow(), gamePanel.getMaxCol());
         levelLoader = new LevelLoader(gamePanel.scaleTile(), gamePanel.getMaxRow(), gamePanel.getMaxCol());
+        levelLoader.loadPlayer(player);
         this.level = levelLoader.loadLevel(1);
     }
 
@@ -125,8 +127,8 @@ public class LevelController extends GameController implements IPlayerListener {
 
     public void draw(Graphics2D g2) {
         drawController.drawWorld(g2, this.level.getCurrentMap());
+        drawController.drawPlayer(g2, this.getPlayer());
         drawController.drawEnemies(g2, this.level.getCurrentMap());
         drawController.drawCharacters(g2,this.level.getCurrentMap());
-        drawController.drawPlayer(g2, this.getPlayer());
     }
 }
