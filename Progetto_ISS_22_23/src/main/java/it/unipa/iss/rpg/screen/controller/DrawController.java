@@ -4,6 +4,7 @@ import it.unipa.iss.rpg.screen.model.Map;
 import it.unipa.iss.rpg.screen.model.entitities.Mob;
 import it.unipa.iss.rpg.screen.model.entitities.Npc;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
+import it.unipa.iss.rpg.screen.model.entitities.PlayerSprite;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -21,9 +22,11 @@ public class DrawController {
     }
 
     public void drawPlayer(Graphics2D g, Player player) {
-        g.drawImage(player.getDirectionImage(),
-                player.getPlayerSprite().getWorldX(),
-                player.getPlayerSprite().getWorldY(),
+        PlayerSprite playerSprite = player.getPlayerSprite();
+
+        g.drawImage(playerSprite.getDirectionImage(),
+                playerSprite.getWorldX(),
+                playerSprite.getWorldY(),
                 scale,
                 scale,
                 null
@@ -31,6 +34,7 @@ public class DrawController {
     }
 
     public void drawWorld(Graphics2D g, Map map){
+
         for (int i = 0; i < this.maxCols; i++) {
             for (int j = 0; j < this.maxRows; j++) {
                 BufferedImage image = map.getTile(j, i);
@@ -41,6 +45,7 @@ public class DrawController {
     }
 
     public void drawEnemies(Graphics2D g, Map map) {
+
         for (int i = 0; i < this.maxCols; i++) {
             for (int j = 0; j < this.maxRows; j++) {
                 Mob mob = map.getEnemy(j, i);
@@ -54,6 +59,7 @@ public class DrawController {
 
     //TODO: assente nei class diagram
     public void drawCharacters(Graphics2D g, Map map) {
+
         for (int i = 0; i < this.maxCols; i++) {
             for (int j = 0; j < this.maxRows; j++) {
                 Npc npc = map.getNpc(j, i);

@@ -1,9 +1,7 @@
 package it.unipa.iss.rpg.DAO;
 
 import it.unipa.iss.rpg.combat.model.Statistics;
-import it.unipa.iss.rpg.screen.model.entitities.Mob;
-import it.unipa.iss.rpg.screen.model.entitities.Player;
-import it.unipa.iss.rpg.screen.model.entitities.PlayerSprite;
+import it.unipa.iss.rpg.screen.model.entitities.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class EntityDAOImpl  implements EntityDAO{
     }
 
     @Override
-    public Player getHeroStatsById(String id) {
+    public Player getHeroById(String id) {
         Player player = null;
         Statistics stats;
         PlayerSprite ps;
@@ -84,17 +82,75 @@ public class EntityDAOImpl  implements EntityDAO{
 
     @Override
     public Mob getEnemyById(String id) {
-        return null;
+        Mob mob = null;
+        Statistics stats;
+        MobSprite ms;
+        ArrayList<String> path = new ArrayList<>();
+
+        try {
+            String query = "select enemy_hp, enemy_defense, enemy_atk, enemy_stamina, sprite1, position_x, position_y\n" +
+                    "from enemy join entitysprite on enemy.enemy_id = entitysprite.sprite_id join spriteposition on entitysprite.sprite_id = spriteposition.sprite_id\n" +
+                    "where enemy.enemy_id = " + id;
+
+            Statement stmt = this.dbConnection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()){
+                int enemy_hp = rs.getInt("enemy_hp");
+                int enemy_defense = rs.getInt("enemy_defense");
+                int enemy_atk = rs.getInt("enemy_atk");
+                int enemy_stamina = rs.getInt("enemy_stamina");
+                String sprite1 = rs.getString("sprite1");
+                path.add(sprite1);
+                int position_x = rs.getInt("position_x");
+                int position_y = rs.getInt("position_y");
+
+                stats = new Statistics(enemy_hp, enemy_defense, enemy_stamina, enemy_atk);
+                ms = new MobSprite(position_x, position_y);
+                ms.setSpritesPath(path);
+                mob = new Mob(stats, ms);
+            }
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return mob;
     }
 
     @Override
-    public Statistics getStatsById(String id) {
-        return null;
-    }
+    public Npc getNpcById(String id) {
+        Npc npc = null;
+        NPCSprite ns;
+        ArrayList<String> path = new ArrayList<>();
 
-    public static void main(String[] args) {
-        EntityDAOImpl test = EntityDAOImpl.getDbInstance();
-        test.getHeroStatsById("001");
+        try{
+            String query = "select sprite1, option1, option2, dialogue, dialogue_iconPath, position_x, position_y\n" +
+                    "from npc join plot on npc.npc_idDialogue = plot.id_dialogue join entitysprite on entitysprite.sprite_id = npc.sprite_id join spriteposition on entitysprite.sprite_id = spriteposition.sprite_id\n" +
+                    "where npc.sprite_id = " + id;
 
+            Statement stmt = this.dbConnection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()){
+                String sprite1 = rs.getString("sprite1");
+                path.add(sprite1);
+                String option1 = rs.getString("option1");
+                String option2 = rs.getString("option2");
+                String dialogue = rs.getString("dialogue");
+                String dialogue_iconPath = rs.getString("dialogue_iconPath");
+                int position_x = rs.getInt("position_x");
+                int position_y = rs.getInt("position_y");
+
+                ns = new NPCSprite(position_x, position_y, dialogue_iconPath);
+                ns.setSpritesPath(path);
+                npc = new Npc(ns, dialogue, option1, option2);
+            }
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return npc;
     }
 }

@@ -1,5 +1,6 @@
 package it.unipa.iss.rpg;
 
+import it.unipa.iss.rpg.DAO.EntityDAOImpl;
 import it.unipa.iss.rpg.combat.controller.CombatController;
 import it.unipa.iss.rpg.screen.controller.LevelController;
 import it.unipa.iss.rpg.screen.controller.WorldController;
@@ -21,7 +22,7 @@ public class Game{
     private Player p;
 
     public Game() {
-        p = new Player();
+        p = EntityDAOImpl.getDbInstance().getHeroById("001");
 
         this.worldPanel = new WorldPanel();
         this.combatPanel = new CombatPanel();

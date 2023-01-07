@@ -54,4 +54,8 @@ public abstract class EntitySprite {
     public void setSprites(List<Tile> sprites) {
         this.sprites = sprites;
     }
+
+    public List<String> getSpritesPath() {
+        return this.spritesPath;
+    }
 }
