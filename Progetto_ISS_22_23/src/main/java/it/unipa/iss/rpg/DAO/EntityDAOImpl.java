@@ -121,23 +121,30 @@ public class EntityDAOImpl  implements EntityDAO{
     @Override
     public Npc getNpcById(String id) {
         Npc npc = null;
+        NPCSprite ns;
+        ArrayList<String> path = new ArrayList<>();
 
         try{
-            String query = "select npc_sprite, option1, option2, dialogue, dialogue_iconPath\n" +
-                    "from npc join plot on npc.npc_idDialogue = plot.id_dialogue\n" +
-                    "where npc.npc_id = " + id;
+            String query = "select sprite1, option1, option2, dialogue, dialogue_iconPath, position_x, position_y\n" +
+                    "from npc join plot on npc.npc_idDialogue = plot.id_dialogue join entitysprite on entitysprite.sprite_id = npc.sprite_id join spriteposition on entitysprite.sprite_id = spriteposition.sprite_id\n" +
+                    "where npc.sprite_id = " + id;
 
             Statement stmt = this.dbConnection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()){
-                String npc_sprite = rs.getString("npc_sprite");
+                String sprite1 = rs.getString("sprite1");
+                path.add(sprite1);
                 String option1 = rs.getString("option1");
                 String option2 = rs.getString("option2");
                 String dialogue = rs.getString("dialogue");
                 String dialogue_iconPath = rs.getString("dialogue_iconPath");
+                int position_x = rs.getInt("position_x");
+                int position_y = rs.getInt("position_y");
 
-
+                ns = new NPCSprite(position_x, position_y, dialogue_iconPath);
+                ns.setSpritesPath(path);
+                npc = new Npc(ns, dialogue, option1, option2);
             }
         }
 
@@ -145,9 +152,5 @@ public class EntityDAOImpl  implements EntityDAO{
             e.printStackTrace();
         }
         return npc;
-    }
-
-    public static void main(String[] args) {
-        EntityDAOImpl test = EntityDAOImpl.getDbInstance();
     }
 }
