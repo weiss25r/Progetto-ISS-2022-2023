@@ -13,6 +13,7 @@ import it.unipa.iss.rpg.screen.view.WorldPanel;
 import java.awt.*;
 
 public class Game{
+    private static Game instance = null;
     private LevelController worldController;
     private CombatController combatController;
     private Screen screen;
@@ -21,7 +22,7 @@ public class Game{
     private CombatPanel combatPanel;
     private Player p;
 
-    public Game() {
+    private Game() {
         p = EntityDAOImpl.getDbInstance().getHeroById("001");
 
         this.worldPanel = new WorldPanel();
@@ -47,5 +48,12 @@ public class Game{
 
             this.combatPanel = new CombatPanel();
         }
+    }
+
+    public static Game getInstance() {
+        if(instance == null) {
+            instance = new Game();
+        }
+        return instance;
     }
 }
