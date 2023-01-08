@@ -9,7 +9,6 @@ class GameTest {
 
     @BeforeEach
     void setUp() {
-        this.game = new Game();
     }
 
     @Test

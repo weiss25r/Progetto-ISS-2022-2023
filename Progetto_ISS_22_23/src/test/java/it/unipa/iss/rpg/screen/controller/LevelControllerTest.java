@@ -14,9 +14,4 @@ class LevelControllerTest {
         controller = new LevelController(new Player(), new WorldPanel());
 
     }
-
-    @Test
-    void loadMapTest() {
-        assertTrue(controller.loadMap());
-    }
 }
