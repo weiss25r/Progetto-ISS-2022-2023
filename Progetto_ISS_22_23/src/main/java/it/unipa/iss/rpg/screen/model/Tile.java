@@ -18,6 +18,4 @@ public class Tile {
     public BufferedImage getTileImage() {
         return this.tileImage;
     }
-
-    
 }
