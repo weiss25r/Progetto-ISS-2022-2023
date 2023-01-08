@@ -17,11 +17,6 @@ class PlayerTest {
     }
 
     @Test
-    void getInstance() {
-
-    }
-
-    @Test
     void testMove() {
         p.move(EventType.MOVED_DOWN);
         Assertions.assertEquals(130, p.getPlayerSprite().getWorldY());

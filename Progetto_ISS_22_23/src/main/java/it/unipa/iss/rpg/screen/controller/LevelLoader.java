@@ -182,7 +182,6 @@ public class LevelLoader {
             firstMapBuilder.addNpc(bob, bob.getNpcSprite().getWorldX(), bob.getNpcSprite().getWorldY());
             secondMapBuilder.addNpc(agar, agar.getNpcSprite().getWorldX(), agar.getNpcSprite().getWorldY());
 
-
             firstMapBuilder.addEndTile(0, 5);
             firstMapBuilder.addEndTile(1, 5);
             ArrayList<Map> maps = new ArrayList<>();

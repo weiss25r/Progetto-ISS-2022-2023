@@ -15,10 +15,8 @@ public class Ability {
     public void useAbility(Statistics hero, Statistics enemy){
         switch(skill){
             case HEALING:
-                if(hero.getHp() <= 50){
-                    hero.setHp(hero.getHp() + 30);
-                    Fight.myTurn = false;
-                }
+                hero.setHp(hero.getHp() + 30);
+                Fight.myTurn = false;
                 break;
 
             case STUDY_POWER:
