@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: entitystats
+-- Host: localhost    Database: entitystats
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	8.0.31-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -137,7 +137,7 @@ CREATE TABLE `npc` (
 
 LOCK TABLES `npc` WRITE;
 /*!40000 ALTER TABLE `npc` DISABLE KEYS */;
-INSERT INTO `npc` VALUES ('001','001','Va bene. Restami dietro.','Devo già badare a me, vattene via.','006'),('002','002','...','Scordatelo.','007');
+INSERT INTO `npc` VALUES ('001','001','Va bene','Devo già badare a me','006'),('002','002','...','Scordatelo.','007');
 /*!40000 ALTER TABLE `npc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +162,7 @@ CREATE TABLE `plot` (
 
 LOCK TABLES `plot` WRITE;
 /*!40000 ALTER TABLE `plot` DISABLE KEYS */;
-INSERT INTO `plot` VALUES ('001','src/res/npc/bob.png','Ehi tu, per favore aiutami, non capisco dove siamo, chi sono quelli?\\n E soprattutto cosa sono!?\\n Se mi proteggi posso darti le chiavi della struttura qui alle nostre spalle.'),('002','src/res/npc/agar.png','Ooh... vedo che stai cominciando a capire il tuo ruolo, eh eh... Molto bene, prosegui allora, da qui in poi gli incontri che farai determineranno il destino di questo mondo');
+INSERT INTO `plot` VALUES ('001','src/res/npc/bob.png','Ehi tu, per favore aiutami, non capisco dove siamo, chi sono quelli?\nE soprattutto cosa sono!?\nSe mi proteggi posso darti le chiavi della struttura qui alle nostre spalle.'),('002','src/res/npc/agar.png','Ooh... vedo che stai cominciando a capire il tuo ruolo, eh eh...\nMolto bene, prosegui allora, da qui in poi gli incontri che farai determineranno il destino di questo mondo');
 /*!40000 ALTER TABLE `plot` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-07 12:35:35
+-- Dump completed on 2023-01-09 16:06:38
