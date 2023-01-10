@@ -1,5 +1,6 @@
 package it.unipa.iss.rpg.screen.controller;
 
+import it.unipa.iss.rpg.DAO.EntityDAOImpl;
 import it.unipa.iss.rpg.screen.model.EventType;
 import it.unipa.iss.rpg.screen.model.entitities.Player;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
@@ -12,7 +13,7 @@ class LevelControllerTest {
     LevelController controller;
     @BeforeEach
     void setUp() {
-        controller = new LevelController(new Player(), new WorldPanel());
+        controller = new LevelController(EntityDAOImpl.getDbInstance().getHeroById("001"), new WorldPanel());
     }
 
     @Test
