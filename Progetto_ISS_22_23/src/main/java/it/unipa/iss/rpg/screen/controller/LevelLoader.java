@@ -69,10 +69,10 @@ public class LevelLoader {
             Mob spider2 = EntityDAOImpl.getDbInstance().getEnemyById("003");
             Mob wolf2 = EntityDAOImpl.getDbInstance().getEnemyById("004");
 
-            spider.getMobSprite().addSprite(new Tile(ImageIO.read(new File(spider.getMobSprite().getSpritesPath().get(0)))));
-            wolf.getMobSprite().addSprite(new Tile(ImageIO.read(new File(wolf.getMobSprite().getSpritesPath().get(0)))));
-            spider2.getMobSprite().addSprite(new Tile(ImageIO.read(new File(spider2.getMobSprite().getSpritesPath().get(0)))));
-            wolf2.getMobSprite().addSprite(new Tile(ImageIO.read(new File(wolf.getMobSprite().getSpritesPath().get(0)))));
+            spider.getMobSprite().addSprite(ImageIO.read(new File(spider.getMobSprite().getSpritesPath().get(0))));
+            wolf.getMobSprite().addSprite(ImageIO.read(new File(wolf.getMobSprite().getSpritesPath().get(0))));
+            spider2.getMobSprite().addSprite(ImageIO.read(new File(spider2.getMobSprite().getSpritesPath().get(0))));
+            wolf2.getMobSprite().addSprite(ImageIO.read(new File(wolf.getMobSprite().getSpritesPath().get(0))));
 
             firstMapBuilder.addMob(spider, spider.getMobSprite().getWorldX(), spider.getMobSprite().getWorldY());
             firstMapBuilder.addMob(spider2, spider2.getMobSprite().getWorldX(), spider2.getMobSprite().getWorldY());
@@ -86,10 +86,10 @@ public class LevelLoader {
 
             //TODO: refactoring
             Npc bob = EntityDAOImpl.getDbInstance().getNpcById("001");
-            bob.getNpcSprite().addSprite(new Tile(ImageIO.read(new File(bob.getNpcSprite().getSpritesPath().get(0)))));
+            bob.getNpcSprite().addSprite(ImageIO.read(new File(bob.getNpcSprite().getSpritesPath().get(0))));
 
             Npc agar = EntityDAOImpl.getDbInstance().getNpcById("002");
-            agar.getNpcSprite().addSprite(new Tile(ImageIO.read(new File(agar.getNpcSprite().getSpritesPath().get(0)))));
+            agar.getNpcSprite().addSprite(ImageIO.read(new File(agar.getNpcSprite().getSpritesPath().get(0))));
 
             firstMapBuilder.addNpc(bob, bob.getNpcSprite().getWorldX(), bob.getNpcSprite().getWorldY());
             secondMapBuilder.addNpc(agar, agar.getNpcSprite().getWorldX(), agar.getNpcSprite().getWorldY());
@@ -117,10 +117,10 @@ public class LevelLoader {
 
     public void loadPlayer(Player p) {
         try{
-            p.getPlayerSprite().addSprite(new Tile(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(0)))));
-            p.getPlayerSprite().addSprite(new Tile(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(1)))));
-            p.getPlayerSprite().addSprite(new Tile(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(2)))));
-            p.getPlayerSprite().addSprite(new Tile(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(3)))));
+            p.getPlayerSprite().addSprite(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(0))));
+            p.getPlayerSprite().addSprite(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(1))));
+            p.getPlayerSprite().addSprite(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(2))));
+            p.getPlayerSprite().addSprite(ImageIO.read(new File(p.getPlayerSprite().getSpritesPath().get(3))));
 
             p.getPlayerSprite().setDirectionImage(EventType.MOVED_DOWN);
         }catch (IOException ex) {

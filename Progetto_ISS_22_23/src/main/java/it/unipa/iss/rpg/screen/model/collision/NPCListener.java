@@ -2,8 +2,6 @@ package it.unipa.iss.rpg.screen.model.collision;
 
 import it.unipa.iss.rpg.GameController;
 import it.unipa.iss.rpg.screen.controller.LevelController;
-import it.unipa.iss.rpg.screen.controller.WorldController;
-import it.unipa.iss.rpg.screen.model.Level;
 import it.unipa.iss.rpg.screen.model.entitities.Npc;
 import it.unipa.iss.rpg.screen.view.DialogPanel;
 

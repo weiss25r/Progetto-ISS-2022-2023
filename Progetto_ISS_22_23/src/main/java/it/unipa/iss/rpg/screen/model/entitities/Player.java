@@ -2,12 +2,6 @@ package it.unipa.iss.rpg.screen.model.entitities;
 
 import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.EventType;
-import it.unipa.iss.rpg.screen.model.Tile;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.*;
 
 public class Player implements Entity {
     private Statistics stats;

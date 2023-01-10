@@ -1,13 +1,12 @@
 package it.unipa.iss.rpg.screen.model.entitities;
 
-import it.unipa.iss.rpg.screen.model.Tile;
-
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class EntitySprite {
     private int worldX, worldY;
-    private List<Tile> sprites;
+    private List<BufferedImage> sprites;
     private List<String> spritesPath;
 
     public EntitySprite(int worldX, int worldY) {
@@ -17,13 +16,13 @@ public abstract class EntitySprite {
         this.spritesPath = new ArrayList<>();
     }
 
-    public EntitySprite(int worldX, int worldY, List<Tile> sprites) {
+    public EntitySprite(int worldX, int worldY, List<BufferedImage> sprites) {
         this.sprites = new ArrayList<>();
         this.worldX = worldX;
         this.worldY = worldY;
     }
 
-    public void addSprite(Tile tile) {
+    public void addSprite(BufferedImage tile) {
         this.sprites.add(tile);
     }
 
@@ -47,11 +46,11 @@ public abstract class EntitySprite {
         this.spritesPath.addAll(strings);
     }
 
-    public List<Tile> getSprites() {
+    public List<BufferedImage> getSprites() {
         return sprites;
     }
 
-    public void setSprites(List<Tile> sprites) {
+    public void setSprites(List<BufferedImage> sprites) {
         this.sprites = sprites;
     }
 

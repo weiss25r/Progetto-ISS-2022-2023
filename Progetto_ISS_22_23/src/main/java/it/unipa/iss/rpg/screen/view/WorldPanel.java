@@ -1,7 +1,6 @@
 package it.unipa.iss.rpg.screen.view;
 
 import it.unipa.iss.rpg.screen.controller.LevelController;
-import it.unipa.iss.rpg.screen.controller.WorldController;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,6 @@
 package it.unipa.iss.rpg.screen.model.entitities;
 
 import it.unipa.iss.rpg.screen.model.EventType;
-import it.unipa.iss.rpg.screen.model.Tile;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -17,12 +16,12 @@ public class PlayerSprite extends EntitySprite{
         super(x, y);
     }
     @Override
-    public void addSprite(Tile tile) {
+    public void addSprite(BufferedImage tile) {
         super.getSprites().add(tile);
     }
 
     @Override
-    public void setSprites(List<Tile> sprites) {
+    public void setSprites(List<BufferedImage> sprites) {
         super.setSprites(sprites);
     }
 
@@ -32,10 +31,10 @@ public class PlayerSprite extends EntitySprite{
 
     public void setDirectionImage(EventType eventType) {
         switch (eventType) {
-            case MOVED_DOWN -> this.directionImage = getSprites().get(0).getTileImage();
-            case MOVED_UP -> this.directionImage = getSprites().get(1).getTileImage();
-            case MOVED_LEFT -> this.directionImage = getSprites().get(2).getTileImage();
-            case MOVED_RIGHT -> this.directionImage = getSprites().get(3).getTileImage();
+            case MOVED_DOWN -> this.directionImage = getSprites().get(0);
+            case MOVED_UP -> this.directionImage = getSprites().get(1);
+            case MOVED_LEFT -> this.directionImage = getSprites().get(2);
+            case MOVED_RIGHT -> this.directionImage = getSprites().get(3);
         }
     }
 }

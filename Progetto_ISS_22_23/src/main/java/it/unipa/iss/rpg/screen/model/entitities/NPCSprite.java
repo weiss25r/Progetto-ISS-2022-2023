@@ -1,7 +1,5 @@
 package it.unipa.iss.rpg.screen.model.entitities;
 
-import it.unipa.iss.rpg.screen.model.Tile;
-
 import java.awt.image.BufferedImage;
 
 public class NPCSprite extends EntitySprite{
@@ -14,12 +12,12 @@ public class NPCSprite extends EntitySprite{
     }
 
     @Override
-    public void addSprite(Tile tile) {
+    public void addSprite(BufferedImage tile) {
         super.getSprites().add(tile);
     }
 
     public BufferedImage getDefaultSprite() {
-        return this.getSprites().get(0).getTileImage();
+        return this.getSprites().get(0);
     }
 
     public String getDialogIconPath() {
