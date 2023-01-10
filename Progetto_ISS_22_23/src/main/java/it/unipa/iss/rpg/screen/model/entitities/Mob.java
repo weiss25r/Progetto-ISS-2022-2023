@@ -22,4 +22,16 @@ public class Mob {
     public MobSprite getMobSprite() {
         return mobSprite;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj) return true;
+        if(obj == null || obj.getClass() != this.getClass()) return false;
+        Mob enemy = (Mob) obj;
+
+        return this.getStats().getHp() == enemy.getStats().getHp() && this.getStats().getDef() == enemy.getStats().getDef() &&
+                this.getStats().getAtk() == enemy.getStats().getAtk() && this.getStats().getStamina() == enemy.getStats().getStamina() &&
+                this.getMobSprite().getSpritesPath().equals(enemy.getMobSprite().getSpritesPath()) &&
+                this.getMobSprite().getWorldX() == enemy.getMobSprite().getWorldX() && this.getMobSprite().getWorldY() == enemy.getMobSprite().getWorldY();
+    }
 }

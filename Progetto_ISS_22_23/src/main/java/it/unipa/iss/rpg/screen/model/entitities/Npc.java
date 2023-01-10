@@ -31,4 +31,15 @@ public class Npc {
     public String getChoose_two() {
         return choose_two;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj) return true;
+        if(obj == null || obj.getClass() != this.getClass()) return false;
+        Npc npc = (Npc) obj;
+
+        return this.getNpcSprite().getSpritesPath().equals(npc.getNpcSprite().getSpritesPath()) && this.getDialog().equals(npc.getDialog()) &&
+                this.getNpcSprite().getWorldX() == npc.getNpcSprite().getWorldX() && this.getNpcSprite().getWorldY() == npc.getNpcSprite().getWorldY() &&
+                this.getChoose_one().equals(npc.getChoose_one()) && this.getChoose_two().equals(npc.getChoose_two());
+    }
 }

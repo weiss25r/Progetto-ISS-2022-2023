@@ -49,4 +49,16 @@ public class Player {
         return this.stats;
         //return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj) return true;
+        if(obj == null || obj.getClass() != this.getClass()) return false;
+        Player hero = (Player) obj;
+
+        return this.getStats().getHp() == hero.getStats().getHp() && this.getStats().getDef() == hero.getStats().getDef() &&
+                this.getStats().getAtk() == hero.getStats().getAtk() && this.getStats().getStamina() == hero.getStats().getStamina() &&
+                this.getPlayerSprite().getSpritesPath().equals(hero.getPlayerSprite().getSpritesPath()) &&
+                this.getPlayerSprite().getWorldX() == hero.getPlayerSprite().getWorldX() && this.getPlayerSprite().getWorldY() == hero.getPlayerSprite().getWorldY();
+    }
 }
