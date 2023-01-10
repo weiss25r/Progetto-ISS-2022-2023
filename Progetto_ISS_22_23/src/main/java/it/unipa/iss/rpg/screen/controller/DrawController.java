@@ -34,23 +34,18 @@ public class DrawController {
     }
 
     public void drawWorld(Graphics2D g, Map map){
-
         for (int i = 0; i < this.maxCols; i++) {
             for (int j = 0; j < this.maxRows; j++) {
                 BufferedImage image = map.getTile(j, i);
-
                 g.drawImage(image, i * scale, j * scale, scale, scale, null);
             }
         }
     }
 
     public void drawEnemies(Graphics2D g, Map map) {
-
         for (int i = 0; i < this.maxCols; i++) {
             for (int j = 0; j < this.maxRows; j++) {
                 Mob mob = map.getEnemy(j, i);
-
-
                 if(mob != null)
                     g.drawImage(mob.getMobSprite().getDefaultSprite(), i * scale, j * scale, scale, scale, null);
             }

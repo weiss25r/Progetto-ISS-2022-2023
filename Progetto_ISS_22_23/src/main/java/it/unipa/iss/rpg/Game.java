@@ -8,6 +8,8 @@ import it.unipa.iss.rpg.combat.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.Screen;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
+import java.util.Scanner;
+
 public class Game{
     private static Game instance = null;
     private LevelController worldController;
@@ -21,6 +23,12 @@ public class Game{
     private Game() {
         p = EntityDAOImpl.getDbInstance().getHeroById("001");
 
+        if(p == null) {
+            System.out.println("Connessione fallita");
+            Scanner s = new Scanner(System.in);
+            s.nextInt();
+            System.exit(-1);
+        }
         this.worldPanel = new WorldPanel();
         this.combatPanel = new CombatPanel();
 

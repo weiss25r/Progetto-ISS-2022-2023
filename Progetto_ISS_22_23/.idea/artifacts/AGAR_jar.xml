@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact name="AGAR:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AGAR_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Progetto_ISS_22_23.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Progetto_ISS_22_23" />
+        <element id="file-copy" path="$PROJECT_DIR$/../DB/mysql-connector-j-8.0.31.jar" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/../DB/mysql-connector-j-8.0.31.jar" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/res" />
+    </root>
+  </artifact>
+</component>

@@ -71,16 +71,13 @@ public class LevelController extends GameController implements IPlayerListener {
             player.getPlayerSprite().setWorldX(490);
             player.getPlayerSprite().setWorldY(490);
         }
-        this.getGamePanel().repaint();
-    }
+   }
 
     @Override
     public void runController() {
-        //this.lastCollisionMob = null;
         setActive(true);
         movementHandler.attach(this);
 
-        //TODO: ATTACH/DETACH QUA
         int fps = 60;
         double drawInterval = (double)1000000000/fps;
         double delta = 0;

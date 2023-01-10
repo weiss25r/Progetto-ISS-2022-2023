@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: it.unipa.iss.rpg.Main
+Class-Path: mysql-connector-j-8.0.31.jar
+
