@@ -46,7 +46,7 @@ class FightTest {
 
     @Test
     public void getHpEnemyRemaining(){
-        assertEquals(100, fight.getHpEnemyRemaining());
+        assertEquals(80, fight.getHpEnemyRemaining());
     }
 
     @Test
