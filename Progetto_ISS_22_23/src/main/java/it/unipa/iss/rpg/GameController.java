@@ -13,6 +13,10 @@ public abstract class GameController {
     public abstract void update(EventType e);
     public abstract void runController();
 
+    public GameController() {
+
+    }
+
     public GameController(Player player, GamePanel gamePanel) {
         this.player = player;
         this.gamePanel = gamePanel;
@@ -35,3 +39,4 @@ public abstract class GameController {
         this.active = active;
     }
 }
+

@@ -1,23 +1,15 @@
 package it.unipa.iss.rpg.screen.controller;
 
 import it.unipa.iss.rpg.GameController;
-import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.*;
 import it.unipa.iss.rpg.screen.model.collision.MobListener;
 import it.unipa.iss.rpg.screen.model.collision.NPCListener;
 import it.unipa.iss.rpg.screen.model.entitities.*;
 import it.unipa.iss.rpg.screen.view.WorldPanel;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class LevelController extends GameController implements IPlayerListener {
+public class LevelController extends GameController implements PlayerListener {
     private final MovementHandler movementHandler;
     private final MobListener mobListener;
     private Level level;
@@ -25,6 +17,7 @@ public class LevelController extends GameController implements IPlayerListener {
     private Mob lastCollisionMob;
     private final DrawController drawController;
     private final LevelLoader levelLoader;
+
 
     public LevelController(Player player, WorldPanel gamePanel) {
         super(player, gamePanel);
