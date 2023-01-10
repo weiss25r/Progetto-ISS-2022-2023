@@ -6,10 +6,6 @@ public class Mob implements Entity{
     private MobSprite mobSprite;
     private Statistics stats;
 
-    public Mob(Statistics stats) {
-        this.stats = new Statistics(100, 70, 100, 50);
-    }
-
     public Mob(Statistics stats, MobSprite mobSprite) {
         this.stats = stats;
         this.mobSprite = mobSprite;

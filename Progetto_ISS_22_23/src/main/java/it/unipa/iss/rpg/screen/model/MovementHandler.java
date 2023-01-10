@@ -6,21 +6,22 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class MovementHandler implements KeyListener {
-    private GameController worldController;
+    private GameController gameController;
 
     public MovementHandler() {
+
     }
 
     public void attach(GameController controller) {
-        this.worldController = controller;
+        this.gameController = controller;
     }
 
     public void detach() {
-        this.worldController = null;
+        this.gameController = null;
     }
 
     private void notifyController(EventType e){
-        this.worldController.update(e);
+        this.gameController.update(e);
     }
 
     @Override
@@ -30,8 +31,7 @@ public class MovementHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        //TODO: mettere check null
-        if(this.worldController == null) {
+        if(this.gameController == null) {
             return;
         }
 

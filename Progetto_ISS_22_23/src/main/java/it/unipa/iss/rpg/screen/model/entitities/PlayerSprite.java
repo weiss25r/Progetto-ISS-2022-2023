@@ -30,11 +30,13 @@ public class PlayerSprite extends EntitySprite{
     }
 
     public void setDirectionImage(EventType eventType) {
-        switch (eventType) {
-            case MOVED_DOWN -> this.directionImage = getSprites().get(0);
-            case MOVED_UP -> this.directionImage = getSprites().get(1);
-            case MOVED_LEFT -> this.directionImage = getSprites().get(2);
-            case MOVED_RIGHT -> this.directionImage = getSprites().get(3);
+        if(!this.getSprites().isEmpty()) {
+            switch (eventType) {
+                case MOVED_DOWN -> this.directionImage = getSprites().get(0);
+                case MOVED_UP -> this.directionImage = getSprites().get(1);
+                case MOVED_LEFT -> this.directionImage = getSprites().get(2);
+                case MOVED_RIGHT -> this.directionImage = getSprites().get(3);
+            }
         }
     }
 }

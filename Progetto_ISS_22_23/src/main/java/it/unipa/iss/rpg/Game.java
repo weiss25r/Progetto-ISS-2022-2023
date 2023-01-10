@@ -34,12 +34,14 @@ public class Game{
         while(true) {
             screen.setGamePanel(worldPanel);
             worldController.runController();
+
             screen.getWindow().dispose();
 
             combatController = new CombatController(p,combatPanel, worldController.getCollisionMob());
 
             screen.setGamePanel(combatPanel);
             combatController.runController();
+
             screen.getWindow().dispose();
 
             this.combatPanel = new CombatPanel();
