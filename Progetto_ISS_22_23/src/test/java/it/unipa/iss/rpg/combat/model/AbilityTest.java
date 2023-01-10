@@ -35,8 +35,8 @@ class AbilityTest {
         Ability skillType_3 = new Ability(AbilityBox.CORRUPTIVE_ATK);
         Ability skillType_4 = new Ability(AbilityBox.SINNER_ATK);
 
-        /*skillType_1.useAbility(hero.getStats(), enemy.getStats());
-        assertEquals(130, hero.getStats().getHp());*/
+        skillType_1.useAbility(hero.getStats(), enemy.getStats());
+        assertEquals(130, hero.getStats().getHp());
 
         skillType_2.useAbility(hero.getStats(), enemy.getStats());
         assertEquals(83, enemy.getStats().getHp());
