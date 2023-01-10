@@ -1,6 +1,6 @@
 package it.unipa.iss.rpg.screen.model.entitities;
 
-public class Npc implements Entity{
+public class Npc {
     private NPCSprite npcSprite;
     private String path, dialog, choose_one, choose_two;
 

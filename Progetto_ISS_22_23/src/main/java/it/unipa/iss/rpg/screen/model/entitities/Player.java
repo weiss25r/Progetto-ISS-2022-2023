@@ -3,7 +3,7 @@ package it.unipa.iss.rpg.screen.model.entitities;
 import it.unipa.iss.rpg.combat.model.Statistics;
 import it.unipa.iss.rpg.screen.model.EventType;
 
-public class Player implements Entity {
+public class Player {
     private Statistics stats;
     private PlayerSprite playerSprite;
     private final int movementSpeed;
