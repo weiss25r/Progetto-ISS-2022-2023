@@ -11,6 +11,10 @@ public class Mob {
         this.mobSprite = mobSprite;
     }
 
+    public Mob(Statistics stats) {
+        this.stats = new Statistics(80, 50, 100, 50);
+    }
+
     public Statistics getStats() {
         return this.stats;
     }
