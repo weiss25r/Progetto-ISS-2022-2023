@@ -29,5 +29,7 @@ class LevelControllerTest {
 
         this.controller.update(EventType.MOVED_UP);
         assertEquals(120, controller.getPlayer().getPlayerSprite().getWorldY());
+
+        //TODO: level controller
     }
 }
