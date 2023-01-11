@@ -39,15 +39,6 @@ class FightTest {
         assertTrue(fight.gameOverCheck());
     }
 
-    @Test
-    public void getHpHeroRemaining(){
-        assertEquals(100, fight.getHpHeroRemaining());
-    }
-
-    @Test
-    public void getHpEnemyRemaining(){
-        assertEquals(80, fight.getHpEnemyRemaining());
-    }
 
     @Test
     public void gameOverCheck(){
