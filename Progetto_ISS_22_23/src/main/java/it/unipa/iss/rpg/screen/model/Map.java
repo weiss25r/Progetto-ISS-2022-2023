@@ -31,17 +31,13 @@ public class Map {
    }
 
     //Aggiunge un Mob
-   public void addMob(Mob enemy,int x,int y){
-        this.mapEnemies[x][y] = enemy;
-    }
+
     //Rimuove un Mob
    public void removeMob(int x,int y){
         this.mapEnemies[x][y] = null;
     }
     // Aggiune un Npc
-   public void addNpc (Npc npc, int x, int y){
-        this.mapNpc[x][y] = npc;
-    }
+  
     //Rimuove un Npc
    public void removeNpc (int x, int y){
        this.mapNpc[x][y] = null;
