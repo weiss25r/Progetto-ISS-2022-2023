@@ -46,8 +46,6 @@ public class LevelController extends GameController implements PlayerListener {
 
         player.move(e);
 
-        //System.out.printf("(%d, %d)\n", player.getPlayerSprite().getWorldX(), player.getPlayerSprite().getWorldY());
-
         int x = player.getPlayerSprite().getWorldX();
         int y = player.getPlayerSprite().getWorldY();
 

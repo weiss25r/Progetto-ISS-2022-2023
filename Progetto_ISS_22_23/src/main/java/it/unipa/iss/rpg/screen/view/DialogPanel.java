@@ -5,7 +5,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class DialogPanel extends GamePanel{
-
     private JFrame dialogFrame = new JFrame();
     private JPanel npcIcon = new JPanel();
     private JPanel dialogBox = new JPanel();

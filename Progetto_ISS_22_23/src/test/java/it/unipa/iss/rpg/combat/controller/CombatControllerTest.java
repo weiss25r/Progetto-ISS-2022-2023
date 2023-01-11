@@ -36,17 +36,6 @@ class CombatControllerTest {
     }
     @Test
     void updateTest(){
-
-        /*
-        Pattern pattern = Pattern.compile("");
-        Matcher matchHero = pattern.matcher(HpHero);
-        int startHpHero = matchHero.start();
-        int endHpHero = matchHero.end();
-        String HpHero = controller.getView().getLblPlayerHp().getText();
-        String HpEnemy = controller.getView().getLblEnemyHp().getText();
-        String PlayerStamina = controller.getView().getLblPlayerStamina().getText();
-         */
-
         this.controller.getFight().inputAction(1);
         //this.controller.getFight().getHpHeroRemaining();
         this.controller.update(EventType.PLAYER_ATK);
@@ -90,20 +79,12 @@ class CombatControllerTest {
         assertEquals(Integer.toString(this.controller.getFight().getStaminaHeroRemaining()),
                 controller.getView().getLblPlayerStamina().getText().substring(15,controller.getView().getLblPlayerStamina().getText().length()));
 
-
-
         //Test Healing
         this.controller.getFight().setSkill(AbilityBox.HEALING);
         this.controller.getFight().inputAction(2);
         this.controller.update(EventType.PLAYER_ABILITY);
         assertEquals(Integer.toString(this.controller.getFight().getHpHeroRemaining()),
                 controller.getView().getLblPlayerHp().getText().substring(11,controller.getView().getLblPlayerHp().getText().length()));
-
-
     }
-    @Test
-    void runController() {
 
-
-    }
 }
