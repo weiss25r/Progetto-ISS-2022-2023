@@ -11,25 +11,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LevelControllerTest {
     LevelController controller;
+    Player player;
+
     @BeforeEach
     void setUp() {
-        controller = new LevelController(EntityDAOImpl.getDbInstance().getHeroById("001"), new WorldPanel());
+        player = EntityDAOImpl.getDbInstance().getHeroById("001");
+        player.getPlayerSprite().setWorldX(200);
+        player.getPlayerSprite().setWorldY(290);
+        controller = new LevelController(player, new WorldPanel());
     }
 
     @Test
     void testUpdate() {
-        this.controller.update(EventType.MOVED_RIGHT);
-        assertEquals(110, controller.getPlayer().getPlayerSprite().getWorldX());
+        //per ogni npc e mob della prima mappa si posiziona il player in cui l'entità è presente e si verifica che la collissione
+        //sia stata notificata e risolta (ovvero, che l'entità di riferimento sia nul
 
-        this.controller.update(EventType.MOVED_LEFT);
-        assertEquals(100, controller.getPlayer().getPlayerSprite().getWorldX());
+        controller.update(EventType.MOVED_RIGHT);
+        assertNull(controller.getLevel().getCurrentMap().getEnemy(3, 2));
 
-        this.controller.update(EventType.MOVED_DOWN);
-        assertEquals(130, controller.getPlayer().getPlayerSprite().getWorldY());
+        player.getPlayerSprite().setWorldX(190);
+        player.getPlayerSprite().setWorldY(200);
+        controller.update(EventType.MOVED_RIGHT);
+        assertNull(controller.getLevel().getCurrentMap().getNpc(2, 2));
 
-        this.controller.update(EventType.MOVED_UP);
-        assertEquals(120, controller.getPlayer().getPlayerSprite().getWorldY());
+        player.getPlayerSprite().setWorldX(0);
+        player.getPlayerSprite().setWorldY(290);
+        controller.update(EventType.MOVED_DOWN);
+        assertNull(controller.getLevel().getCurrentMap().getEnemy(3, 0));
 
-        //TODO: level controller
+        player.getPlayerSprite().setWorldX(380);
+        player.getPlayerSprite().setWorldY(300);
+        controller.update(EventType.MOVED_RIGHT);
+        assertNull(controller.getLevel().getCurrentMap().getEnemy(3, 4));
+
+        player.getPlayerSprite().setWorldX(570);
+        player.getPlayerSprite().setWorldY(300);
+        controller.update(EventType.MOVED_RIGHT);
+        assertNull(controller.getLevel().getCurrentMap().getEnemy(3, 6));
     }
 }

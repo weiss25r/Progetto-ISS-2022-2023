@@ -12,6 +12,9 @@ import java.awt.*;
 public class LevelController extends GameController implements PlayerListener {
     private final MovementHandler movementHandler;
     private final MobListener mobListener;
+
+
+
     private Level level;
     private final DecisionController decisionController;
     private Mob lastCollisionMob;
@@ -49,7 +52,7 @@ public class LevelController extends GameController implements PlayerListener {
         int y = player.getPlayerSprite().getWorldY();
 
         int col = (int)Math.floor((double)x/96);
-        int row = (int) Math.floor((double) y/96) ;
+        int row = (int) Math.floor((double) y/96);
 
         if(map.getEnemy(row, col) != null) {
             this.mobListener.update(this);
@@ -101,10 +104,6 @@ public class LevelController extends GameController implements PlayerListener {
         this.movementHandler.detach();
     }
 
-    public Mob getCollisionMob(){
-        return this.lastCollisionMob;
-    }
-
     public void updateDecisionTree(boolean b) {
         this.decisionController.updateDecisionTree(b);
     }
@@ -114,5 +113,13 @@ public class LevelController extends GameController implements PlayerListener {
         drawController.drawEnemies(g2, this.level.getCurrentMap());
         drawController.drawCharacters(g2,this.level.getCurrentMap());
         drawController.drawPlayer(g2, this.getPlayer());
+    }
+
+    public Mob getCollisionMob(){
+        return this.lastCollisionMob;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 }
