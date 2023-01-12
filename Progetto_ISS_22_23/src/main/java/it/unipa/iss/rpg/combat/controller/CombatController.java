@@ -11,11 +11,11 @@ import it.unipa.iss.rpg.combat.view.CombatPanel;
 import it.unipa.iss.rpg.screen.view.ComponentImage;
 
 /**
- * @Autor Alessia Boni * **/
+ * @Author Alessia Boni * **/
 
 public class CombatController extends GameController {
     private Fight fight;
-    //trowAway declaration when mob class is implemented
+    //throwAway declaration when mob class is implemented
     private Mob enemy;
     private CombatPanel view;
 

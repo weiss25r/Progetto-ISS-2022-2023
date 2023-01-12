@@ -23,12 +23,6 @@ public class Game{
     private Game() {
         p = EntityDAOImpl.getDbInstance().getHeroById("001");
 
-        if(p == null) {
-            System.out.println("Connessione fallita");
-            Scanner s = new Scanner(System.in);
-            s.nextInt();
-            System.exit(-1);
-        }
         this.worldPanel = new WorldPanel();
         this.combatPanel = new CombatPanel();
 

@@ -45,9 +45,7 @@ public class Player {
 
 
     public Statistics getStats() {
-        //defensive copying
         return this.stats;
-        //return new Statistics(stats.getHp(), stats.getDef(), stats.getStamina(), stats.getAtk());
     }
 
     @Override

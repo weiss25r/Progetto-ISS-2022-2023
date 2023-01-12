@@ -1,0 +1,9 @@
+Il gioco va lanciato mediante il file .jar "Progetto_ISS_22_23.jar", eseguendolo alla stessa cartella in cui è presente questo file".
+
+Affinchè il gioco si avvii, è necessario configurare MySQL con il seguente procedimento:
+	- creare l'utente "agar" con password "agarproject"
+	- importare il db utilizzando il file "db.sql", assegnando allo schema il nome "entitystats".
+
+
+
+	

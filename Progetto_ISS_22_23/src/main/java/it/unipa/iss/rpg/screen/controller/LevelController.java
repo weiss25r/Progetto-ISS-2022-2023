@@ -13,8 +13,6 @@ public class LevelController extends GameController implements PlayerListener {
     private final MovementHandler movementHandler;
     private final MobListener mobListener;
 
-
-
     private Level level;
     private final DecisionController decisionController;
     private Mob lastCollisionMob;
@@ -76,10 +74,12 @@ public class LevelController extends GameController implements PlayerListener {
         double drawInterval = (double)1000000000/fps;
         double delta = 0;
 
+        //metodo "delta" per eseguire il metodo repaint() esattamente 60 volte per secondo
+        //tale metodo è uno standard in game development
+
         long lastTime = System.nanoTime();
         long currentTime;
         long timer = 0;
-        int drawCount = 0;
 
         while(isActive()) {
             currentTime = System.nanoTime();
@@ -91,11 +91,9 @@ public class LevelController extends GameController implements PlayerListener {
             if(delta >= 1) {
                 this.getGamePanel().repaint();
                 delta--;
-                drawCount++;
             }
 
             if(timer >= 1000000000) {
-                drawCount = 0;
                 timer = 0;
             }
         }
